@@ -1,0 +1,3 @@
+[tool.mypy]
+    files = ["app/", "tests/"]  # Rutas a analizar
+    ignore_missing_imports = true  # Ignorar errores por módulos no encontrados
