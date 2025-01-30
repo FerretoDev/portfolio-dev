@@ -86,14 +86,6 @@ The FooterStyle
 """
 
 
-link: dict[str, str] = field(
-    default_factory=lambda: {
-        "color": rx.color("slate", 11),
-        "weight": "medium",
-        "size": "2",
-    },
-)
-
 active: Color = rx.color("slate", 12)
 passive: Color = rx.color("slate", 10)
 
@@ -142,15 +134,17 @@ The NavbarStyle
 class NavbarStyle:
     navigation: dict[str, str] = field(
         default_factory=lambda: {
+            "display": "grid",
+            "grid-template-columns": "repeat(auto - fit, minmax(300px, 1fr))",
+            "gap": "1rem",
             "position": "fixed",
             "width": "100%",
             "top": "0px",
             "z_index": "1000",
             "backdrop_filter": "blur(10px)",
-            "background": rx.cond(
-                ThemeState.theme == Theme.DARK,
-                THEME_STYLES[Theme.LIGHT]["nav_bg"],
-                THEME_STYLES[Theme.LIGHT]["nav_bg"],
+            "background": rx.color_mode_cond(
+                light="rgba(255, 255, 255, 0.8)",
+                dark="rgba(0, 0, 0, 0.8)",
             ),
         },
     )
@@ -177,3 +171,32 @@ class NavbarStyle:
 
 
 NavbarStyle: NavbarStyle = NavbarStyle()
+
+
+"""
+The LayoutStyle
+"""
+
+
+@dataclass
+class LayoutStyle:
+    base: dict[str, str] = field(
+        default_factory=lambda: {
+            "background": rx.color_mode_cond(
+                light="rgba(255, 255, 255, 0.8)",
+                dark="rgba(0, 0, 0, 0.8)",
+            ),
+            "color": rx.color_mode_cond(
+                light=rx.color("gray", 8),
+                dark=rx.color("gray", 2),
+            ),
+            "transition": "background 0.3s ease, color 0.3s ease",
+            "width": "100%",
+            "justify": "between",
+            "align": "center",
+            "padding": "1em 0em",
+        }
+    )
+
+
+LayoutStyle: LayoutStyle = LayoutStyle()

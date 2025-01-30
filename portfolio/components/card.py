@@ -2,19 +2,20 @@ from dataclasses import dataclass, field
 
 import reflex as rx
 from portfolio.components.styles.styles import CardStyle
+from typing import Optional, List
 
 
-def card():
+def card(title: str, description: str, tag: str):
     return rx.hstack(
         rx.vstack(
-            rx.text("Interactive User Logins", **CardStyle.title),
+            rx.text(title, **CardStyle.title),
             rx.text(
-                "Explore our intuitive and secure user login system, designed to streamline the authentication process.",
+                description,
                 **CardStyle.description,
             ),
             **CardStyle.stack,
         ),
         rx.box(**CardStyle.background),
-        rx.icon(tag="puzzle", **CardStyle.icon),
+        rx.icon(tag, **CardStyle.icon),
         **CardStyle.base,
     )

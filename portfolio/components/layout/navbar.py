@@ -3,6 +3,8 @@ from dataclasses import dataclass, field
 import reflex as rx
 from reflex.constants.colors import Color
 
+from portfolio.components.button_color_mode import button_color_mode
+
 # from portfolio.components.button_color_mode import button_color_mode
 from portfolio.components.styles.styles import NavbarStyle
 from portfolio.components.styles.theme import (
@@ -35,33 +37,55 @@ def navbar2() -> rx.Component:
     )
 
 
-def navbar():
-    return rx.box(
+def navbar() -> rx.Component:
+    return rx.flex(
         rx.hstack(
-            rx.heading("Portfolio()", color="cyan.500", font_family="monospace"),
+            rx.heading(
+                "Portfolio()",
+                color=rx.color("cyan", 5),
+                font_family="mono",
+            ),
             rx.spacer(),
             rx.hstack(
                 rx.link("Proyectos", href="#proyectos"),
                 rx.link("Sobre mí", href="#sobre-mi"),
                 rx.link("Blog", href="#blog"),
                 rx.link("Contacto", href="#contacto"),
-                theme_toggle(),  # Toggle de tema
+                rx.button(
+                    rx.color_mode_cond(
+                        light=rx.icon("moon"),
+                        dark=rx.icon("sun"),
+                    ),
+                    on_click=rx.toggle_color_mode,
+                    variant="ghost",
+                ),
+                # button_color_mode(),
                 spacing="2",
-                color=rx.cond(
-                    ThemeState.theme == Theme.DARK,
-                    THEME_STYLES[Theme.DARK]["text_color"],
-                    THEME_STYLES[Theme.LIGHT]["text_color"],
+                color=rx.color_mode_cond(
+                    light=rx.color("slate", 8),
+                    dark=rx.color("slate", 2),
                 ),
             ),
+            width="100%",
             padding="1em",
             max_width="1200px",
             margin="0 auto",
-            width="100%",
         ),
-        **NavbarStyle.navigation,
-        # background=rx.cond(
-        #    State.theme == Theme.DARK,
-        #    THEME_STYLES[Theme.DARK]["nav_bg"],
-        #    THEME_STYLES[Theme.LIGHT]["nav_bg"],
-        # ),
+        position="fixed",
+        width="100%",
+        top="0px",
+        z_index="999",
+        backdrop_filter="blur(10px)",
+        background=rx.color_mode_cond(
+            light="rgba(255, 255, 255, 0.8)",
+            dark="rgba(0, 0, 0, 0.8)",
+        ),
+        border_bottom=rx.color_mode_cond(
+            light="1px solid rgba(0,0,0,0.1)",
+            dark="1px solid rgba(255,255,255,0.1)",
+        ),
+        display="flex",
+        flex_wrap="wrap",
+        justify_content="space-between",
+        align_items="center",
     )
