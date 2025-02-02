@@ -13,7 +13,7 @@ def footer() -> rx.vstack:
         rx.divider(max_width="35em", color=rx.color("slate", 11)),
         rx.hstack(
             rx.text(
-                f"© 2024-{datetime.date.today().year} Marcos Ferreto Estrada v5.",
+                f"© 2024-{datetime.date.today().year} Marcos Ferreto Estrada v1.",
                 **FooterStyle.brand,
             ),
             rx.hstack(
