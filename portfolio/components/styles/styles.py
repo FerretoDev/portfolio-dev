@@ -1,12 +1,65 @@
 from dataclasses import dataclass, field
+from enum import Enum
 
 import reflex as rx
 from reflex.constants.colors import Color
-from portfolio.components.styles.theme import (
-    THEME_STYLES,
-    ThemeState,
-    Theme,
-)
+
+
+# VARIABLES GLOBALES
+class GlobalThemeVariables(Enum):
+    # Dark Theme
+    DARK = {
+        "primary": "#06B6D4",
+        "primary_dark": "#0891B2",
+        "secondary": "#3B82F6",
+        "bg_dark": "#111827",
+        "bg_darker": "#0F172A",
+        "text_primary": "#F9FAFB",
+        "text_secondary": "#D1D5DB",
+        "surface_1": "#1F2937",
+        "border_dark": "rgba(255,255,255,0.1)",
+    }
+    # Light Theme
+    LIGHT: dict[str, str] = {
+        "primary": "#0891B2",
+        "bg_dark": "#F9FAFB",
+        "text_primary": "#111827",
+        "surface_1": "#FFFFFF",
+        "border_dark": "rgba(0,0,0,0.05)",
+        ###
+        "primary_dark": "#0E7490",
+        "secondary": "#2563EB",
+        "bg_darker": "#F3F4F6",
+        "text_secondary": "#374151",
+        "text_muted": "#6B7280",
+        "surface_2": "#F9FAFB",
+        "shadow-color": "rgba(0,0,0,0.05)",
+    }
+
+
+# Estilos globales
+def global_style() -> rx.style:
+    return rx.style(
+        {
+            "body": {
+                "background": GlobalThemeVariables.DARK.value["bg_dark"],
+                # "background": "var(--bg-dark)",
+                # "color": "var(--text-primary)",
+                "color": GlobalThemeVariables.DARK.value["text_primary"],
+                "transition": "all 0.3s ease",
+            },
+            ".section": {
+                "padding": "6rem 0",
+                "position": "relative",
+            },
+            ".split-section": {
+                "display": "grid",
+                "gap": "4rem",
+                "alignItems": "center",
+            },
+        }
+    )
+
 
 """
 The CardStyle
@@ -63,7 +116,7 @@ class CardStyle:
         default_factory=lambda: {
             "background_size": "16px 16px",
             "background_image": f"radial-gradient(circle, {rx.color('gray', 12)} 1px, transparent 1px)",
-            "mask": f"radial-gradient(100% 100% at 100% 100%, hsl(0, 0%, 0%, 0.81), hsl(0, 0%, 0%, 0))",
+            "mask": "radial-gradient(100% 100% at 100% 100%, hsl(0, 0%, 0%, 0.81), hsl(0, 0%, 0%, 0))",
             "width": "100%",
             "height": "100%",
             "position": "absolute",
@@ -143,8 +196,8 @@ class NavbarStyle:
             "z_index": "1000",
             "backdrop_filter": "blur(10px)",
             "background": rx.color_mode_cond(
-                light="rgba(255, 255, 255, 0.8)",
-                dark="rgba(0, 0, 0, 0.8)",
+                light=GlobalThemeVariables.LIGHT.value["bg_dark"],
+                dark=GlobalThemeVariables.DARK.value["bg_dark"],
             ),
         },
     )
