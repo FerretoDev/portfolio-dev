@@ -7,12 +7,6 @@ from portfolio.components.button_color_mode import button_color_mode
 
 # from portfolio.components.button_color_mode import button_color_mode
 from portfolio.components.styles.styles import NavbarStyle
-from portfolio.components.styles.theme import (
-    THEME_STYLES,
-    ThemeState,
-    Theme,
-    theme_toggle,
-)
 
 
 def media(name: str, link: str) -> rx.Component:
@@ -38,7 +32,7 @@ def navbar2() -> rx.Component:
 
 
 def navbar() -> rx.Component:
-    return rx.flex(
+    return rx.box(
         rx.hstack(
             rx.heading(
                 "Portfolio()",
@@ -46,9 +40,9 @@ def navbar() -> rx.Component:
                 font_family="mono",
             ),
             rx.spacer(),
-            rx.hstack(
+            rx.flex(
                 rx.link("Proyectos", href="#proyectos"),
-                rx.link("Sobre mí", href="#sobre-mi"),
+                rx.link("Sobre mí", href="/#about"),
                 rx.link("Blog", href="#blog"),
                 rx.link("Contacto", href="#contacto"),
                 rx.button(

@@ -1,7 +1,7 @@
 import reflex as rx
 
 
-def background():
+def background() -> rx.Component:
     return rx.box(
         rx.box(
             background_size="18px 18px",

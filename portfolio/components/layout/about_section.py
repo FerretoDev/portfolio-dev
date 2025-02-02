@@ -1,9 +1,7 @@
 import reflex as rx
 
-from portfolio.components.layout.layout import layout
-
 
 def about_section() -> rx.Component:
-    return layout(
+    return rx.box(
         rx.text("About: This is the about page. Marcos Ferreto"),
     )
