@@ -39,26 +39,24 @@ class GlobalThemeVariables(Enum):
 
 # Estilos globales
 def global_style() -> rx.style:
-    return rx.style(
-        {
-            "body": {
-                "background": GlobalThemeVariables.DARK.value["bg_dark"],
-                # "background": "var(--bg-dark)",
-                # "color": "var(--text-primary)",
-                "color": GlobalThemeVariables.DARK.value["text_primary"],
-                "transition": "all 0.3s ease",
-            },
-            ".section": {
-                "padding": "6rem 0",
-                "position": "relative",
-            },
-            ".split-section": {
-                "display": "grid",
-                "gap": "4rem",
-                "alignItems": "center",
-            },
-        }
-    )
+    return {
+        "body": {
+            "background": GlobalThemeVariables.DARK.value["bg_dark"],
+            # "background": "var(--bg-dark)",
+            # "color": "var(--text-primary)",
+            "color": GlobalThemeVariables.DARK.value["text_primary"],
+            "transition": "all 0.3s ease",
+        },
+        ".section": {
+            "padding": "6rem 0",
+            "position": "relative",
+        },
+        ".split-section": {
+            "display": "grid",
+            "gap": "4rem",
+            "alignItems": "center",
+        },
+    }
 
 
 """
