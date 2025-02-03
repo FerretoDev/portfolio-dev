@@ -38,6 +38,5 @@ def layout(content: Optional[Any] = None) -> rx.Component:
         rx.box(header(), width="100%"),  # Header
         rx.box(content, width="100%"),  # Contenido principal
         rx.box(footer(), width="100%"),  # Footer
-        min_height="100vh",
-        spacing="0",
+        **LayoutStyle.base,  # Estilos base
     )

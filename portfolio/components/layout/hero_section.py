@@ -3,6 +3,7 @@ from dataclasses import dataclass, field
 import reflex as rx
 
 from portfolio.components.button import custom_button
+from portfolio.components.styles.styles import GlobalThemeVariables
 
 
 @dataclass
@@ -28,15 +29,15 @@ class HeroStyle:
                 dark="0 0 30px rgba(6, 182, 212, 0.3)",
             ),
             "width": "10%",
-            "max_width": "100%",
+            # "max_width": "100%",
             "height": "auto",
         },
     )
     hero_text: dict[str, str] = field(
         default_factory=lambda: {
             "color": rx.color_mode_cond(
-                light=rx.color("slate", 7),
-                dark=rx.color("slate", 3),
+                light=rx.color("indigo"),
+                dark=rx.color("cyan"),
             ),
             "font-size": "1.2em",
         },
@@ -118,15 +119,17 @@ def hero_section() -> rx.Component:
                     variant="outline",
                     color_scheme="cyan",
                 ),
+                rx.spacer(),
+                rx.image(
+                    src="/Designer.jpeg",
+                    **HeroStyle.hero_image,
+                ),
                 padding_top="1em",
+                align="center",
             ),
             align="center",
             spacing="6",
             padding_y="20",
-        ),
-        rx.image(
-            src="/Designer.jpeg",
-            **HeroStyle.hero_image,
         ),
         max_width="1200px",
         margin="0 auto",
