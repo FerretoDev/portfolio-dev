@@ -4,33 +4,9 @@ import reflex as rx
 
 from portfolio.components.styles.styles import LayoutStyle
 
-from .about_section import about_section
-from .education_section import education_section
+
 from .footer import footer
 from .header import header
-from .hero_section import hero_section
-from .navbar import navbar
-from .project_section import project_section
-
-# from portfolio.components.styles.theme import THEME_STYLES, ThemeState, Theme
-# from portfolio.components.ui.background import background
-
-
-def main_layout() -> rx.Component:
-    """Layout of the application"""
-    return rx.box(
-        navbar(),
-        rx.vstack(
-            hero_section(),
-            about_section(),
-            project_section(),
-            education_section(),
-            # background(),
-            align="center",
-        ),
-        footer(),
-        **LayoutStyle.base,
-    )
 
 
 def layout(content: Optional[Any] = None) -> rx.Component:
