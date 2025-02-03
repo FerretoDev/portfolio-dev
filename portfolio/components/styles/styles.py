@@ -230,42 +230,38 @@ The HeaderStyle
 
 @dataclass
 class HeaderStyle:
-    navigation: dict[str, str] = field(
+    base: dict[str, str] = field(
         default_factory=lambda: {
-            "padding": "1.5rem",
-            "position": "sticky",
-            "top": "0",
-            "z_index": "1000",
+            "position": "fixed",
             "width": "100%",
-            ####
-            "grid-template-columns": "repeat(auto - fit, minmax(300px, 1fr))",
-            "gap": "1rem",
-            "backdrop_filter": "blur(10px)",
-            "background": rx.color_mode_cond(
-                light=GlobalThemeVariables.LIGHT.value["bg_dark"],
-                dark=GlobalThemeVariables.DARK.value["bg_dark"],
+            "top": "0px",
+            "z_index": "999",
+            "backdrop_filter": "blur(10px)",  # Aplica desenfoque
+            "border_bottom": rx.color_mode_cond(
+                light="1px solid rgba(0,0,0,0.1)",
+                dark="1px solid rgba(255,255,255,0.1)",
+            ),
+            "display": "flex",
+            "flex_wrap": "wrap",
+            "justify_content": "space-between",
+            "align_items": "center",
+            "background_color": rx.color_mode_cond(
+                light="rgba(255,255,255,0.8)",  # Transparente en modo claro
+                dark="rgba(0,0,0,0.8)",  # Transparente en modo oscuro
             ),
         },
     )
 
     content: dict[str, str] = field(
         default_factory=lambda: {
+            "bg": rx.color_mode_cond(
+                light=GlobalThemeVariables.LIGHT.value["bg_dark"],
+                dark=GlobalThemeVariables.DARK.value["bg_dark"],
+            ),
+            "padding": "1.5rem",
+            "z_index": "1000",
             "width": "100%",
-            "max_width": "10em",
-            "justify": "between",
-            "align": "center",
-            "padding": "1em 0em",
         },
-    )
-    link: dict[str, str] = field(
-        default_factory=lambda: {
-            "color": rx.color("slate", 11),
-            "weight": "medium",
-            "size": "2",
-        },
-    )
-    brand: dict[str, str] = field(
-        default_factory=lambda: {"color": active, "size": "2"},
     )
 
 
