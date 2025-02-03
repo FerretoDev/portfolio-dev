@@ -5,7 +5,7 @@ from portfolio.components.styles.styles import GlobalThemeVariables
 
 def button_color_mode() -> rx.Component:
     return rx.color_mode.button(
-        color=rx.Color(GlobalThemeVariables.LIGHT.value["text_primary"]),
+        color=rx.Color(GlobalThemeVariables.LIGHT.value["--primary"]),
         variant="ghost",
     )
 

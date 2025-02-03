@@ -9,8 +9,8 @@ def link(text: str, url: str) -> rx.Component:
         text,
         href=url,
         color=rx.color_mode_cond(
-            light=GlobalThemeVariables.LIGHT.value["text_primary"],
-            dark=GlobalThemeVariables.DARK.value["text_primary"],
+            light=GlobalThemeVariables.LIGHT.value["--primary"],
+            dark=GlobalThemeVariables.DARK.value["--primary"],
         ),
     )
 
@@ -18,7 +18,13 @@ def link(text: str, url: str) -> rx.Component:
 def header() -> rx.Component:
     return rx.box(
         rx.hstack(
-            rx.heading("Portfolio", color=GlobalThemeVariables.DARK.value["primary"]),
+            rx.heading(
+                "Portfolio",
+                color=rx.color_mode_cond(
+                    light=GlobalThemeVariables.LIGHT.value["--primary"],
+                    dark=GlobalThemeVariables.DARK.value["--primary"],
+                ),
+            ),
             rx.spacer(),
             rx.hstack(
                 link("Inicio", "#portfolio"),

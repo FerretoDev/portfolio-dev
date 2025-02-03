@@ -10,31 +10,36 @@ from reflex.constants.colors import Color
 class GlobalThemeVariables(Enum):
     # Dark Theme
     DARK = {
-        "primary": "#06B6D4",
-        "primary_dark": "#0891B2",
-        "secondary": "#3B82F6",
-        "bg_dark": "#111827",
-        "bg_darker": "#0F172A",
-        "text_primary": "#F9FAFB",
-        "text_secondary": "#D1D5DB",
-        "surface_1": "#1F2937",
-        "border_dark": "rgba(255,255,255,0.1)",
+        "--background": "#0a0a0a",  # Fondo principal oscuro
+        "--foreground": "#ffffff",  # Color de texto principal oscuro
+        "--primary": "#00b4d8",  # Mismo primario para consistencia
+        "--secondary": "#0077b6",  # Mismo secundario para consistencia
+        "--accent": "#90e0ef",  # Mismo acento para consistencia
+        "--glass-background": "rgba(255, 255, 255, 0.05)",  # Fondo glass oscuro
+        "--glass-border": "rgba(255, 255, 255, 0.1)",  # Borde glass oscuro
     }
     # Light Theme
     LIGHT: dict[str, str] = {
-        "primary": "#0891B2",
-        "bg_dark": "#F9FAFB",
-        "text_primary": "#111827",
-        "surface_1": "#FFFFFF",
-        "border_dark": "rgba(0,0,0,0.05)",
-        ###
-        "primary_dark": "#0E7490",
-        "secondary": "#2563EB",
-        "bg_darker": "#F3F4F6",
-        "text_secondary": "#374151",
-        "text_muted": "#6B7280",
-        "surface_2": "#F9FAFB",
-        "shadow-color": "rgba(0,0,0,0.05)",
+        "--background": "#f0f4f8",  # Fondo principal claro
+        "--foreground": "#1a202c",  # Color de texto principal claro
+        "--primary": "#00b4d8",  # Color primario (botones, acentos)
+        "--secondary": "#0077b6",  # Color secundario (hover, detalles)
+        "--accent": "#90e0ef",  # Color de acento complementario
+        "--glass-background": "rgba(255, 255, 255, 0.1)",  # Fondo glass
+        "--glass-border": "rgba(255, 255, 255, 0.2)",  # Borde glass
+    }
+
+    # Estilos base
+    BASE_STYLE: dict[str, str] = {
+        "font_family": "Inter, sans-serif",  # Fuente principal
+        "transition": "all 0.3s ease",  # Transiciones suaves globales
+    }
+
+    # Estilos de vidrio (glassmorphism)
+    GLASS_STYLE: dict[str, str] = {
+        "backdrop_filter": "blur(10px)",  # Efecto de desenfoque
+        "border_radius": "10px",  # Bordes redondeados
+        "transition": "background-color 0.3s ease, border-color 0.3s ease",
     }
 
 
@@ -42,8 +47,8 @@ class GlobalThemeVariables(Enum):
 def global_style() -> Any:
     return {
         "body": {
-            "background": GlobalThemeVariables.DARK.value["bg_dark"],
-            "color": GlobalThemeVariables.DARK.value["text_primary"],
+            "background": GlobalThemeVariables.DARK.value["--background"],
+            "color": GlobalThemeVariables.DARK.value["--background"],
             "transition": "all 0.3s ease",
         },
         ".section": {
@@ -193,8 +198,8 @@ class NavbarStyle:
             "z_index": "1000",
             "backdrop_filter": "blur(10px)",
             "background": rx.color_mode_cond(
-                light=GlobalThemeVariables.LIGHT.value["bg_dark"],
-                dark=GlobalThemeVariables.DARK.value["bg_dark"],
+                light=GlobalThemeVariables.LIGHT.value["--background"],
+                dark=GlobalThemeVariables.DARK.value["--background"],
             ),
         },
     )
@@ -245,18 +250,14 @@ class HeaderStyle:
             "flex_wrap": "wrap",
             "justify_content": "space-between",
             "align_items": "center",
-            "background_color": rx.color_mode_cond(
-                light="rgba(255,255,255,0.8)",  # Transparente en modo claro
-                dark="rgba(0,0,0,0.8)",  # Transparente en modo oscuro
-            ),
         },
     )
 
     content: dict[str, str] = field(
         default_factory=lambda: {
             "bg": rx.color_mode_cond(
-                light=GlobalThemeVariables.LIGHT.value["bg_dark"],
-                dark=GlobalThemeVariables.DARK.value["bg_dark"],
+                light=rx.Color(GlobalThemeVariables.LIGHT.value["--glass-background"]),
+                dark=rx.Color(GlobalThemeVariables.DARK.value["--glass-background"]),
             ),
             "padding": "1.5rem",
             "z_index": "1000",
@@ -280,8 +281,8 @@ class LayoutStyle:
             "background": rx.color_mode_cond(
                 # light="rgba(255, 255, 255, 0.8)",
                 # dark="rgba(0, 0, 0, 0.8)",
-                light=GlobalThemeVariables.LIGHT.value["bg_dark"],
-                dark=GlobalThemeVariables.DARK.value["bg_dark"],
+                light=GlobalThemeVariables.LIGHT.value["--background"],
+                dark=GlobalThemeVariables.DARK.value["--background"],
             ),
             "color": rx.color_mode_cond(
                 light=rx.color("gray", 8),
