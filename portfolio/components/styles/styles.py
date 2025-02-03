@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 from enum import Enum
+from typing import Any
 
 import reflex as rx
 from reflex.constants.colors import Color
@@ -38,12 +39,10 @@ class GlobalThemeVariables(Enum):
 
 
 # Estilos globales
-def global_style() -> rx.style:
+def global_style() -> Any:
     return {
         "body": {
             "background": GlobalThemeVariables.DARK.value["bg_dark"],
-            # "background": "var(--bg-dark)",
-            # "color": "var(--text-primary)",
             "color": GlobalThemeVariables.DARK.value["text_primary"],
             "transition": "all 0.3s ease",
         },
@@ -225,6 +224,55 @@ NavbarStyle: NavbarStyle = NavbarStyle()
 
 
 """
+The HeaderStyle
+"""
+
+
+@dataclass
+class HeaderStyle:
+    navigation: dict[str, str] = field(
+        default_factory=lambda: {
+            "padding": "1.5rem",
+            "position": "sticky",
+            "top": "0",
+            "z_index": "1000",
+            "width": "100%",
+            ####
+            "grid-template-columns": "repeat(auto - fit, minmax(300px, 1fr))",
+            "gap": "1rem",
+            "backdrop_filter": "blur(10px)",
+            "background": rx.color_mode_cond(
+                light=GlobalThemeVariables.LIGHT.value["bg_dark"],
+                dark=GlobalThemeVariables.DARK.value["bg_dark"],
+            ),
+        },
+    )
+
+    content: dict[str, str] = field(
+        default_factory=lambda: {
+            "width": "100%",
+            "max_width": "10em",
+            "justify": "between",
+            "align": "center",
+            "padding": "1em 0em",
+        },
+    )
+    link: dict[str, str] = field(
+        default_factory=lambda: {
+            "color": rx.color("slate", 11),
+            "weight": "medium",
+            "size": "2",
+        },
+    )
+    brand: dict[str, str] = field(
+        default_factory=lambda: {"color": active, "size": "2"},
+    )
+
+
+HeaderStyle: HeaderStyle = HeaderStyle()
+
+
+"""
 The LayoutStyle
 """
 
@@ -234,8 +282,10 @@ class LayoutStyle:
     base: dict[str, str] = field(
         default_factory=lambda: {
             "background": rx.color_mode_cond(
-                light="rgba(255, 255, 255, 0.8)",
-                dark="rgba(0, 0, 0, 0.8)",
+                # light="rgba(255, 255, 255, 0.8)",
+                # dark="rgba(0, 0, 0, 0.8)",
+                light=GlobalThemeVariables.LIGHT.value["bg_dark"],
+                dark=GlobalThemeVariables.DARK.value["bg_dark"],
             ),
             "color": rx.color_mode_cond(
                 light=rx.color("gray", 8),
@@ -246,6 +296,8 @@ class LayoutStyle:
             "justify": "between",
             "align": "center",
             "padding": "1em 0em",
+            "min_height": "100vh",
+            "spacing": "0",
         }
     )
 
