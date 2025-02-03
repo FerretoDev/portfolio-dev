@@ -1,0 +1,99 @@
+:root {
+  /* Tema claro */
+  --background-light: #f0f4f8;
+  --foreground-light: #1a202c;
+  --primary-light: #00b4d8;
+  --secondary-light: #0077b6;
+  --accent-light: #90e0ef;
+  --glass-background-light: rgba(255, 255, 255, 0.1);
+  --glass-border-light: rgba(255, 255, 255, 0.2);
+
+  /* Tema oscuro */
+  --background-dark: #0a0a0a;
+  --foreground-dark: #ffffff;
+  --primary-dark: #00b4d8;
+  --secondary-dark: #0077b6;
+  --accent-dark: #90e0ef;
+  --glass-background-dark: rgba(255, 255, 255, 0.05);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+  background-color: var(--background-light);
+  color: var(--foreground-light);
+}
+
+body.dark-theme {
+  background-color: var(--background-dark);
+  color: var(--foreground-dark);
+}
+
+/* Estilos para el glassmorphism */
+.glass {
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.light-theme .glass {
+  background: var(--glass-background-light);
+  border: 1px solid var(--glass-border-light);
+}
+
+.dark-theme .glass {
+  background: var(--glass-background-dark);
+  border: 1px solid var(--glass-border-dark);
+}
+
+/* Estilos para los botones */
+button {
+  background-color: var(--primary-light);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dark-theme button {
+  background-color: var(--primary-dark);
+}
+
+button:hover {
+  background-color: var(--secondary-light);
+}
+
+.dark-theme button:hover {
+  background-color: var(--secondary-dark);
+}
+
+/* Estilos para los enlaces */
+a {
+  color: var(--primary-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dark-theme a {
+  color: var(--primary-dark);
+}
+
+a:hover {
+  color: var(--secondary-light);
+}
+
+.dark-theme a:hover {
+  color: var(--secondary-dark);
+}
+
+/* Transiciones suaves */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
