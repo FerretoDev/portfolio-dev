@@ -256,8 +256,8 @@ class HeaderStyle:
     content: dict[str, str] = field(
         default_factory=lambda: {
             "bg": rx.color_mode_cond(
-                light=rx.Color(GlobalThemeVariables.LIGHT.value["--glass-background"]),
-                dark=rx.Color(GlobalThemeVariables.DARK.value["--glass-background"]),
+                light=GlobalThemeVariables.LIGHT.value["--glass-background"],
+                dark=GlobalThemeVariables.DARK.value["--glass-background"],
             ),
             "padding": "1.5rem",
             "z_index": "1000",
@@ -278,11 +278,15 @@ The LayoutStyle
 class LayoutStyle:
     base: dict[str, str] = field(
         default_factory=lambda: {
+            # "background": rx.color_mode_cond(
+            #    # light="rgba(255, 255, 255, 0.8)",
+            #    # dark="rgba(0, 0, 0, 0.8)",
+            #   light=GlobalThemeVariables.LIGHT.value["--background"],
+            #    dark=GlobalThemeVariables.DARK.value["--background"],
+            # )
             "background": rx.color_mode_cond(
-                # light="rgba(255, 255, 255, 0.8)",
-                # dark="rgba(0, 0, 0, 0.8)",
-                light=GlobalThemeVariables.LIGHT.value["--background"],
-                dark=GlobalThemeVariables.DARK.value["--background"],
+                light="linear-gradient(to bottom right, #E2E8F0, #CBD5E0)",
+                dark="linear-gradient(to bottom right, #111827, #1F2937)",
             ),
             "color": rx.color_mode_cond(
                 light=rx.color("gray", 8),
@@ -295,6 +299,7 @@ class LayoutStyle:
             "padding": "1em 0em",
             "min_height": "100vh",
             "spacing": "0",
+            "font-family": "'Inter', sans-serif",
         }
     )
 

@@ -27,7 +27,7 @@ def header() -> rx.Component:
             ),
             rx.spacer(),
             rx.hstack(
-                link("Inicio", "#portfolio"),
+                link("Inicio", "#proyectos"),
                 link("Contacto", "#contact"),
                 button_color_mode(),
                 spacing="2",
