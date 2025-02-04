@@ -8,6 +8,9 @@ from portfolio.components.styles.styles import GlobalThemeVariables
 
 @dataclass
 class HeroStyle:
+    hero_base: dict[str, str] = field(
+        default_factory=lambda: {},
+    )
     hero_title: dict[str, str] = field(
         default_factory=lambda: {
             "size": "9",
@@ -27,8 +30,10 @@ class HeroStyle:
             # "border-radius": "10%",
             "border-radius": "1em",
             "box-shadow": rx.color_mode_cond(
-                light="0 0 30px rgba(8, 145, 178, 0.3)",
-                dark="0 0 30px rgba(6, 182, 212, 0.3)",
+                # light="0 0 30px rgba(8, 145, 178, 0.3)",
+                # dark="0 0 30px rgba(6, 182, 212, 0.3)",
+                light=f"0 0 30px {GlobalThemeVariables.LIGHT.value['--primary']}",
+                dark=f"0 0 30px {GlobalThemeVariables.DARK.value['--primary']}",
             ),
             "width": "10%",
             # "max_width": "100%",
@@ -104,7 +109,7 @@ def hero_section() -> rx.Component:
                         padding_y="0.75rem",
                     ),
                 ),
-                width="50%",
+                width="75%",
             ),
             rx.avatar(
                 src="Designer.jpeg",
@@ -113,10 +118,12 @@ def hero_section() -> rx.Component:
             width="100%",
             align_items="center",
             justify_content="space-between",
+            padding_x="10rem",
         ),
         display="flex",
         align_items="center",
         justify_content="space-between",
         min_height="100vh",
-        # padding="0 2rem",
+        padding="0 2rem",
+        max_width="1200px",
     )

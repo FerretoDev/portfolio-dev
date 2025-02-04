@@ -1,7 +1,7 @@
 import reflex as rx
 
 
-def about_section():
+def about_section() -> rx.Component:
     """Sección Sobre Mí."""
     return rx.box(
         rx.heading(
@@ -27,5 +27,6 @@ def about_section():
             ),
             width="100%",
             spacing="4",
+            max_width="1200px",
         ),
     )
