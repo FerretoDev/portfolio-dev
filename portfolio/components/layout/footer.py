@@ -30,23 +30,18 @@ def footer2() -> rx.vstack:
 def footer():
     """Pie de página."""
     current_year = datetime.date.today().year
-    return rx.box(
-        rx.vstack(
-            rx.hstack(
-                rx.link(rx.icon(tag="github"), href="https://github.com/username"),
-                rx.link(
-                    rx.icon(tag="linkedin"), href="https://linkedin.com/in/username"
-                ),
-                rx.link(rx.icon(tag="twitter"), href="https://twitter.com/username"),
-                spacing="4",
-            ),
-            rx.text(
-                f"© {current_year} Nombre Completo. Todos los derechos reservados.",
-                color="#9CA3AF",
-            ),
-            width="100%",
-            align_items="center",
-            padding_y="2rem",
+    return rx.vstack(
+        rx.hstack(
+            rx.link(rx.icon(tag="github"), href="https://github.com/username"),
+            rx.link(rx.icon(tag="linkedin"), href="https://linkedin.com/in/username"),
+            rx.link(rx.icon(tag="twitter"), href="https://twitter.com/username"),
+            spacing="4",
         ),
-        background_color="rgba(31, 41, 55, 0.5)",
+        rx.text(
+            f"© {current_year} Marcos Eduardo Ferreto Estrada. Todos los derechos reservados.",
+            color="#9CA3AF",
+        ),
+        width="100%",
+        align_items="center",
+        padding_y="2rem",
     )

@@ -1,5 +1,7 @@
 import reflex as rx
 
+from portfolio.components.section import section
+
 
 def experience_section():
     """Sección de experiencia laboral."""

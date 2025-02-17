@@ -1,7 +1,8 @@
 from dataclasses import dataclass, field
 
 import reflex as rx
-
+from portfolio.components.section import section
+from portfolio.components.styles.styles import SectionStyle
 from portfolio.components.styles.styles import GlobalThemeVariables
 
 
@@ -9,9 +10,11 @@ from portfolio.components.styles.styles import GlobalThemeVariables
 class SkillsStyle:
     skills_base: dict[str, str] = field(
         default_factory=lambda: {
-            "display": "grid",
-            "grid_template_columns": "repeat(3, 1fr)",
-            "gap": "2rem",
+            "display": "flex",
+            "align_items": "center",
+            "justify_content": "space-between",
+            # "padding": "2rem",
+            "padding_x": "10rem",
         },
     )
     hero_title: dict[str, str] = field(
@@ -27,7 +30,6 @@ class SkillsStyle:
             ########################################################################
             "size": "2",
             "margin_bottom": "1rem",
-            "": "column",
         },
     )
 
@@ -62,35 +64,41 @@ def skills_section() -> rx.Component:
         },
     ]
 
-    return rx.box(
-        rx.heading(
-            "Mis Habilidades",
-            **SkillsStyle.hero_title,
+    return rx.section(
+        rx.vstack(
+            rx.heading(
+                "Mis Habilidades",
+                **SkillsStyle.hero_title,
+            ),
+            rx.hstack(
+                *[
+                    rx.box(
+                        rx.heading(
+                            skill["title"],
+                            **SkillsStyle.hero_text,
+                        ),
+                        rx.hstack(
+                            *[
+                                rx.badge(tech, margin_x="0.25rem")
+                                for tech in skill["technologies"]
+                            ]
+                        ),
+                        style=rx.Style(
+                            {
+                                "background": "rgba(31, 41, 55, 0.5)",
+                                "border-radius": "0.75rem",
+                                "padding": "1.5rem",
+                                "transition": "transform 0.3s ease",
+                                "hover": {"transform": "translateY(-10px)"},
+                            }
+                        ),
+                    )
+                    for skill in skills
+                ],
+                width="100%",
+                spacing="4",
+            ),
+            # align="center",
+            # padding="2rem",
         ),
-        rx.hstack(
-            *[
-                rx.box(
-                    rx.heading(
-                        skill["title"],
-                    ),
-                    rx.hstack(
-                        *[
-                            rx.badge(tech, margin_x="0.25rem")
-                            for tech in skill["technologies"]
-                        ]
-                    ),
-                    style={
-                        "background": "rgba(31, 41, 55, 0.5)",
-                        "border-radius": "0.75rem",
-                        "padding": "1.5rem",
-                        "transition": "transform 0.3s ease",
-                        "hover": {"transform": "translateY(-10px)"},
-                    },
-                )
-                for skill in skills
-            ],
-            width="100%",
-            spacing="4",
-        ),
-        **SkillsStyle.skills_base,
     )

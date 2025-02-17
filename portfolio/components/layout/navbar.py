@@ -6,7 +6,7 @@ from reflex.constants.colors import Color
 from portfolio.components.button_color_mode import button_color_mode
 
 # from portfolio.components.button_color_mode import button_color_mode
-from portfolio.components.styles.styles import NavbarStyle
+from portfolio.components.styles.styles import NavbarStyle, SectionStyle
 
 
 def media(name: str, link: str) -> rx.Component:
@@ -32,7 +32,7 @@ def navbar2() -> rx.Component:
 
 
 def navbar() -> rx.Component:
-    return rx.box(
+    return rx.section(
         rx.hstack(
             rx.heading(
                 "Portfolio()",
@@ -78,8 +78,8 @@ def navbar() -> rx.Component:
             light="1px solid rgba(0,0,0,0.1)",
             dark="1px solid rgba(255,255,255,0.1)",
         ),
-        display="flex",
-        flex_wrap="wrap",
-        justify_content="space-between",
-        align_items="center",
+        # display="flex",
+        # flex_wrap="wrap",
+        # justify_content="space-between",
+        # align_items="center",
     )

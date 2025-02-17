@@ -1,15 +1,18 @@
 import reflex as rx
 
+from portfolio.components.section import section
+from portfolio.components.styles.styles import SectionStyle
 
-def about_section() -> rx.Component:
+
+def about_section(title: str = "Sobre mí") -> rx.Component:
     """Sección Sobre Mí."""
-    return rx.box(
+    return section(
         rx.heading(
-            "Sobre Mí",
-            # style={"text-align": "center", "margin-bottom": "2rem"},
+            title,
+            **SectionStyle.title_style,
         ),
         rx.hstack(
-            rx.avatar(src="/Designer.jpeg", size="2", border="4px solid #06B6D4"),
+            # rx.avatar(src="/Designer.jpeg", size="2", border="4px solid #06B6D4"),
             rx.box(
                 rx.text(
                     "Soy un desarrollador de software apasionado por la intersección entre matemáticas, "
@@ -23,10 +26,9 @@ def about_section() -> rx.Component:
                     "eficientes y escalables, utilizando las últimas tecnologías en desarrollo y análisis de datos.",
                     color="#D1D5DB",
                 ),
-                width="70%",
+                # width="70%",
             ),
-            width="100%",
-            spacing="4",
-            max_width="1200px",
+            # width="100%",
+            # spacing="4",
         ),
     )

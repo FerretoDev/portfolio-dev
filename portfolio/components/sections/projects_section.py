@@ -1,5 +1,7 @@
 import reflex as rx
 from portfolio.components.card import card
+from portfolio.components.styles.styles import GlobalThemeVariables
+from portfolio.components.section import section
 
 
 @rx.page("#proyectos", "Projects Page")
@@ -44,39 +46,49 @@ def projects_section():
     ]
 
     return rx.box(
-        rx.heading(
-            "Proyectos Destacados",
-            # style={"text-align": "center", "margin-bottom": "2rem"},
+        rx.vstack(
+            rx.heading(
+                "Proyectos Destacados",
+                style=rx.Style(
+                    {
+                        "text-align": "center",
+                        "margin-bottom": "2rem",
+                    }
+                ),
+            ),
+            rx.hstack(
+                *[
+                    rx.box(
+                        rx.heading(project["title"], size="2", margin_bottom="1rem"),
+                        rx.text(
+                            project["description"],
+                            color="#D1D5DB",
+                            margin_bottom="1rem",
+                        ),
+                        rx.hstack(
+                            *[
+                                rx.badge(tech, margin_x="0.25rem")
+                                for tech in project["technologies"]
+                            ]
+                        ),
+                        style=rx.Style(
+                            {
+                                "background": "rgba(31, 41, 55, 0.5)",
+                                "border-radius": "0.75rem",
+                                "padding": "1.5rem",
+                                "transition": "transform 0.3s ease",
+                                "hover": {"transform": "translateY(-10px)"},
+                            },
+                        ),
+                    )
+                    for project in projects
+                ],
+                width="100%",
+                spacing="4",
+            ),
+            align="center",
+            padding="2rem",
         ),
-        # rx.hstack(
-        #    *[
-        #        rx.box(
-        #            rx.heading(project["title"], size="2", margin_bottom="1rem"),
-        #            rx.text(
-        #                project["description"], color="#D1D5DB", margin_bottom="1rem"
-        #            ),
-        #            rx.hstack(
-        #                *[
-        #                    rx.badge(tech, margin_x="0.25rem")
-        #                    for tech in project["technologies"]
-        #                ]
-        #            ),
-        #           # style={
-        #            #    "background": "rgba(31, 41, 55, 0.5)",
-        #            #    "border-radius": "0.75rem",
-        #            #    "padding": "1.5rem",
-        #            #    "transition": "transform 0.3s ease",
-        #            #    "hover": {"transform": "translateY(-10px)"},
-        #            # },
-        #        )
-        #        for project in projects
-        #    ],
-        #    width="100%",
-        #    spacing="4"
-        # ),
-        # style={
-        #    "display": "grid",
-        #    "grid-template-columns": "repeat(3, 1fr)",
-        #    "gap": "2rem",
-        # },
+        align_items="center",
+        # padding_y="10rem",
     )

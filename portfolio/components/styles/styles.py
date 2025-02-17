@@ -293,15 +293,60 @@ class LayoutStyle:
                 dark=rx.color("gray", 2),
             ),
             "transition": "background 0.3s ease, color 0.3s ease",
-            "width": "100%",
-            "justify": "between",
-            "align": "center",
-            "padding": "1em 0em",
-            "min_height": "100vh",
-            "spacing": "0",
-            "font-family": "'Inter', sans-serif",
+            ###
+            # "display": "flex",
+            # "justify-content": "center",
+            # "align-items": "center",
+        }
+    )
+    # Estilos responsive
+    section_style_mobile: dict[str, str] = field(
+        default_factory=lambda: {
+            "@media (width <= 700px)": {
+                "padding": "2rem",
+            },
         }
     )
 
 
 LayoutStyle: LayoutStyle = LayoutStyle()
+
+
+"""
+The SectionStyle
+"""
+
+
+@dataclass
+class SectionStyle:
+    # Estilos base para la sección
+    section_style: dict[str, str] = field(
+        default_factory=lambda: {
+            "max_width": "700px",
+            "margin": "0 auto 48px",
+        }
+    )
+    # Estilos para el título
+    title_style: dict[str, str] = field(
+        default_factory=lambda: {
+            "margin_bottom": "8px",
+            "font_weight": "700",
+            "line_height": "1.5",
+            "font_size": "1.5rem",
+            "color": rx.color_mode_cond(
+                light=GlobalThemeVariables.LIGHT.value["--primary"],
+                dark=GlobalThemeVariables.DARK.value["--primary"],
+            ),
+        }
+    )
+    # Estilos responsive
+    section_style_mobile: dict[str, str] = field(
+        default_factory=lambda: {
+            "@media (width <= 700px)": {
+                "margin_bottom": "38px",
+            }
+        }
+    )
+
+
+SectionStyle: SectionStyle = SectionStyle()
