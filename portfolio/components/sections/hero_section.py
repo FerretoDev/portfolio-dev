@@ -1,10 +1,10 @@
 from dataclasses import dataclass, field
 
 import reflex as rx
-from portfolio.components.styles.styles import SectionStyle
-from portfolio.components.section import section
+
 from portfolio.components.button import custom_button
-from portfolio.components.styles.styles import GlobalThemeVariables
+from portfolio.components.section import section
+from portfolio.components.styles.styles import GlobalThemeVariables, SectionStyle
 
 
 @dataclass
@@ -84,7 +84,7 @@ def hero_section() -> rx.Component:
                         light=GlobalThemeVariables.LIGHT.value["--secondary"],
                         dark=GlobalThemeVariables.DARK.value["--secondary"],
                     ),
-                    # margin_y="1rem",
+                    margin_y="1rem",
                 ),
                 rx.hstack(
                     rx.button(
@@ -94,9 +94,9 @@ def hero_section() -> rx.Component:
                             dark=GlobalThemeVariables.DARK.value["--primary"],
                         ),
                         color="white",
-                        # padding_x="1.5rem",
-                        # padding_y="0.75rem",
-                        # margin_right="1rem",
+                        padding_x="1.5rem",
+                        padding_y="0.75rem",
+                        margin_right="1rem",
                     ),
                     rx.button(
                         "Descargar CV",
@@ -106,8 +106,8 @@ def hero_section() -> rx.Component:
                             light=GlobalThemeVariables.LIGHT.value["--primary"],
                             dark=GlobalThemeVariables.DARK.value["--primary"],
                         ),
-                        # padding_x="1.5rem",
-                        # padding_y="0.75rem",
+                        padding_x="1.5rem",
+                        padding_y="0.75rem",
                     ),
                 ),
                 width="75%",
