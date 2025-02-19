@@ -5,7 +5,7 @@ import reflex as rx
 from portfolio.components.styles.styles import SectionStyle
 
 
-def section(*children: Any, **props: Any) -> rx.Component:
+def section(*children: Any, **props: Any) -> rx.section:
     return rx.box(
         *children,
         class_name="section",

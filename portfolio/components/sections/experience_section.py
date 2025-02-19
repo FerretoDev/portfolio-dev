@@ -1,14 +1,15 @@
 import reflex as rx
 
 from portfolio.components.section import section
+from portfolio.components.styles.styles import SectionStyle
 
 
-def experience_section():
+def experience_section(title: str = "Experiencia Profesional") -> rx.Component:
     """Sección de experiencia laboral."""
-    return rx.box(
+    return section(
         rx.heading(
-            "Experiencia Profesional",
-            # style={"text-align": "center", "margin-bottom": "2rem"},
+            title,
+            **SectionStyle.title_style,
         ),
         rx.vstack(
             rx.box(

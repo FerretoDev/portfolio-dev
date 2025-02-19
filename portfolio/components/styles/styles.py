@@ -46,20 +46,20 @@ class GlobalThemeVariables(Enum):
 # Estilos globales
 def global_style() -> Any:
     return {
-        "body": {
-            "background": GlobalThemeVariables.DARK.value["--background"],
-            "color": GlobalThemeVariables.DARK.value["--background"],
-            "transition": "all 0.3s ease",
-        },
-        ".section": {
-            "padding": "6rem 0",
-            "position": "relative",
-        },
-        ".split-section": {
-            "display": "grid",
-            "gap": "4rem",
-            "alignItems": "center",
-        },
+        # "body": {
+        #    "background": GlobalThemeVariables.DARK.value["--background"],
+        #    "color": GlobalThemeVariables.DARK.value["--background"],
+        #    "transition": "all 0.3s ease",
+        # },
+        # ".section": {
+        #    "padding": "6rem 0",
+        #    "position": "relative",
+        # },
+        # ".split-section": {
+        #    "display": "grid",
+        #    "gap": "4rem",
+        #    "alignItems": "center",
+        # },
     }
 
 
@@ -259,7 +259,7 @@ class HeaderStyle:
                 light=GlobalThemeVariables.LIGHT.value["--glass-background"],
                 dark=GlobalThemeVariables.DARK.value["--glass-background"],
             ),
-            "padding": "1.5rem",
+            "padding": "0.8rem",
             "z_index": "1000",
             "width": "100%",
         },
