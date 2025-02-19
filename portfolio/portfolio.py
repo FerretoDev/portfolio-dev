@@ -12,7 +12,6 @@ config = rx.Config(
     app_name="portfolio",
 )
 
-
 app = rx.App(
     style=global_style(),
     theme=rx.theme(
