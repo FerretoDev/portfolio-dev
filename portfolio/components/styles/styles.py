@@ -293,14 +293,13 @@ class LayoutStyle:
                 dark=rx.color("gray", 2),
             ),
             "transition": "background 0.3s ease, color 0.3s ease",
-            ###
-            # "display": "flex",
-            # "justify-content": "center",
-            # "align-items": "center",
+            "padding": "4rem",
+            "margin": "auto",
+            "width": "100%",
         }
     )
     # Estilos responsive
-    section_style_mobile: dict[str, str] = field(
+    section_style_mobile: dict[str, dict[str, str]] = field(
         default_factory=lambda: {
             "@media (width <= 700px)": {
                 "padding": "2rem",
@@ -310,6 +309,47 @@ class LayoutStyle:
 
 
 LayoutStyle: LayoutStyle = LayoutStyle()
+
+"""
+The PageStyle
+"""
+
+
+@dataclass
+class PageStyle:
+    base: dict[str, str] = field(
+        default_factory=lambda: {
+            # "background": rx.color_mode_cond(
+            #    # light="rgba(255, 255, 255, 0.8)",
+            #    # dark="rgba(0, 0, 0, 0.8)",
+            #   light=GlobalThemeVariables.LIGHT.value["--background"],
+            #    dark=GlobalThemeVariables.DARK.value["--background"],
+            # )
+            "background": rx.color_mode_cond(
+                light="linear-gradient(to bottom right, #E2E8F0, #CBD5E0)",
+                dark="linear-gradient(to bottom right, #111827, #1F2937)",
+            ),
+            "color": rx.color_mode_cond(
+                light=rx.color("gray", 8),
+                dark=rx.color("gray", 2),
+            ),
+            "transition": "background 0.3s ease, color 0.3s ease",
+            "padding": "4rem",
+            "margin": "auto",
+            "width": "100%",
+        }
+    )
+    # Estilos responsive
+    section_style_mobile: dict[str, dict[str, str]] = field(
+        default_factory=lambda: {
+            "@media (width <= 700px)": {
+                "padding": "2rem",
+            },
+        }
+    )
+
+
+PageStyle: PageStyle = PageStyle()
 
 
 """
@@ -340,7 +380,7 @@ class SectionStyle:
         }
     )
     # Estilos responsive
-    section_style_mobile: dict[str, str] = field(
+    section_style_mobile: dict[str, dict[str, str]] = field(
         default_factory=lambda: {
             "@media (width <= 700px)": {
                 "margin_bottom": "38px",

@@ -15,7 +15,7 @@ global_styles = {}
 @dataclass
 class BaseStyle:
     # Estilos base para la sección
-    base_style: dict[str, str] = field(
+    base_style: dict[str, dict[str, str]] = field(
         default_factory=lambda: {
             "html": {
                 "font_family": "Menlo, Monaco, Lucida Console, 'Courier New', Courier, monospace",
@@ -77,7 +77,7 @@ class BaseStyle:
     )
 
     # Estilos responsive
-    section_style_mobile: dict[str, str] = field(
+    section_style_mobile: dict[str, dict[str, str]] = field(
         default_factory=lambda: {
             "@media (width <= 700px)": {
                 "padding": "2rem",
@@ -90,15 +90,12 @@ BaseStyle: BaseStyle = BaseStyle()
 
 
 def layout(content: Optional[Any] = None) -> rx.Component:
-    return rx.vstack(
-        rx.box(header(), width="100%"),  # Header
+    return (
         rx.vstack(
-            rx.box(content, width="100%"),  # Contenido principal
-            rx.box(footer(), width="100%"),  # Footer
-            # style=rx.Style(global_styles),
-            # style=rx.Style(style_index),
-            **BaseStyle.base_style,
-            **BaseStyle.style_index,
-            **BaseStyle.section_style_mobile,
+            rx.box(header(), width="100%"),  # Header
+            rx.vstack(
+                # rx.box(content, width="100%"),  # Contenido principal
+                # rx.box(footer(), width="100%"),  # Footer
+            ),
         ),
     )

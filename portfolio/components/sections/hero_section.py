@@ -17,16 +17,16 @@ class HeroStyle:
             "align-items": "center",
             "justify-content": "space-between",
             "gap": "1rem",
-            "@media (width <= 700px)": {
-                "flex-direction": "column-reverse",
-            },
+            # "@media (width <= 700px)": {
+            #    "flex-direction": "column-reverse",
+            # },
         },
     )
 
     info: dict[str, str | dict] = field(
         default_factory=lambda: {
-            "display": "flex",
-            "flex-direction": "column",
+            # "display": "flex",
+            # "flex-direction": "column",
             "gap": "0.5rem",
             "padding-right": "32px",
             "@media (width <= 700px)": {
@@ -116,11 +116,14 @@ def hero_section() -> rx.Component:
                     # ),
                     **HeroStyle.hero_h2,
                 ),
-                rx.hstack(
-                    rx.icon("map-pinned", _as="span"),
+                rx.vstack(
+                    rx.icon(
+                        "map-pinned",
+                        # _as="span",
+                    ),
                     rx.text(
                         "Buenos Aires de Puntarenas, Costa Rica",
-                        _as="span",
+                        # _as="span",
                     ),
                     _as="span",
                     **HeroStyle.span,
@@ -153,7 +156,7 @@ def hero_section() -> rx.Component:
                 src="Designer.jpeg",
                 **HeroStyle.hero_image,
             ),
-            width="100%",
+            # width="100%",
             **HeroStyle.info,
         ),
         padding_y="1.5rem",

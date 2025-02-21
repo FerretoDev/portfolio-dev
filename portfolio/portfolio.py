@@ -2,10 +2,11 @@
 
 import reflex as rx
 
-from portfolio.components.styles.styles import global_style
-
 # from portfolio.components.ui.starfield import starfield_page
 from portfolio.pages.index import index  # noqa: F401
+
+# from portfolio.components.styles.styles import global_style
+
 
 # Configuración del tema
 config = rx.Config(
@@ -13,15 +14,15 @@ config = rx.Config(
 )
 
 app = rx.App(
-    style=global_style(),
+    # style=global_style(),
     theme=rx.theme(
         appearance="dark",  # tema inicial
         has_background=True,
         radius="medium",
         accent_color="cyan",
-        gray_color="slate",
+        # gray_color="slate",
         panel_background="translucent",
-        # scaling="100%",
+        scaling="100%",
         font_family="Inter, sans-serif",
     ),
 )
