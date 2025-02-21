@@ -1,7 +1,8 @@
 import reflex as rx
+
 from portfolio.components.card import card
-from portfolio.components.styles.styles import GlobalThemeVariables
 from portfolio.components.section import section
+from portfolio.components.styles.styles import GlobalThemeVariables, SectionStyle
 
 
 @rx.page("#proyectos", "Projects Page")
@@ -38,23 +39,18 @@ def projects_section():
             "description": "Servicio REST para problemas de optimización matemática",
             "technologies": ["FastAPI", "Docker", "Numpy"],
         },
-        {
-            "title": "Dashboard de Datos",
-            "description": "Visualización interactiva de métricas empresariales",
-            "technologies": ["React", "D3.js", "TypeScript"],
-        },
+        # {
+        #    "title": "Dashboard de Datos",
+        #    "description": "Visualización interactiva de métricas empresariales",
+        #    "technologies": ["React", "D3.js", "TypeScript"],
+        # },
     ]
 
-    return rx.box(
+    return section(
         rx.vstack(
             rx.heading(
                 "Proyectos Destacados",
-                style=rx.Style(
-                    {
-                        "text-align": "center",
-                        "margin-bottom": "2rem",
-                    }
-                ),
+                **SectionStyle.title_style,
             ),
             rx.hstack(
                 *[
@@ -84,11 +80,7 @@ def projects_section():
                     for project in projects
                 ],
                 width="100%",
-                spacing="4",
+                # spacing="4",
             ),
-            align="center",
-            padding="2rem",
         ),
-        align_items="center",
-        # padding_y="10rem",
     )

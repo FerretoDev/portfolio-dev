@@ -2,8 +2,7 @@ from dataclasses import dataclass, field
 
 import reflex as rx
 from portfolio.components.section import section
-from portfolio.components.styles.styles import SectionStyle
-from portfolio.components.styles.styles import GlobalThemeVariables
+from portfolio.components.styles.styles import GlobalThemeVariables, SectionStyle
 
 
 @dataclass
@@ -13,8 +12,6 @@ class SkillsStyle:
             "display": "flex",
             "align_items": "center",
             "justify_content": "space-between",
-            # "padding": "2rem",
-            "padding_x": "10rem",
         },
     )
     hero_title: dict[str, str] = field(
@@ -52,23 +49,32 @@ def skills_section() -> rx.Component:
     skills = [
         {
             "title": "Desarrollo de Software",
-            "technologies": ["Python", "FastAPI", "React", "Docker"],
+            "technologies": [
+                "Python",
+                "FastAPI",
+                "React",
+                # "Docker",
+            ],
         },
         {
             "title": "Modelación Matemática",
-            "technologies": ["Optimización", "Estadística", "Métodos Numéricos"],
+            "technologies": [
+                "Optimización",
+                "Estadística",
+                # "Métodos Numéricos",
+            ],
         },
-        {
-            "title": "Data Science",
-            "technologies": ["Machine Learning", "SQL", "Big Data"],
-        },
+        # {
+        #    "title": "Data Science",
+        #    "technologies": ["Machine Learning", "SQL", "Big Data"],
+        # },
     ]
 
-    return rx.section(
+    return section(
         rx.vstack(
             rx.heading(
                 "Mis Habilidades",
-                **SkillsStyle.hero_title,
+                **SectionStyle.title_style,
             ),
             rx.hstack(
                 *[
@@ -95,10 +101,8 @@ def skills_section() -> rx.Component:
                     )
                     for skill in skills
                 ],
-                width="100%",
-                spacing="4",
+                # width="100%",
+                # spacing="4",
             ),
-            # align="center",
-            # padding="2rem",
         ),
     )

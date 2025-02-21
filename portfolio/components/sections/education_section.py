@@ -1,19 +1,16 @@
 import reflex as rx
 from portfolio.components.section import section
 
+from portfolio.components.styles.styles import SectionStyle
+
 
 def education_section():
     """Sección de educación."""
-    return rx.box(
+    return section(
         rx.vstack(
             rx.heading(
                 "Educación",
-                style=rx.Style(
-                    {
-                        "text-align": "center",
-                        "margin-bottom": "2rem",
-                    },
-                ),
+                **SectionStyle.title_style,
             ),
             rx.hstack(
                 rx.box(
@@ -47,11 +44,7 @@ def education_section():
                         },
                     ),
                 ),
-                width="100%",
+                # width="100%",
             ),
-            align="center",
-            padding="2rem",
         ),
-        align_items="center",
-        padding_x="10rem",
     )
