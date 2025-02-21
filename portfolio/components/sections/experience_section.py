@@ -1,5 +1,4 @@
 import reflex as rx
-
 from portfolio.components.section import section
 from portfolio.components.styles.styles import SectionStyle
 
@@ -19,10 +18,10 @@ def experience_section(title: str = "Experiencia Profesional") -> rx.Component:
                 rx.text(
                     "Desarrollo de modelos predictivos y soluciones de machine learning para optimización de procesos.",
                     color="#D1D5DB",
-                    margin_top="0.5rem",
+                    # margin_top="0.5rem",
                 ),
                 # style=section_styles["card"],
-                margin_bottom="1rem",
+                # margin_bottom="1rem",
             ),
             rx.box(
                 rx.heading("Desarrollador de Software", size="2"),
@@ -31,10 +30,10 @@ def experience_section(title: str = "Experiencia Profesional") -> rx.Component:
                 rx.text(
                     "Implementación de APIs y servicios backend para análisis de grandes volúmenes de datos.",
                     color="#D1D5DB",
-                    margin_top="0.5rem",
+                    # margin_top="0.5rem",
                 ),
                 # style=section_styles["card"],
             ),
-            width="100%",
+            # width="100%",
         ),
     )

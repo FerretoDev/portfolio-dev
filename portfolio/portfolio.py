@@ -16,12 +16,13 @@ app = rx.App(
     style=global_style(),
     theme=rx.theme(
         appearance="dark",  # tema inicial
-        # has_background=True,
+        has_background=True,
         radius="medium",
         accent_color="cyan",
         gray_color="slate",
-        # panel_background="translucent",
+        panel_background="translucent",
         # scaling="100%",
+        font_family="Inter, sans-serif",
     ),
 )
 

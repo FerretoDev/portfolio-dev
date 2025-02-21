@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from typing import Any
 
 import reflex as rx
 
@@ -9,47 +10,86 @@ from portfolio.components.styles.styles import GlobalThemeVariables, SectionStyl
 
 @dataclass
 class HeroStyle:
-    hero_base: dict[str, str] = field(
-        default_factory=lambda: {},
+    container: dict[str, str | dict] = field(
+        default_factory=lambda: {
+            "display": "flex",
+            "flex-direction": "row",
+            "align-items": "center",
+            "justify-content": "space-between",
+            "gap": "1rem",
+            "@media (width <= 700px)": {
+                "flex-direction": "column-reverse",
+            },
+        },
+    )
+
+    info: dict[str, str | dict] = field(
+        default_factory=lambda: {
+            "display": "flex",
+            "flex-direction": "column",
+            "gap": "0.5rem",
+            "padding-right": "32px",
+            "@media (width <= 700px)": {
+                "justify-content": "center",
+                "align-items": "center",
+                "padding-right": 0,
+                "text-align": "center",
+            },
+        },
+    )
+    span: dict[str, str] = field(
+        default_factory=lambda: {
+            "color": "#666",
+            "display": "flex",
+            "align-items": "center",
+            "gap": "0.25rem",
+            "font-size": "0.85rem",
+            "letter-spacing": " -0.05rem",
+        },
     )
     hero_title: dict[str, str] = field(
         default_factory=lambda: {
-            "size": "7",
-            "background": rx.color_mode_cond(
-                light=f"linear-gradient(to right, {GlobalThemeVariables.LIGHT.value['--primary']}, {GlobalThemeVariables.LIGHT.value['--secondary']})",
-                dark=f"linear-gradient(to right, {GlobalThemeVariables.DARK.value['--primary']}, {GlobalThemeVariables.DARK.value['--secondary']})",
-            ),
+            # "size": "7",
+            # "background": rx.color_mode_cond(
+            #    light=f"linear-gradient(to right, {GlobalThemeVariables.LIGHT.value['--primary']}, {GlobalThemeVariables.LIGHT.value['--secondary']})",
+            #    dark=f"linear-gradient(to right, {GlobalThemeVariables.DARK.value['--primary']}, {GlobalThemeVariables.DARK.value['--secondary']})",
+            # ),
             "font_size": "2rem",
-            "background_image": "linear-gradient(to right, #06B6D4, #3B82F6)",
-            "background_clip": "text",
-            "color": "transparent",
+            # "background_image": "linear-gradient(to right, #06B6D4, #3B82F6)",
+            # "background_clip": "text",
+            # "color": "transparent",
         },
     )
 
     hero_image: dict[str, str] = field(
         default_factory=lambda: {
             # "border-radius": "10%",
-            "border-radius": "0.5em",
+            # "border-radius": "0.5em",
             "box-shadow": rx.color_mode_cond(
                 # light="0 0 30px rgba(8, 145, 178, 0.3)",
                 # dark="0 0 30px rgba(6, 182, 212, 0.3)",
                 light=f"0 0 30px {GlobalThemeVariables.LIGHT.value['--primary']}",
                 dark=f"0 0 30px {GlobalThemeVariables.DARK.value['--primary']}",
             ),
-            "width": "10%",
-            # "max_width": "100%",
             "height": "auto",
-            "size": "1",
+            # "size": "1",
             "border": f"1px solid {GlobalThemeVariables.LIGHT.value['--primary']}",
+            "aspect-ratio": " 1 / 1",
+            "object-fit": "cover",
+            "width": "128px",
+            "border-radius": "16px",
         },
     )
-    hero_text: dict[str, str] = field(
+    hero_h2: dict[str, str] = field(
         default_factory=lambda: {
-            "color": rx.color_mode_cond(
-                light=GlobalThemeVariables.LIGHT.value["--secondary"],
-                dark=GlobalThemeVariables.DARK.value["--secondary"],
-            ),
-            # "font-size": "1.2em",
+            # "color": rx.color_mode_cond(
+            #    light=GlobalThemeVariables.LIGHT.value["--secondary"],
+            #    dark=GlobalThemeVariables.DARK.value["--secondary"],
+            # ),
+            "color": "#444",
+            "font-weight": "500",
+            "font-size": "1.1rem",
+            "text-wrap": "balance",
         },
     )
 
@@ -62,37 +102,37 @@ def hero_section() -> rx.Component:
     return section(
         rx.hstack(
             rx.vstack(
-                rx.text(
-                    "Desarrollador de Software",
-                    color=rx.color_mode_cond(
-                        light=GlobalThemeVariables.LIGHT.value["--primary"],
-                        dark=GlobalThemeVariables.DARK.value["--primary"],
-                    ),
-                    size="7",
-                    # **HeroStyle.hero_text,
-                    # color="#06B6D4",
-                ),
                 rx.heading(
-                    "Transformando Ideas en Soluciones Tecnológicas",
+                    "Marcos Ferreto Estrada",
                     **HeroStyle.hero_title,
                 ),
                 rx.text(
                     "Especializado en desarrollo de software, modelación matemática y análisis de datos. "
                     "Creando soluciones innovadoras con un enfoque analítico y técnico.",
                     # color="#D1D5DB",
-                    color=rx.color_mode_cond(
-                        light=GlobalThemeVariables.LIGHT.value["--secondary"],
-                        dark=GlobalThemeVariables.DARK.value["--secondary"],
+                    # color=rx.color_mode_cond(
+                    #    light=GlobalThemeVariables.LIGHT.value["--secondary"],
+                    #    dark=GlobalThemeVariables.DARK.value["--secondary"],
+                    # ),
+                    **HeroStyle.hero_h2,
+                ),
+                rx.hstack(
+                    rx.icon("map-pinned", _as="span"),
+                    rx.text(
+                        "Buenos Aires de Puntarenas, Costa Rica",
+                        _as="span",
                     ),
-                    margin_y="1rem",
+                    _as="span",
+                    **HeroStyle.span,
                 ),
                 rx.hstack(
                     rx.button(
                         "Ver Proyectos",
-                        background_color=rx.color_mode_cond(
-                            light=GlobalThemeVariables.LIGHT.value["--primary"],
-                            dark=GlobalThemeVariables.DARK.value["--primary"],
-                        ),
+                        # background_color=rx.color_mode_cond(
+                        #    light=GlobalThemeVariables.LIGHT.value["--primary"],
+                        #    dark=GlobalThemeVariables.DARK.value["--primary"],
+                        # ),
+                        background_color=rx.Color("accent", 11),
                         color="white",
                         padding_x="1.5rem",
                         padding_y="0.75rem",
@@ -102,22 +142,20 @@ def hero_section() -> rx.Component:
                         "Descargar CV",
                         background_color="transparent",
                         border=f"1px solid {GlobalThemeVariables.LIGHT.value['--primary']}",
-                        color=rx.color_mode_cond(
-                            light=GlobalThemeVariables.LIGHT.value["--primary"],
-                            dark=GlobalThemeVariables.DARK.value["--primary"],
-                        ),
+                        color=rx.Color("accent", 11),
                         padding_x="1.5rem",
                         padding_y="0.75rem",
                     ),
                 ),
-                width="75%",
+                # width="75%",
             ),
             rx.avatar(
                 src="Designer.jpeg",
                 **HeroStyle.hero_image,
             ),
-            # width="100%",
-            # align_items="center",
-            # justify_content="space-between",
+            width="100%",
+            **HeroStyle.info,
         ),
+        padding_y="1.5rem",
+        **HeroStyle.container,
     )
