@@ -34,11 +34,11 @@ def projects_section():
             "description": "Modelo de predicción financiera usando machine learning",
             "technologies": ["Python", "Pandas", "Scikit-learn"],
         },
-        {
-            "title": "API de Optimización",
-            "description": "Servicio REST para problemas de optimización matemática",
-            "technologies": ["FastAPI", "Docker", "Numpy"],
-        },
+        # {
+        #    "title": "API de Optimización",
+        #    "description": "Servicio REST para problemas de optimización matemática",
+        #    "technologies": ["FastAPI", "Docker", "Numpy"],
+        # },
         # {
         #    "title": "Dashboard de Datos",
         #    "description": "Visualización interactiva de métricas empresariales",

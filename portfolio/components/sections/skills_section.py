@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 
 import reflex as rx
+
 from portfolio.components.section import section
 from portfolio.components.styles.styles import GlobalThemeVariables, SectionStyle
 
@@ -53,17 +54,17 @@ def skills_section() -> rx.Component:
                 "Python",
                 "FastAPI",
                 "React",
-                # "Docker",
+                "Docker",
             ],
         },
-        {
-            "title": "Modelación Matemática",
-            "technologies": [
-                "Optimización",
-                "Estadística",
-                # "Métodos Numéricos",
-            ],
-        },
+        # {
+        #    "title": "Modelación Matemática",
+        #    "technologies": [
+        #        "Optimización",
+        #        "Estadística",
+        #        # "Métodos Numéricos",
+        #    ],
+        # },
         # {
         #    "title": "Data Science",
         #    "technologies": ["Machine Learning", "SQL", "Big Data"],
@@ -101,7 +102,7 @@ def skills_section() -> rx.Component:
                     )
                     for skill in skills
                 ],
-                # width="100%",
+                width="100%",
                 # spacing="4",
             ),
         ),

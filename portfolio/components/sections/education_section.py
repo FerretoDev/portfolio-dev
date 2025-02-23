@@ -1,6 +1,6 @@
 import reflex as rx
-from portfolio.components.section import section
 
+from portfolio.components.section import section
 from portfolio.components.styles.styles import SectionStyle
 
 
@@ -47,4 +47,7 @@ def education_section():
                 # width="100%",
             ),
         ),
+        display="flex",
+        flex_direction="column",
+        gap="32px",
     )

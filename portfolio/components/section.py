@@ -11,6 +11,6 @@ def section(*children: Any, **props: Any | Optional[rx.Style]) -> rx.section:
         # class_name="section",
         width="100%",
         # **props,
-        # **SectionStyle.section_style,
-        # **SectionStyle.section_style_mobile,
+        **SectionStyle.section_style,
+        **SectionStyle.section_style_mobile,
     )
