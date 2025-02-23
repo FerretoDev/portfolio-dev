@@ -12,13 +12,16 @@ from portfolio.components.styles.styles import PageStyle
 
 @rx.page("/", "Portfolio")  # type: ignore
 def index() -> rx.Component:
-    return layout(
-        rx.vstack(
-            # hero_section(),
-            # about_section(),
-            # experience_section(),
-            # education_section(),
-            # projects_section(),
-            # skills_section(),
+    return rx.box(
+        layout(
+            rx.vstack(
+                hero_section(),
+                about_section(),
+                experience_section(),
+                education_section(),
+                projects_section(),
+                skills_section(),
+            ),
         ),
+        **PageStyle.background,
     )

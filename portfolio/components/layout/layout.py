@@ -3,13 +3,9 @@ from typing import Any, Optional
 
 import reflex as rx
 
-from portfolio.components.styles.styles import LayoutStyle, SectionStyle
+from portfolio.components.styles.styles import LayoutStyle
 
 from .footer import footer
-from .header import header
-
-# Estilos globales
-global_styles = {}
 
 
 @dataclass
@@ -90,12 +86,9 @@ BaseStyle: BaseStyle = BaseStyle()
 
 
 def layout(content: Optional[Any] = None) -> rx.Component:
-    return (
-        rx.vstack(
-            rx.box(header(), width="100%"),  # Header
-            rx.vstack(
-                # rx.box(content, width="100%"),  # Contenido principal
-                # rx.box(footer(), width="100%"),  # Footer
-            ),
-        ),
+    return rx.vstack(
+        rx.box(content, width="100%"),  # Contenido principal
+        rx.box(footer(), width="100%"),  # Footer
+        **LayoutStyle.base,
+        **LayoutStyle.style_mobile,
     )

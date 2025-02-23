@@ -102,6 +102,10 @@ def hero_section() -> rx.Component:
     return section(
         rx.hstack(
             rx.vstack(
+                rx.avatar(
+                    src="Designer.jpeg",
+                    **HeroStyle.hero_image,
+                ),
                 rx.heading(
                     "Marcos Ferreto Estrada",
                     **HeroStyle.hero_title,
@@ -109,11 +113,6 @@ def hero_section() -> rx.Component:
                 rx.text(
                     "Especializado en desarrollo de software, modelación matemática y análisis de datos. "
                     "Creando soluciones innovadoras con un enfoque analítico y técnico.",
-                    # color="#D1D5DB",
-                    # color=rx.color_mode_cond(
-                    #    light=GlobalThemeVariables.LIGHT.value["--secondary"],
-                    #    dark=GlobalThemeVariables.DARK.value["--secondary"],
-                    # ),
                     **HeroStyle.hero_h2,
                 ),
                 rx.vstack(
@@ -152,13 +151,8 @@ def hero_section() -> rx.Component:
                 ),
                 # width="75%",
             ),
-            rx.avatar(
-                src="Designer.jpeg",
-                **HeroStyle.hero_image,
-            ),
-            # width="100%",
+            width="100%",
             **HeroStyle.info,
         ),
-        padding_y="1.5rem",
         **HeroStyle.container,
     )
