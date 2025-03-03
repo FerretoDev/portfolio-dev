@@ -7,12 +7,10 @@ from portfolio.pages.index import index  # noqa: F401
 
 # from portfolio.components.styles.styles import global_style
 
-
 # Configuración del tema
 config = rx.Config(
     app_name="portfolio",
 )
-
 app = rx.App(
     # style=global_style(),
     theme=rx.theme(
