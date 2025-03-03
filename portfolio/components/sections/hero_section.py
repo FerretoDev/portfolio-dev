@@ -1,11 +1,9 @@
 from dataclasses import dataclass, field
-from typing import Any
 
 import reflex as rx
 
-from portfolio.components.button import custom_button
 from portfolio.components.section import section
-from portfolio.components.styles.styles import GlobalThemeVariables, SectionStyle
+from portfolio.components.styles.styles import GlobalThemeVariables
 
 
 @dataclass
@@ -17,16 +15,14 @@ class HeroStyle:
             "align-items": "center",
             "justify-content": "space-between",
             "gap": "1rem",
-            # "@media (width <= 700px)": {
-            #    "flex-direction": "column-reverse",
-            # },
         },
     )
 
     info: dict[str, str | dict] = field(
         default_factory=lambda: {
-            # "display": "flex",
-            # "flex-direction": "column",
+            "flexDirection": "row-reverse",  # Valor por defecto (PC) | Deberia usar "direction": "row-reverse" pero no me funcionaba
+            "align": "center",
+            # "justify": "center",
             "gap": "0.5rem",
             "padding-right": "32px",
             "@media (width <= 700px)": {
@@ -34,6 +30,7 @@ class HeroStyle:
                 "align-items": "center",
                 "padding-right": 0,
                 "text-align": "center",
+                "flexDirection": "column",  # Para pantallas pequeñas (Móvil)
             },
         },
     )
@@ -100,12 +97,12 @@ HeroStyle: HeroStyle = HeroStyle()
 def hero_section() -> rx.Component:
     """Sección principal del hero."""
     return section(
-        rx.hstack(
+        rx.flex(
+            rx.avatar(
+                src="Designer.jpeg",
+                **HeroStyle.hero_image,
+            ),
             rx.vstack(
-                rx.avatar(
-                    src="Designer.jpeg",
-                    **HeroStyle.hero_image,
-                ),
                 rx.heading(
                     "Marcos Ferreto Estrada",
                     **HeroStyle.hero_title,
@@ -115,14 +112,14 @@ def hero_section() -> rx.Component:
                     "Creando soluciones innovadoras con un enfoque analítico y técnico.",
                     **HeroStyle.hero_h2,
                 ),
-                rx.vstack(
+                rx.hstack(
                     rx.icon(
                         "map-pinned",
-                        # _as="span",
+                        _as="span",
                     ),
                     rx.text(
                         "Buenos Aires de Puntarenas, Costa Rica",
-                        # _as="span",
+                        _as="span",
                     ),
                     _as="span",
                     **HeroStyle.span,
