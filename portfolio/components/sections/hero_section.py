@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from typing import Any
 
 import reflex as rx
 
@@ -20,7 +21,7 @@ class HeroStyle:
 
     info: dict[str, str | dict] = field(
         default_factory=lambda: {
-            "flexDirection": "row-reverse",  # Valor por defecto (PC) | Deberia usar "direction": "row-reverse" pero no me funcionaba
+            "flexDirection": "row-reverse",  # Valor por defecto (PC) | Debería usar "direction": "row-reverse" pero no me funcionaba
             "align": "center",
             # "justify": "center",
             "gap": "0.5rem",
@@ -58,7 +59,7 @@ class HeroStyle:
         },
     )
 
-    hero_image: dict[str, str] = field(
+    hero_image: dict[str, Any] = field(
         default_factory=lambda: {
             # "border-radius": "10%",
             # "border-radius": "0.5em",
@@ -115,7 +116,7 @@ def hero_section() -> rx.Component:
                 rx.hstack(
                     rx.icon(
                         "map-pinned",
-                        _as="span",
+                        # _as="span",
                     ),
                     rx.text(
                         "Buenos Aires de Puntarenas, Costa Rica",
