@@ -19,3 +19,26 @@ def card(title: str, description: str, tag: str):
         rx.icon(tag, **CardStyle.icon),
         **CardStyle.base,
     )
+
+
+def suma(
+    title: str,
+    description: str,
+    tag: str,
+    icon: str,
+    background: str,
+):
+    return rx.hstack(
+        rx.vstack(
+            rx.text(title, **CardStyle.title),
+            rx.text(
+                description,
+                **CardStyle.description,
+            ),
+            **CardStyle.stack,
+        ),
+        rx.box(background, **CardStyle.background),
+        rx.icon(icon, **CardStyle.icon),
+        **CardStyle.base,
+    )
+    

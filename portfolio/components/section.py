@@ -14,3 +14,4 @@ def section(*children: Any, **props: Any | Optional[rx.Style]) -> rx.section:
         **SectionStyle.section_style,
         **SectionStyle.section_style_mobile,
     )
+
