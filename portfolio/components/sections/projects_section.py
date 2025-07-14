@@ -5,7 +5,7 @@ from portfolio.components.section import section
 from portfolio.components.styles.styles import GlobalThemeVariables, SectionStyle
 
 
-@rx.page("#proyectos", "Projects Page")
+@rx.page("proyectos", "Projects Page")
 def projects_section2() -> rx.Component:
     return rx.grid(
         card(
