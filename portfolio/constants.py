@@ -20,7 +20,7 @@ PHONE = "+506 6352-8891"
 
 basics: dict[str, dict[str, str] | list[dict[str, str]] | str] = {
     "name": "Marcos Ferreto Estrada",
-    "label": "Desarrollador Full Stack",
+    "label": "Especializado en desarrollo de software, modelación matemática y análisis de datos.",
     "image": "Designer.jpg",
     "location": {"city": "Grecia", "region": "Costa Rica"},
     "profiles": [
