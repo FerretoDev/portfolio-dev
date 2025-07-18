@@ -46,20 +46,50 @@ class GlobalThemeVariables(Enum):
 # Estilos globales
 def global_style() -> Any:
     return {
-        # "body": {
-        #    "background": GlobalThemeVariables.DARK.value["--background"],
-        #    "color": GlobalThemeVariables.DARK.value["--background"],
-        #    "transition": "all 0.3s ease",
-        # },
-        # ".section": {
-        #    "padding": "6rem 0",
-        #    "position": "relative",
-        # },
-        # ".split-section": {
-        #    "display": "grid",
-        #    "gap": "4rem",
-        #    "alignItems": "center",
-        # },
+        # CSS Global como componente de estilo
+        "body, figure": {
+            "margin": "0",
+            "padding": "0",
+        },
+        "a": {
+            "text_decoration": "none",
+        },
+        "ul": {
+            "list_style": "none",
+            "margin": "0",
+            "padding": "0",
+        },
+        "*, *::before, *::after": {
+            "box_sizing": "border_box",
+        },
+        "h1, h2, h3, h4": {
+            "margin": "0",
+            "font:family:": " system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans_serif",
+        },
+        "p": {
+            "color": "#666",
+            "font_size": "0.9rem",
+            "line_height": "1.5",
+            "margin": "0",
+            "text_wrap": "pretty",
+        },
+        ".print": {
+            "display": "none !important",
+        },
+        "@media print": {
+            ".no-print": {
+                "display": "none !important",
+            },
+            ".print": {
+                "display": "block !important",
+            },
+            "astro-dev-toolbar": {
+                "display": "none !important",
+            },
+            "article:": {
+                "break,inside": "avoid",
+            },
+        },
     }
 
 
@@ -334,15 +364,16 @@ class SectionStyle:
     # Estilos para el título
     title_style: dict[str, str] = field(
         default_factory=lambda: {
+            "level": "2",
             "margin_bottom": "8px",
             "font_weight": "700",
             "line_height": "1.5",
             "font_size": "1.5rem",
-            "color": rx.color_mode_cond(
-                light=GlobalThemeVariables.LIGHT.value["--primary"],
-                dark=GlobalThemeVariables.DARK.value["--primary"],
-            ),
-        }
+            # "color": rx.color_mode_cond(
+            #    light=GlobalThemeVariables.LIGHT.value["--primary"],
+            #    dark=GlobalThemeVariables.DARK.value["--primary"],
+            # ),
+        }  # Este deberia ser utilizado en todos los componentes que usen el componente section
     )
     # Estilos responsive
     section_style_mobile: dict[str, dict[str, str]] = field(
