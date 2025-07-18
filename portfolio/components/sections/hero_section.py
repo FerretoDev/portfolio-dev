@@ -5,11 +5,18 @@ import reflex as rx
 
 from portfolio.components.section import section
 from portfolio.components.styles.styles import GlobalThemeVariables
+from portfolio.constants import basics
+
+SOCIAL_ICONS: dict[str, Any] = {
+    "GitHub": rx.icon("github"),
+    "LinkedIn": rx.icon("linkedin"),
+    "X": rx.icon("x"),
+}
 
 
 @dataclass
 class HeroStyle:
-    container: dict[str, str | dict] = field(
+    container: dict[str, str] = field(
         default_factory=lambda: {
             "display": "flex",
             "flex-direction": "row",
@@ -19,7 +26,7 @@ class HeroStyle:
         },
     )
 
-    info: dict[str, str | dict] = field(
+    info: dict[str, dict[str, int | str] | str] = field(
         default_factory=lambda: {
             "flexDirection": "row-reverse",  # Valor por defecto (PC) | Debería usar "direction": "row-reverse" pero no me funcionaba
             "align": "center",
@@ -95,12 +102,12 @@ class HeroStyle:
 HeroStyle: HeroStyle = HeroStyle()
 
 
-def hero_section() -> rx.Component:
+def hero_section1() -> rx.Component:
     """Sección principal del hero."""
     return rx.fragment(
         section(
             children=[
-                rx.flex(
+                rx.box(
                     rx.avatar(
                         src="Designer.jpeg",
                         **HeroStyle.hero_image,
@@ -151,10 +158,144 @@ def hero_section() -> rx.Component:
                         ),
                         # width="75%",
                     ),
-                    width="100%",
+                    # width="100%",
                     **HeroStyle.info,
                 ),
             ],
         ),
         **HeroStyle.container,
     )
+
+
+def hero_section() -> rx.Component:
+    """Sección principal del hero."""
+
+    # Extraemos datos del basics
+    name = basics["name"]
+    label = basics["label"]
+    image = basics["image"]
+    location = basics["location"]
+    profiles = basics["profiles"]
+    phone = basics["phone"]
+    email = basics["email"]
+
+    # Fix: handle location as list, dict, or str
+    if isinstance(location, list) and location and isinstance(location[0], dict):
+        city = location[0].get("city", "")
+        region = location[0].get("region", "")
+    elif isinstance(location, dict):
+        city = location.get("city", "")
+        region = location.get("region", "")
+    elif isinstance(location, str):
+        city = location
+        region = ""
+    else:
+        city = ""
+        region = ""
+
+    return rx.fragment(
+        section(
+            children=[
+                rx.flex(
+                    # Sección de información
+                    rx.box(
+                        rx.heading("Marcos Ferreto Estrada", level=1, style=h1_style),
+                        rx.heading(
+                            "Especializado en desarrollo de software, modelación matemática y análisis de datos.",
+                            level=2,
+                            style=h2_style,
+                        ),
+                        rx.box(
+                            rx.icon("map-pinned"),
+                            rx.text(
+                                rx.text(f"{city}, {region}"),
+                                style=location_style,
+                            ),
+                            _as="span",
+                            style=location_style,
+                        ),
+                        class_name="info",
+                        style=info_style,
+                    ),
+                    # Figura con imagen
+                    rx.box(
+                        rx.avatar(
+                            src="Designer.jpeg",
+                            alt="Marcus",
+                            style=img_style,
+                            # **HeroStyle.hero_image,
+                        ),
+                        # tag="figure",
+                        style={"margin": "0"},
+                    ),
+                    # class_name="container",
+                    style=container_style,
+                ),
+            ],
+        ),
+    )
+
+
+# Estilos definidos como diccionarios
+container_style: dict[str, str] = {
+    "display": "flex",
+    "flex_direction": "row",
+    "align_items": "center",
+    "justify_content": "space-between",
+    "gap": "1rem",
+}
+
+info_style: dict[str, str] = {
+    "display": "flex",
+    "flex_direction": "column",
+    "gap": "0.5rem",
+    "padding_right": "32px",
+}
+
+h1_style = {
+    "font_size": "2rem",
+    "margin": "0",
+}
+
+h2_style = {
+    "color": "#444",
+    "font_weight": "500",
+    "font_size": "1.1rem",
+    "text_wrap": "balance",
+    "margin": "0",
+}
+
+img_style = {
+    "aspect_ratio": "1 / 1",
+    "object_fit": "cover",
+    "width": "128px",
+    "height": "auto",
+    "border_radius": "16px",
+}
+
+location_style = {
+    "color": "#666",
+    "display": "flex",
+    "align_items": "center",
+    "gap": "0.25rem",
+    "font_size": "0.85rem",
+    "letter_spacing": "-0.05rem",
+}
+
+link_style = {
+    "color": "#777",
+    "display": "inline-flex",
+    "align_items": "center",
+    "justify_content": "center",
+    "border": "1px solid #eee",
+    "padding": "4px",
+    "height": "32px",
+    "width": "32px",
+    "border_radius": "6px",
+    "transition": "all 0.3s ease",
+    "text_decoration": "none",
+    "_hover": {
+        "background": "#eee",
+        "border": "1px solid #ddd",
+    },
+}

@@ -16,4 +16,30 @@ COFFEE_URL = "https://buymeacoffee.com/mouredev"
 # Contacto
 MYPUBLICINBOX_URL = "https://mypublicinbox.com/mouredev"
 EMAIL = "braismoure@mouredev.com"
-PHONE = "+34 666 666 666"
+PHONE = "+506 6352-8891"
+
+basics: dict[str, dict[str, str] | list[dict[str, str]] | str] = {
+    "name": "Marcos Ferreto Estrada",
+    "label": "Desarrollador Full Stack",
+    "image": "Designer.jpg",
+    "location": {"city": "Grecia", "region": "Costa Rica"},
+    "profiles": [
+        {
+            "network": "GitHub",
+            "url": GITHUB_URL,
+            "username": "FerretoDev",
+        },
+        {
+            "network": "LinkedIn",
+            "url": LINKEDIN_URL,
+            "username": "usuario",
+        },
+        {
+            "network": "X",
+            "url": TWITTER_X_URL,
+            "username": "MarcosFerretoE",
+        },
+    ],
+    "phone": PHONE,
+    "email": EMAIL,
+}
