@@ -199,9 +199,9 @@ def hero_section() -> rx.Component:
                 rx.flex(
                     # Sección de información
                     rx.box(
-                        rx.heading("Marcos Ferreto Estrada", level=1, style=h1_style),
+                        rx.heading(name, level=1, style=h1_style),
                         rx.heading(
-                            "Especializado en desarrollo de software, modelación matemática y análisis de datos.",
+                            label,
                             level=2,
                             style=h2_style,
                         ),
