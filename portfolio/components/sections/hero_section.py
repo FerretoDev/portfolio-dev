@@ -97,60 +97,64 @@ HeroStyle: HeroStyle = HeroStyle()
 
 def hero_section() -> rx.Component:
     """Sección principal del hero."""
-    return section(
-        rx.flex(
-            rx.avatar(
-                src="Designer.jpeg",
-                **HeroStyle.hero_image,
-            ),
-            rx.vstack(
-                rx.heading(
-                    "Marcos Ferreto Estrada",
-                    **HeroStyle.hero_title,
-                ),
-                rx.text(
-                    "Especializado en desarrollo de software, modelación matemática y análisis de datos. "
-                    "Creando soluciones innovadoras con un enfoque analítico y técnico.",
-                    **HeroStyle.hero_h2,
-                ),
-                rx.hstack(
-                    rx.icon(
-                        "map-pinned",
-                        # _as="span",
+    return rx.fragment(
+        section(
+            children=[
+                rx.flex(
+                    rx.avatar(
+                        src="Designer.jpeg",
+                        **HeroStyle.hero_image,
                     ),
-                    rx.text(
-                        "Buenos Aires de Puntarenas, Costa Rica",
-                        _as="span",
+                    rx.vstack(
+                        rx.heading(
+                            "Marcos Ferreto Estrada",
+                            **HeroStyle.hero_title,
+                        ),
+                        rx.text(
+                            "Especializado en desarrollo de software, modelación matemática y análisis de datos. "
+                            "Creando soluciones innovadoras con un enfoque analítico y técnico.",
+                            **HeroStyle.hero_h2,
+                        ),
+                        rx.hstack(
+                            rx.icon(
+                                "map-pinned",
+                                # _as="span",
+                            ),
+                            rx.text(
+                                "Buenos Aires de Puntarenas, Costa Rica",
+                                _as="span",
+                            ),
+                            _as="span",
+                            **HeroStyle.span,
+                        ),
+                        rx.hstack(
+                            rx.button(
+                                "Ver Proyectos",
+                                # background_color=rx.color_mode_cond(
+                                #    light=GlobalThemeVariables.LIGHT.value["--primary"],
+                                #    dark=GlobalThemeVariables.DARK.value["--primary"],
+                                # ),
+                                background_color=rx.Color("accent", 11),
+                                color="white",
+                                padding_x="1.5rem",
+                                padding_y="0.75rem",
+                                margin_right="1rem",
+                            ),
+                            rx.button(
+                                "Descargar CV",
+                                background_color="transparent",
+                                border=f"1px solid {GlobalThemeVariables.LIGHT.value['--primary']}",
+                                color=rx.Color("accent", 11),
+                                padding_x="1.5rem",
+                                padding_y="0.75rem",
+                            ),
+                        ),
+                        # width="75%",
                     ),
-                    _as="span",
-                    **HeroStyle.span,
+                    width="100%",
+                    **HeroStyle.info,
                 ),
-                rx.hstack(
-                    rx.button(
-                        "Ver Proyectos",
-                        # background_color=rx.color_mode_cond(
-                        #    light=GlobalThemeVariables.LIGHT.value["--primary"],
-                        #    dark=GlobalThemeVariables.DARK.value["--primary"],
-                        # ),
-                        background_color=rx.Color("accent", 11),
-                        color="white",
-                        padding_x="1.5rem",
-                        padding_y="0.75rem",
-                        margin_right="1rem",
-                    ),
-                    rx.button(
-                        "Descargar CV",
-                        background_color="transparent",
-                        border=f"1px solid {GlobalThemeVariables.LIGHT.value['--primary']}",
-                        color=rx.Color("accent", 11),
-                        padding_x="1.5rem",
-                        padding_y="0.75rem",
-                    ),
-                ),
-                # width="75%",
-            ),
-            width="100%",
-            **HeroStyle.info,
+            ],
         ),
         **HeroStyle.container,
     )
