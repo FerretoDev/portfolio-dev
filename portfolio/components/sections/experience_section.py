@@ -41,3 +41,92 @@ def experience_section1(title: str = "Experiencia Profesional") -> rx.Component:
             # width="100%",
         ),
     )
+
+
+# Simulamos la importación de datos de trabajo
+# En tu caso real, importarías desde tu archivo de datos
+work = [
+    {
+        "name": "Proyectos Personales",
+        "startDate": "2023-01-01",
+        "endDate": None,
+        "position": "Desarrollador Full Stack",
+        "summary": "Desarrollo de aplicaciones web y de escritorio utilizando Python, FastAPI, Reflex, Flet, Docker y otras tecnologías. Enfoque en automatización, visualización de datos y productividad.",
+        "highlights": [
+            "Desarrollé una app de tareas multiplataforma con Flet y Flutter",
+            "Creé una API de scraping con FastAPI y Selenium, incluyendo visualización con Seaborn y Pandas",
+            "Desarrollé una app de inventario web con Reflex y FastAPI",
+        ],
+        "url": None,
+    },
+    {
+        "name": "Python Software Foundation",
+        "startDate": "2024-01-01",
+        "endDate": None,
+        "position": "Colaborador en Traducción",
+        "summary": "Participación voluntaria en la traducción oficial de la documentación de Python al español.",
+        "highlights": [
+            "Traducción de documentación técnica de Python para el público hispanohablante",
+            "Colaboración con otros miembros de la comunidad de código abierto",
+        ],
+        "url": "https://www.python.org/psf/",
+    },
+]
+
+
+def experience_section() -> rx.Component:
+    """Sección de experiencia laboral."""
+
+    return rx.fragment(
+        section(
+            children=[
+                rx.heading(
+                    "Experiencia Profesional",
+                ),
+                rx.vstack(
+                    *[
+                        rx.box(
+                            rx.heading(
+                                work_item["position"],
+                                size="2",
+                            ),
+                            rx.text(
+                                work_item["name"],
+                            ),
+                            rx.text(
+                                f"{datetime.strptime(str(work_item['startDate']), '%Y-%m-%d').strftime('%B %Y')} - "
+                                f"{'Presente' if not work_item.get('endDate') else datetime.strptime(str(work_item['endDate']), '%Y-%m-%d').strftime('%B %Y')}",
+                            ),
+                            rx.text(
+                                work_item["summary"],
+                            ),
+                            rx.vstack(
+                                *[
+                                    rx.text(
+                                        highlight,
+                                    )
+                                    for highlight in (work_item.get("highlights") or [])
+                                ],
+                                spacing="1",
+                            ),
+                            # (
+                            #    rx.link(
+                            #        "Ver más",
+                            #        href=(
+                            #            str(work_item["url"])
+                            #            if work_item["url"] is not None
+                            #            else None
+                            #        ),
+                            #        # color="#3B82F6",
+                            #    )
+                            #    if work_item["url"]
+                            #    else None
+                            # ),
+                        )
+                        for work_item in work
+                    ],
+                    spacing="1",
+                ),
+            ]
+        )
+    )
