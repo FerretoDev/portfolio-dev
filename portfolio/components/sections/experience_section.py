@@ -1,9 +1,13 @@
+from datetime import datetime
+from typing import List, Optional
+
 import reflex as rx
+
 from portfolio.components.section import section
 from portfolio.components.styles.styles import SectionStyle
 
 
-def experience_section(title: str = "Experiencia Profesional") -> rx.Component:
+def experience_section1(title: str = "Experiencia Profesional") -> rx.Component:
     """Sección de experiencia laboral."""
     return section(
         rx.heading(

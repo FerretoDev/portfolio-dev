@@ -4,7 +4,7 @@ G_TAG = "G-3YGHT3XJFS"
 # Cabecera
 GITHUB_URL = "https://github.com/FerretoDev"
 TWITTER_X_URL = "https://x.com/MarcosFerretoE"
-LINKEDIN_URL = "https://linkedin.com/in/braismoure/"
+LINKEDIN_URL = "https://www.linkedin.com/in/marcos-ferreto/"
 
 
 # Recursos y más
@@ -25,9 +25,14 @@ basics: dict[str, dict[str, str] | list[dict[str, str]] | str] = {
     "location": {"city": "Grecia", "region": "Costa Rica"},
     "profiles": [
         {
-            "network": "GitHub",
-            "url": GITHUB_URL,
-            "username": "FerretoDev",
+            "network": "Email",
+            "url": f"mailto:{EMAIL}",
+            "username": EMAIL,
+        },
+        {
+            "network": "Phone",
+            "url": f"tel:{PHONE}",
+            "username": PHONE,
         },
         {
             "network": "LinkedIn",
@@ -38,6 +43,11 @@ basics: dict[str, dict[str, str] | list[dict[str, str]] | str] = {
             "network": "X",
             "url": TWITTER_X_URL,
             "username": "MarcosFerretoE",
+        },
+        {
+            "network": "GitHub",
+            "url": GITHUB_URL,
+            "username": "FerretoDev",
         },
     ],
     "phone": PHONE,

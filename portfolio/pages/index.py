@@ -1,4 +1,5 @@
 import reflex as rx
+from rich.padding import Padding
 
 from portfolio.components.layout.footer import footer
 from portfolio.components.layout.layout import layout
@@ -17,8 +18,8 @@ def index() -> rx.Component:
     return layout(
         children=[
             hero_section(),
-            # about_section(),
-            # experience_section(),
+            about_section(),
+            experience_section(),
             # education_section(),
             # projects_section(),
             # skills_section(),
