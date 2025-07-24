@@ -8,9 +8,11 @@ from portfolio.components.styles.styles import GlobalThemeVariables
 from portfolio.constants import basics
 
 SOCIAL_ICONS: dict[str, Any] = {
+    "Email": rx.icon("mail"),
+    "Phone": rx.icon("phone"),
     "GitHub": rx.icon("github"),
     "LinkedIn": rx.icon("linkedin"),
-    "X": rx.icon("x"),
+    "X": rx.icon("twitter"),
 }
 
 
@@ -68,11 +70,7 @@ class HeroStyle:
 
     hero_image: dict[str, Any] = field(
         default_factory=lambda: {
-            # "border-radius": "10%",
-            # "border-radius": "0.5em",
             "box-shadow": rx.color_mode_cond(
-                # light="0 0 30px rgba(8, 145, 178, 0.3)",
-                # dark="0 0 30px rgba(6, 182, 212, 0.3)",
                 light=f"0 0 30px {GlobalThemeVariables.LIGHT.value['--primary']}",
                 dark=f"0 0 30px {GlobalThemeVariables.DARK.value['--primary']}",
             ),
@@ -177,7 +175,7 @@ def hero_section() -> rx.Component:
     location = basics["location"]
     profiles = basics["profiles"]
     phone = basics["phone"]
-    email = basics["email"]
+    mail = basics["email"]
 
     # Fix: handle location as list, dict, or str
     if isinstance(location, list) and location and isinstance(location[0], dict):
@@ -206,13 +204,30 @@ def hero_section() -> rx.Component:
                             style=h2_style,
                         ),
                         rx.box(
-                            rx.icon("map-pinned"),
+                            rx.icon("map-pin"),
                             rx.text(
                                 rx.text(f"{city}, {region}"),
                                 style=location_style,
                             ),
                             _as="span",
                             style=location_style,
+                        ),
+                        rx.box(
+                            rx.hstack(
+                                *[
+                                    rx.link(
+                                        SOCIAL_ICONS.get(
+                                            profile.get("network", ""), rx.icon("link")
+                                        ),
+                                        href=profile.get("url", "#"),
+                                        style=link_style,
+                                        _as="a",
+                                    )
+                                    for profile in profiles
+                                    if isinstance(profile, dict)
+                                ],
+                            ),
+                            style={"margin_top": "0.5rem"},
                         ),
                         class_name="info",
                         style=info_style,
@@ -223,12 +238,9 @@ def hero_section() -> rx.Component:
                             src="Designer.jpeg",
                             alt="Marcus",
                             style=img_style,
-                            # **HeroStyle.hero_image,
                         ),
-                        # tag="figure",
                         style={"margin": "0"},
                     ),
-                    # class_name="container",
                     style=container_style,
                 ),
             ],
@@ -243,6 +255,7 @@ container_style: dict[str, str] = {
     "align_items": "center",
     "justify_content": "space-between",
     "gap": "1rem",
+    "padding_top": "4.5rem",
 }
 
 info_style: dict[str, str] = {
