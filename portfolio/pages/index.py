@@ -20,7 +20,7 @@ def index() -> rx.Component:
             hero_section(),
             about_section(),
             experience_section(),
-            # education_section(),
+            education_section(),
             # projects_section(),
             # skills_section(),
             # footer(),
