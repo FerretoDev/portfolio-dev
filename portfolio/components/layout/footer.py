@@ -36,18 +36,45 @@ def footer():
     current_year = datetime.date.today().year
     return rx.vstack(
         rx.hstack(
-            rx.link(rx.icon(tag="github"), href="https://github.com/FerretoDev"),
             rx.link(
-                rx.icon(tag="linkedin"), href="https://linkedin.com/in/marcos-ferreto/"
+                rx.icon(tag="github"),
+                href="https://github.com/FerretoDev",
+                style=link_style,
             ),
-            rx.link(rx.icon(tag="twitter"), href="https://x.com/MarcosFerretoE"),
-            spacing="4",
+            rx.link(
+                rx.icon(tag="linkedin"),
+                href="https://linkedin.com/in/marcos-ferreto/",
+                style=link_style,
+            ),
+            rx.link(
+                rx.icon(tag="twitter"),
+                href="https://x.com/MarcosFerretoE",
+                style=link_style,
+            ),
         ),
         rx.text(
-            f"© {current_year} Marcos Eduardo Ferreto Estrada. Todos los derechos reservados.",
-            color="#9CA3AF",
+            f"© 2024-{current_year} Marcos Eduardo Ferreto Estrada v1.",
         ),
         width="100%",
         align_items="center",
         padding_y="2rem",
     )
+
+
+link_style = {
+    "color": "#777",
+    "display": "inline-flex",
+    "align_items": "center",
+    "justify_content": "center",
+    "border": "1px solid #eee",
+    "padding": "4px",
+    "height": "32px",
+    "width": "32px",
+    "border_radius": "6px",
+    "transition": "all 0.3s ease",
+    "text_decoration": "none",
+    "_hover": {
+        "background": "#eee",
+        "border": "1px solid #ddd",
+    },
+}

@@ -6,43 +6,6 @@ import reflex as rx
 from portfolio.components.section import section
 from portfolio.components.styles.styles import SectionStyle
 
-
-def experience_section1(title: str = "Experiencia Profesional") -> rx.Component:
-    """Sección de experiencia laboral."""
-    return section(
-        rx.heading(
-            title,
-            **SectionStyle.title_style,
-        ),
-        rx.vstack(
-            rx.box(
-                rx.heading("Científico de Datos Senior", size="2"),
-                rx.text("Empresa Tech Innovadora", color="#D1D5DB"),
-                rx.text("2020 - Presente", color="#9CA3AF"),
-                rx.text(
-                    "Desarrollo de modelos predictivos y soluciones de machine learning para optimización de procesos.",
-                    color="#D1D5DB",
-                    # margin_top="0.5rem",
-                ),
-                # style=section_styles["card"],
-                # margin_bottom="1rem",
-            ),
-            rx.box(
-                rx.heading("Desarrollador de Software", size="2"),
-                rx.text("Startup de Análisis de Datos", color="#D1D5DB"),
-                rx.text("2018 - 2020", color="#9CA3AF"),
-                rx.text(
-                    "Implementación de APIs y servicios backend para análisis de grandes volúmenes de datos.",
-                    color="#D1D5DB",
-                    # margin_top="0.5rem",
-                ),
-                # style=section_styles["card"],
-            ),
-            # width="100%",
-        ),
-    )
-
-
 # Simulamos la importación de datos de trabajo
 # En tu caso real, importarías desde tu archivo de datos
 work = [
@@ -74,59 +37,300 @@ work = [
 ]
 
 
-def experience_section() -> rx.Component:
-    """Sección de experiencia laboral."""
+def section_component(
+    title: Optional[str] = None, children: Optional[List[rx.Component]] = None
+) -> rx.Component:
+    """Componente Section (importado anteriormente)"""
 
-    return rx.fragment(
-        section(
-            children=[
-                rx.heading(
-                    "Experiencia Profesional",
-                ),
-                rx.vstack(
-                    *[
-                        rx.box(
-                            rx.heading(
-                                work_item["position"],
-                                size="2",
-                            ),
-                            rx.text(
-                                work_item["name"],
-                            ),
-                            rx.text(
-                                f"{datetime.strptime(str(work_item['startDate']), '%Y-%m-%d').strftime('%B %Y')} - "
-                                f"{'Presente' if not work_item.get('endDate') else datetime.strptime(str(work_item['endDate']), '%Y-%m-%d').strftime('%B %Y')}",
-                            ),
-                            rx.text(
-                                work_item["summary"],
-                            ),
-                            rx.vstack(
-                                *[
-                                    rx.text(
-                                        highlight,
-                                    )
-                                    for highlight in (work_item.get("highlights") or [])
-                                ],
-                                spacing="1",
-                            ),
-                            # (
-                            #    rx.link(
-                            #        "Ver más",
-                            #        href=(
-                            #            str(work_item["url"])
-                            #            if work_item["url"] is not None
-                            #            else None
-                            #        ),
-                            #        # color="#3B82F6",
-                            #    )
-                            #    if work_item["url"]
-                            #    else None
-                            # ),
-                        )
-                        for work_item in work
-                    ],
-                    spacing="1",
-                ),
-            ]
+    section_content: List[rx.Component] = []
+
+    if title:
+        section_content.append(
+            rx.heading(
+                title,
+                level=2,
+                style={
+                    "margin_bottom": "8px",
+                    "font_weight": "700",
+                    "line_height": "1.5",
+                    "font_size": "1.5rem",
+                },
+            )
         )
+
+    if children:
+        section_content.extend(children)
+
+    return rx.box(
+        *section_content,
+        # tag="section",
+        style={
+            "max_width": "700px",
+            "margin": "0 auto 48px",
+            "@media (max-width: 700px)": {
+                "margin_bottom": "38px",
+            },
+        },
+    )
+
+
+def format_date_year(date_string: Optional[str]) -> str:
+    """Convierte fecha string a año"""
+    if date_string is None:
+        return "Actual"
+    try:
+        return str(datetime.strptime(date_string, "%Y-%m-%d").year)
+    except Exception:
+        return "Actual"
+
+
+def experience_item(job: dict) -> rx.Component:
+    """
+    Componente individual para cada trabajo
+    """
+    name = job["name"]
+    start_date = job["startDate"]
+    end_date = job.get("endDate")
+    position = job["position"]
+    summary = job["summary"]
+    url = job.get("url")
+
+    # Formatear años
+    start_year = format_date_year(start_date)
+    end_year = format_date_year(end_date)
+    years = f"{start_year} - {end_year}"
+
+    # Crear enlace del nombre de la empresa o texto plano
+    if url:
+        company_name = rx.link(
+            name,
+            href=url,
+            title=f"Ver {name}",
+            target="_blank",
+            rel="noopener noreferrer",
+            style={
+                "color": "#111",
+                "text_decoration": "none",
+                "_hover": {"text_decoration": "underline"},
+            },
+        )
+    else:
+        company_name = rx.text(name, style={"color": "#111"})
+
+    return rx.list_item(
+        rx.box(
+            # Header con empresa, posición y fechas
+            rx.box(
+                # Información de la empresa y posición
+                rx.box(
+                    rx.heading(
+                        company_name,
+                        level=3,
+                        style={
+                            "font_weight": "500",
+                            "color": "#111",
+                            "margin": "0",
+                        },
+                    ),
+                    rx.heading(
+                        position,
+                        level=4,
+                        style={
+                            "color": "#222",
+                            "font_weight": "400",
+                            "margin": "0",
+                        },
+                    ),
+                ),
+                # Fechas
+                rx.box(
+                    rx.text(
+                        years,
+                        # tag="time",
+                        datetime=start_date if start_date else "",
+                        data_title=start_date if start_date else "",
+                        style=time_style,
+                        class_name="tooltip-trigger" if start_date else "",
+                    ),
+                    style={
+                        "display": "flex",
+                        "align_items": "center",
+                        "color": "#555",
+                        "font_size": "0.85rem",
+                    },
+                ),
+                style=header_style,
+            ),
+            # Footer con resumen
+            rx.box(
+                rx.text(
+                    summary,
+                    style={
+                        "color": "#666",
+                        "font_size": "0.9rem",
+                        "line_height": "1.5",
+                        "margin": "0",
+                    },
+                ),
+                # tag="footer",
+            ),
+            # tag="article",
+        )
+    )
+
+
+def experience_section() -> rx.Component:
+    """
+    Sección completa de experiencia laboral
+    """
+    return rx.fragment(
+        section_component(
+            title="Experiencia laboral",
+            children=[
+                rx.unordered_list(
+                    *[experience_item(job) for job in work], style=ul_style
+                )
+            ],
+        ),
+        # Estilos CSS para tooltips y responsive
+    )
+
+
+# Estilos definidos como diccionarios
+ul_style = {
+    "display": "flex",
+    "flex_direction": "column",
+    "gap": "32px",
+    "list_style": "none",
+    "margin": "0",
+    "padding": "0",
+}
+
+header_style = {
+    "display": "flex",
+    "justify_content": "space-between",
+    "align_items": "flex-start",
+    "margin_bottom": "4px",
+}
+
+time_style = {
+    "color": "#555",
+    "font_size": "0.85rem",
+    "min_width": "102px",
+    "cursor": "default",
+}
+
+
+# Versión alternativa con highlights (si los quieres mostrar)
+def experience_item_with_highlights(job: dict) -> rx.Component:
+    """
+    Versión alternativa que incluye highlights/logros
+    """
+    name = job["name"]
+    start_date = job["startDate"]
+    end_date = job.get("endDate")
+    position = job["position"]
+    summary = job["summary"]
+    highlights = job.get("highlights", [])
+    url = job.get("url")
+
+    start_year = format_date_year(start_date)
+    end_year = format_date_year(end_date)
+
+    if url:
+        company_name = rx.link(
+            name,
+            href=url,
+            title=f"Ver {name}",
+            target="_blank",
+            rel="noopener noreferrer",
+            style={
+                "color": "#111",
+                "text_decoration": "none",
+                "_hover": {"text_decoration": "underline"},
+            },
+        )
+    else:
+        company_name = rx.text(name, style={"color": "#111"})
+
+    return rx.list_item(
+        rx.box(
+            # Header
+            rx.box(
+                rx.box(
+                    rx.heading(
+                        company_name,
+                        level=3,
+                        style={"font_weight": "500", "color": "#111", "margin": "0"},
+                    ),
+                    rx.heading(
+                        position,
+                        level=4,
+                        style={"color": "#222", "font_weight": "400", "margin": "0"},
+                    ),
+                ),
+                rx.box(
+                    rx.text(
+                        start_year,
+                        # tag="time",
+                        style=time_style,
+                    ),
+                    rx.text(" - "),
+                    rx.text(
+                        end_year,
+                        # tag="time",
+                        style=time_style,
+                    ),
+                    style={
+                        "display": "flex",
+                        "align_items": "center",
+                        "color": "#555",
+                        "font_size": "0.85rem",
+                    },
+                ),
+                style=header_style,
+            ),
+            # Footer con resumen y highlights
+            rx.box(
+                rx.text(
+                    summary,
+                    style={
+                        "color": "#666",
+                        "font_size": "0.9rem",
+                        "line_height": "1.5",
+                        "margin": "0 0 8px 0",
+                    },
+                ),
+                (
+                    rx.unordered_list(
+                        *[
+                            rx.list_item(
+                                highlight,
+                                style={"color": "#666", "font_size": "0.85rem"},
+                            )
+                            for highlight in highlights
+                        ],
+                        style={"margin": "0", "padding_left": "20px"},
+                    )
+                    if highlights
+                    else rx.fragment()
+                ),
+                # tag="footer",
+            ),
+            # tag="article",
+        )
+    )
+
+
+def experience_section_with_highlights() -> rx.Component:
+    """
+    Version con highlights incluidos
+    """
+    return section_component(
+        title="Experiencia laboral",
+        children=[
+            rx.unordered_list(
+                *[experience_item_with_highlights(job) for job in work], style=ul_style
+            )
+        ],
     )

@@ -15,7 +15,7 @@ COFFEE_URL = "https://buymeacoffee.com/mouredev"
 
 # Contacto
 MYPUBLICINBOX_URL = "https://mypublicinbox.com/mouredev"
-EMAIL = "braismoure@mouredev.com"
+EMAIL = "marcosferretoestrada@gmail.com"
 PHONE = "+506 6352-8891"
 
 basics: dict[str, dict[str, str] | list[dict[str, str]] | str] = {
