@@ -4,6 +4,7 @@ import reflex as rx
 
 from portfolio import constants
 from portfolio.components.styles.styles import FooterStyle
+from portfolio.constants import basics
 
 
 def media(name: str, link: str) -> rx.Component:
@@ -30,13 +31,16 @@ def footer2() -> rx.vstack:
 
 
 def footer():
+    # Extraemos datos del basics
     """Pie de página."""
     current_year = datetime.date.today().year
     return rx.vstack(
         rx.hstack(
-            rx.link(rx.icon(tag="github"), href="https://github.com/username"),
-            rx.link(rx.icon(tag="linkedin"), href="https://linkedin.com/in/username"),
-            rx.link(rx.icon(tag="twitter"), href="https://twitter.com/username"),
+            rx.link(rx.icon(tag="github"), href="https://github.com/FerretoDev"),
+            rx.link(
+                rx.icon(tag="linkedin"), href="https://linkedin.com/in/marcos-ferreto/"
+            ),
+            rx.link(rx.icon(tag="twitter"), href="https://x.com/MarcosFerretoE"),
             spacing="4",
         ),
         rx.text(

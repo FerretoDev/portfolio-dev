@@ -72,38 +72,40 @@ def skills_section() -> rx.Component:
     ]
 
     return section(
-        rx.vstack(
-            rx.heading(
-                "Mis Habilidades",
-                **SectionStyle.title_style,
+        children=[
+            rx.vstack(
+                rx.heading(
+                    "Mis Habilidades",
+                    **SectionStyle.title_style,
+                ),
+                rx.hstack(
+                    *[
+                        rx.box(
+                            rx.heading(
+                                skill["title"],
+                                **SkillsStyle.hero_text,
+                            ),
+                            rx.hstack(
+                                *[
+                                    rx.badge(tech, margin_x="0.25rem")
+                                    for tech in skill["technologies"]
+                                ]
+                            ),
+                            style=rx.Style(
+                                {
+                                    "background": "rgba(31, 41, 55, 0.5)",
+                                    "border-radius": "0.75rem",
+                                    "padding": "1.5rem",
+                                    "transition": "transform 0.3s ease",
+                                    "hover": {"transform": "translateY(-10px)"},
+                                }
+                            ),
+                        )
+                        for skill in skills
+                    ],
+                    width="100%",
+                    # spacing="4",
+                ),
             ),
-            rx.hstack(
-                *[
-                    rx.box(
-                        rx.heading(
-                            skill["title"],
-                            **SkillsStyle.hero_text,
-                        ),
-                        rx.hstack(
-                            *[
-                                rx.badge(tech, margin_x="0.25rem")
-                                for tech in skill["technologies"]
-                            ]
-                        ),
-                        style=rx.Style(
-                            {
-                                "background": "rgba(31, 41, 55, 0.5)",
-                                "border-radius": "0.75rem",
-                                "padding": "1.5rem",
-                                "transition": "transform 0.3s ease",
-                                "hover": {"transform": "translateY(-10px)"},
-                            }
-                        ),
-                    )
-                    for skill in skills
-                ],
-                width="100%",
-                # spacing="4",
-            ),
-        ),
+        ],
     )

@@ -47,40 +47,44 @@ def projects_section():
     ]
 
     return section(
-        rx.vstack(
-            rx.heading(
-                "Proyectos Destacados",
-                **SectionStyle.title_style,
+        children=[
+            rx.fragment(
+                rx.heading(
+                    "Proyectos Destacados",
+                    **SectionStyle.title_style,
+                ),
+                rx.hstack(
+                    *[
+                        rx.box(
+                            rx.heading(
+                                project["title"], size="2", margin_bottom="1rem"
+                            ),
+                            rx.text(
+                                project["description"],
+                                color="#D1D5DB",
+                                margin_bottom="1rem",
+                            ),
+                            rx.hstack(
+                                *[
+                                    rx.badge(tech, margin_x="0.25rem")
+                                    for tech in project["technologies"]
+                                ]
+                            ),
+                            style=rx.Style(
+                                {
+                                    "background": "rgba(31, 41, 55, 0.5)",
+                                    "border-radius": "0.75rem",
+                                    "padding": "1.5rem",
+                                    "transition": "transform 0.3s ease",
+                                    "hover": {"transform": "translateY(-10px)"},
+                                },
+                            ),
+                        )
+                        for project in projects
+                    ],
+                    width="100%",
+                    # spacing="4",
+                ),
             ),
-            rx.hstack(
-                *[
-                    rx.box(
-                        rx.heading(project["title"], size="2", margin_bottom="1rem"),
-                        rx.text(
-                            project["description"],
-                            color="#D1D5DB",
-                            margin_bottom="1rem",
-                        ),
-                        rx.hstack(
-                            *[
-                                rx.badge(tech, margin_x="0.25rem")
-                                for tech in project["technologies"]
-                            ]
-                        ),
-                        style=rx.Style(
-                            {
-                                "background": "rgba(31, 41, 55, 0.5)",
-                                "border-radius": "0.75rem",
-                                "padding": "1.5rem",
-                                "transition": "transform 0.3s ease",
-                                "hover": {"transform": "translateY(-10px)"},
-                            },
-                        ),
-                    )
-                    for project in projects
-                ],
-                width="100%",
-                # spacing="4",
-            ),
-        ),
+        ],
     )
