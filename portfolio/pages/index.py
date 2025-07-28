@@ -21,8 +21,8 @@ def index() -> rx.Component:
             about_section(),
             experience_section(),
             education_section(),
-            # projects_section(),
-            # skills_section(),
-            # footer(),
+            projects_section(),
+            skills_section(),
+            footer(),
         ],
     )
