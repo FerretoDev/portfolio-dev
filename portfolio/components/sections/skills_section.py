@@ -4,7 +4,7 @@ from typing import Callable, Dict, List, Optional
 import reflex as rx
 
 from portfolio.components.section import section
-from portfolio.components.styles.styles import GlobalThemeVariables, SectionStyle
+from portfolio.components.styles.styles import GlobalThemeVariables, section_style
 
 
 @dataclass

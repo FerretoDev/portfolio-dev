@@ -4,7 +4,7 @@ import reflex as rx
 
 from portfolio.components.card import card
 from portfolio.components.section import section
-from portfolio.components.styles.styles import GlobalThemeVariables, SectionStyle
+from portfolio.components.styles.styles import GlobalThemeVariables, section_style
 
 # Simulamos la importación de datos de proyectos
 # En tu caso real, importarías desde tu archivo de datos

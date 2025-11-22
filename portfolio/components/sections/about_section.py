@@ -1,7 +1,7 @@
 import reflex as rx
 
 from portfolio.components.section import section
-from portfolio.components.styles.styles import GlobalThemeVariables, SectionStyle
+from portfolio.components.styles.styles import GlobalThemeVariables, section_style
 
 
 def text_component(text: str) -> rx.Component:

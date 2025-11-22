@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any
+from typing import Any, Literal
 
 import reflex as rx
 from reflex.constants.colors import Color
@@ -19,7 +19,7 @@ class GlobalThemeVariables(Enum):
         "--glass-border": "rgba(255, 255, 255, 0.1)",  # Borde glass oscuro
     }
     # Light Theme
-    LIGHT: dict[str, str] = {
+    LIGHT = {
         "--background": "#f0f4f8",  # Fondo principal claro
         "--foreground": "#1a202c",  # Color de texto principal claro
         "--primary": "#00b4d8",  # Color primario (botones, acentos)
@@ -30,13 +30,13 @@ class GlobalThemeVariables(Enum):
     }
 
     # Estilos base
-    BASE_STYLE: dict[str, str] = {
+    BASE_STYLE = {
         "font_family": "Inter, sans-serif",  # Fuente principal
         "transition": "all 0.3s ease",  # Transiciones suaves globales
     }
 
     # Estilos de vidrio (glassmorphism)
-    GLASS_STYLE: dict[str, str] = {
+    GLASS_STYLE = {
         "backdrop_filter": "blur(10px)",  # Efecto de desenfoque
         "border_radius": "10px",  # Bordes redondeados
         "transition": "background-color 0.3s ease, border-color 0.3s ease",
@@ -98,7 +98,7 @@ The CardStyle
 """
 
 
-def color(shade: int) -> Color:
+def color(shade: Literal[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) -> Color:
     return rx.color("slate", shade)
 
 
@@ -107,7 +107,7 @@ TextShared: dict[str, str] = {"size": "2", "weight": "bold"}
 
 @dataclass
 class CardStyle:
-    base: dict[str, str] = field(
+    base: dict[str, str | Color] = field(
         default_factory=lambda: {
             "align": "start",
             "justify": "start",
@@ -125,7 +125,7 @@ class CardStyle:
         },
     )
 
-    icon: dict[str, str] = field(
+    icon: dict[str, str | int] = field(
         default_factory=lambda: {
             "size": 21,
             "position": "absolute",
@@ -155,16 +155,16 @@ class CardStyle:
         },
     )
 
-    title: dict[str, str] = field(
+    title: dict[str, str | Color] = field(
         default_factory=lambda: {"color": color(12), **TextShared},
     )
 
-    description: dict[str, str] = field(
+    description: dict[str, str | Color] = field(
         default_factory=lambda: {"color": color(11), **TextShared},
     )
 
 
-CardStyle: CardStyle = CardStyle()
+card_style: CardStyle = CardStyle()
 
 """
 The FooterStyle
@@ -196,19 +196,19 @@ class FooterStyle:
             "padding": "1em 0em",
         },
     )
-    link: dict[str, str] = field(
+    link: dict[str, str | Color] = field(
         default_factory=lambda: {
             "color": rx.color("slate", 11),
             "weight": "medium",
             "size": "2",
         },
     )
-    brand: dict[str, str] = field(
+    brand: dict[str, str | Color] = field(
         default_factory=lambda: {"color": active, "size": "2"},
     )
 
 
-FooterStyle: FooterStyle = FooterStyle()
+footer_style: FooterStyle = FooterStyle()
 
 """
 The NavbarStyle
@@ -217,7 +217,7 @@ The NavbarStyle
 
 @dataclass
 class NavbarStyle:
-    navigation: dict[str, str] = field(
+    navigation: dict[str, Any] = field(
         default_factory=lambda: {
             "display": "grid",
             "grid-template-columns": "repeat(auto - fit, minmax(300px, 1fr))",
@@ -243,19 +243,19 @@ class NavbarStyle:
             "padding": "1em 0em",
         },
     )
-    link: dict[str, str] = field(
+    link: dict[str, str | Color] = field(
         default_factory=lambda: {
             "color": rx.color("slate", 11),
             "weight": "medium",
             "size": "2",
         },
     )
-    brand: dict[str, str] = field(
+    brand: dict[str, str | Color] = field(
         default_factory=lambda: {"color": active, "size": "2"},
     )
 
 
-NavbarStyle: NavbarStyle = NavbarStyle()
+navbar_style: NavbarStyle = NavbarStyle()
 
 
 """
@@ -265,7 +265,7 @@ The HeaderStyle
 
 @dataclass
 class HeaderStyle:
-    base: dict[str, str] = field(
+    base: dict[str, str | Any] = field(
         default_factory=lambda: {
             "position": "fixed",
             "width": "100%",
@@ -283,7 +283,7 @@ class HeaderStyle:
         },
     )
 
-    content: dict[str, str] = field(
+    content: dict[str, str | Any] = field(
         default_factory=lambda: {
             "bg": rx.color_mode_cond(
                 light=GlobalThemeVariables.LIGHT.value["--glass-background"],
@@ -296,7 +296,7 @@ class HeaderStyle:
     )
 
 
-HeaderStyle: HeaderStyle = HeaderStyle()
+header_style: HeaderStyle = HeaderStyle()
 
 
 """
@@ -323,7 +323,7 @@ class LayoutStyle:
     )
 
 
-LayoutStyle: LayoutStyle = LayoutStyle()
+layout_style: LayoutStyle = LayoutStyle()
 
 """
 The PageStyle
@@ -332,7 +332,7 @@ The PageStyle
 
 @dataclass
 class PageStyle:
-    background: dict[str, str] = field(
+    background: dict[str, Any] = field(
         default_factory=lambda: {
             "transition": "background 0.3s ease, color 0.3s ease",
             "background": rx.color_mode_cond(
@@ -344,7 +344,7 @@ class PageStyle:
     )
 
 
-PageStyle: PageStyle = PageStyle()
+page_style: PageStyle = PageStyle()
 
 
 """
@@ -385,4 +385,4 @@ class SectionStyle:
     )
 
 
-SectionStyle: SectionStyle = SectionStyle()
+section_style: SectionStyle = SectionStyle()

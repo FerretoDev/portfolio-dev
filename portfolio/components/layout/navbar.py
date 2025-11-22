@@ -6,7 +6,7 @@ from reflex.constants.colors import Color
 from portfolio.components.button_color_mode import button_color_mode
 
 # from portfolio.components.button_color_mode import button_color_mode
-from portfolio.components.styles.styles import NavbarStyle, SectionStyle
+from portfolio.components.styles.styles import NavbarStyle, section_style
 
 
 def media(name: str, link: str) -> rx.Component:
