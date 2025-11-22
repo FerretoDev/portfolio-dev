@@ -4,7 +4,7 @@ from typing import List, Optional
 import reflex as rx
 
 from portfolio.components.section import section
-from portfolio.components.styles.styles import SectionStyle
+from portfolio.components.styles.styles import section_style
 
 # Simulamos la importación de datos de educación
 # En tu caso real, importarías desde tu archivo de datos

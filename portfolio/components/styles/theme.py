@@ -1,5 +1,5 @@
-from enum import Enum
 from dataclasses import dataclass, field
+from enum import Enum
 
 import reflex as rx
 
@@ -12,7 +12,6 @@ class Theme(Enum):
 
 # Estado para el tema
 class ThemeState(rx.State):
-
     theme: Theme = Theme.DARK
     theme_loaded: bool = False
 
@@ -32,7 +31,7 @@ class ThemeState(rx.State):
 # Estilos base para cada tema
 @dataclass
 class THEME_STYLESS:
-    base: dict[str, str] = field(
+    base: dict[Theme, dict[str, str]] = field(
         default_factory=lambda: {
             Theme.LIGHT: {
                 "background": "radial-gradient(circle at 10% 20%, rgb(255, 255, 255) 0%, rgb(240, 240, 240) 90.1%)",
@@ -54,7 +53,7 @@ class THEME_STYLESS:
     )
 
 
-THEME_STYLESS: THEME_STYLESS = THEME_STYLESS()
+THEME_STYLESS: THEME_STYLESS = THEME_STYLESS()  # type: ignore
 
 THEME_STYLES = {
     Theme.LIGHT: {
@@ -77,11 +76,11 @@ THEME_STYLES = {
 
 
 # Componente para el toggle de tema
-def theme_toggle():
+def theme_toggle() -> rx.Component:
     return rx.box(
         rx.button(
             rx.cond(ThemeState.theme == Theme.DARK, rx.icon("sun"), rx.icon("moon")),
-            on_click=ThemeState.handle_theme_change,
+            on_click=ThemeState.handle_theme_change,  # Type: ignore
             bg="transparent",
             _hover={"color": "cyan.400"},
         ),
