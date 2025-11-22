@@ -10,5 +10,5 @@ def container(*children: Any, **props: Any) -> rx.Component:
         max_width="1200px",
         margin_x="auto",
         padding_x=["1rem", "2rem", "3rem"],
-        **props
+        **props,
     )
