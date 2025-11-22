@@ -1,6 +1,6 @@
 import random
 from dataclasses import dataclass, field
-from typing import List
+from typing import Any, List
 
 import reflex as rx
 
@@ -21,7 +21,7 @@ def generate_space_layer(
 ) -> SpaceLayerConfig:
     """Genera una capa de estrellas con configuración mejorada."""
     # Generamos las estrellas con posiciones aleatorias
-    star_shadows = []
+    star_shadows: List[str] = []
     for _ in range(total_stars):
         color = random.choice(STAR_COLORS)
         x = random.randint(1, 100)
@@ -38,7 +38,7 @@ class StarfieldBackground:
     """Clase para el fondo estrellado."""
 
     # Estilos para el contenedor principal
-    container: dict[str, str] = field(
+    container: dict[str, Any] = field(
         default_factory=lambda: {
             "width": "100vw",
             "height": "100vh",
@@ -51,7 +51,7 @@ class StarfieldBackground:
     )
 
     # Configuraciones para las diferentes capas de estrellas
-    stars_small: dict[str, str] = field(
+    stars_small: dict[str, Any] = field(
         default_factory=lambda: {
             "position": "absolute",
             "width": "1px",
@@ -64,7 +64,7 @@ class StarfieldBackground:
         }
     )
 
-    stars_medium: dict[str, str] = field(
+    stars_medium: dict[str, Any] = field(
         default_factory=lambda: {
             "position": "absolute",
             "width": "2px",
@@ -77,7 +77,7 @@ class StarfieldBackground:
         }
     )
 
-    stars_large: dict[str, str] = field(
+    stars_large: dict[str, Any] = field(
         default_factory=lambda: {
             "position": "absolute",
             "width": "3px",
@@ -91,7 +91,7 @@ class StarfieldBackground:
     )
 
     # Definición de las animaciones para cada capa
-    keyframes: dict[str, dict[str, dict[str, str]]] = field(
+    keyframes: dict[str, Any] = field(
         default_factory=lambda: {
             "@keyframes animateStarsSmall": {
                 "from": {"transform": "translateY(0)"},
@@ -125,19 +125,19 @@ def create_starfield() -> rx.Component:
             ),
             # Capa de estrellas pequeñas
             rx.box(
-                **starfield_bg.stars_small,
+                style=starfield_bg.stars_small,
             ),
             # Capa de estrellas medianas
             rx.box(
-                **starfield_bg.stars_medium,
+                style=starfield_bg.stars_medium,
             ),
             # Capa de estrellas grandes
             rx.box(
-                **starfield_bg.stars_large,
+                style=starfield_bg.stars_large,
             ),
-            **starfield_bg.container,
+            style=starfield_bg.container,
         ),
-        **starfield_bg.keyframes,
+        style=starfield_bg.keyframes,
         width="100%",
         height="100vh",
         background="#171717",
