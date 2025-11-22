@@ -1,5 +1,7 @@
 """Tal vez se utilice este fichero"""
 
+from typing import List
+
 import reflex as rx
 
 
@@ -14,7 +16,7 @@ def project_card(title: str, description: str, tags: List[str]) -> rx.Component:
                     dark=rx.color("slate", 3),
                 ),
             ),
-            rx.wrap(
+            rx.flex(
                 *[
                     rx.badge(
                         tag,
@@ -24,6 +26,7 @@ def project_card(title: str, description: str, tags: List[str]) -> rx.Component:
                     )
                     for tag in tags
                 ],
+                wrap="wrap",
             ),
             align_items="start",
             spacing="1",
