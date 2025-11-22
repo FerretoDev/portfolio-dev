@@ -1,22 +1,19 @@
-from dataclasses import dataclass, field
-from typing import List, Optional
-
 import reflex as rx
 
 from portfolio.components.styles.styles import CardStyle
 
 
-def card(title: str, description: str, tag: str):
+def card(title: str, description: str, tag: str) -> rx.Component:
     return rx.hstack(
         rx.vstack(
-            rx.text(title, **CardStyle.title),
+            rx.text(title, style=CardStyle.title),
             rx.text(
                 description,
-                **CardStyle.description,
+                style=CardStyle.description,
             ),
-            **CardStyle.stack,
+            style=CardStyle.stack,
         ),
-        rx.box(**CardStyle.background),
-        rx.icon(tag, **CardStyle.icon),
-        **CardStyle.base,
+        rx.box(style=CardStyle.background),
+        rx.icon(tag=tag, style=CardStyle.icon),  # type: ignore
+        style=CardStyle.base,
     )
