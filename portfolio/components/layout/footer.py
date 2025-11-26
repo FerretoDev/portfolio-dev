@@ -4,30 +4,12 @@ import reflex as rx
 
 from portfolio import constants
 from portfolio.components.styles.styles import FooterStyle
-from portfolio.constants import basics
+
+# from portfolio.constants import basics
 
 
 def media(name: str, link: str) -> rx.Component:
     return rx.link(rx.text(name, **FooterStyle.link), href=link)
-
-
-# Original
-def footer2() -> rx.vstack:
-    return rx.vstack(
-        rx.divider(max_width="35em", color=rx.color("slate", 11)),
-        rx.hstack(
-            rx.text(
-                f"© 2024-{datetime.date.today().year} Marcos Ferreto Estrada v1.",
-                **FooterStyle.brand,
-            ),
-            rx.hstack(
-                media("Twitter", link=constants.TWITTER_X_URL),
-                media("GitHub", link=constants.GITHUB_URL),
-            ),
-            **FooterStyle.content,
-        ),
-        **FooterStyle.base,
-    )
 
 
 def footer():
