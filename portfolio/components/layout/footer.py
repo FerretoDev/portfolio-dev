@@ -43,7 +43,7 @@ def footer():
     )
 
 
-link_style = {
+link_style: dict[str, dict[str, str] | str] = {
     "color": "#777",
     "display": "inline-flex",
     "align_items": "center",
