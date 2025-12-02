@@ -1,9 +1,7 @@
-from datetime import datetime
-from typing import Optional
-
 import reflex as rx
 
 from portfolio.components.section import section_component
+from portfolio.utils.date_utils import format_date_to_year
 
 # Simulamos la importación de datos de trabajo
 # En tu caso real, importarías desde tu archivo de datos
@@ -36,16 +34,6 @@ work = [
 ]
 
 
-def format_date_year(date_string: Optional[str]) -> str:
-    """Convierte fecha string a año"""
-    if date_string is None:
-        return "Actual"
-    try:
-        return str(datetime.strptime(date_string, "%Y-%m-%d").year)
-    except Exception:
-        return "Actual"
-
-
 def experience_item(job: dict) -> rx.Component:
     """
     Componente individual para cada trabajo
@@ -58,8 +46,8 @@ def experience_item(job: dict) -> rx.Component:
     url = job.get("url")
 
     # Formatear años
-    start_year = format_date_year(start_date)
-    end_year = format_date_year(end_date)
+    start_year = format_date_to_year(start_date)
+    end_year = format_date_to_year(end_date)
     years = f"{start_year} - {end_year}"
 
     # Crear enlace del nombre de la empresa o texto plano
@@ -196,8 +184,8 @@ def experience_item_with_highlights(job: dict) -> rx.Component:
     highlights = job.get("highlights", [])
     url = job.get("url")
 
-    start_year = format_date_year(start_date)
-    end_year = format_date_year(end_date)
+    start_year = format_date_to_year(start_date)
+    end_year = format_date_to_year(end_date)
 
     if url:
         company_name = rx.link(
