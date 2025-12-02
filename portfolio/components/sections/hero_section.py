@@ -97,7 +97,7 @@ class HeroStyle:
     )
 
 
-HeroStyle: HeroStyle = HeroStyle()
+HeroStyle: HeroStyle = HeroStyle()  # type: ignore
 
 
 def hero_section1() -> rx.Component:
@@ -112,18 +112,15 @@ def hero_section1() -> rx.Component:
                 rx.vstack(
                     rx.heading(
                         "Marcos Ferreto Estrada",
-                        **HeroStyle.hero_title,
+                        style=HeroStyle.hero_title,
                     ),
                     rx.text(
                         "Especializado en desarrollo de software, modelación matemática y análisis de datos. "
                         "Creando soluciones innovadoras con un enfoque analítico y técnico.",
-                        **HeroStyle.hero_h2,
+                        style=HeroStyle.hero_h2,
                     ),
                     rx.hstack(
-                        rx.icon(
-                            "map-pinned",
-                            # _as="span",
-                        ),
+                        rx.icon(tag="map-pinned"),
                         rx.text(
                             "Buenos Aires de Puntarenas, Costa Rica",
                             _as="span",

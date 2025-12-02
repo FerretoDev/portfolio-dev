@@ -1,9 +1,7 @@
-from datetime import datetime
-from typing import Optional
-
 import reflex as rx
 
 from portfolio.components.section import section_component
+from portfolio.utils.date_utils import format_date_to_year
 
 # Simulamos la importación de datos de educación
 # En tu caso real, importarías desde tu archivo de datos
@@ -17,16 +15,6 @@ education = [
 ]
 
 
-def format_education_year(date_string: Optional[str]) -> str:
-    """Convierte fecha string a año"""
-    if date_string is None:
-        return "Actual"
-    try:
-        return str(datetime.strptime(date_string, "%Y-%m-%d").year)
-    except Exception:
-        return "Actual"
-
-
 def education_item(edu: dict) -> rx.Component:
     """
     Componente individual para cada educación
@@ -37,8 +25,8 @@ def education_item(edu: dict) -> rx.Component:
     area = edu["area"]
 
     # Formatear años
-    start_year = format_education_year(start_date)
-    end_year = format_education_year(end_date)
+    start_year = format_date_to_year(start_date)
+    end_year = format_date_to_year(end_date)
     years = f"{start_year} - {end_year}"
 
     return rx.list_item(
@@ -188,8 +176,8 @@ def education_item_extended(edu: dict) -> rx.Component:
     description = edu.get("description", "")
     highlights = edu.get("highlights", [])
 
-    start_year = format_education_year(start_date)
-    end_year = format_education_year(end_date)
+    start_year = format_date_to_year(start_date)
+    end_year = format_date_to_year(end_date)
     years = f"{start_year} - {end_year}"
 
     return rx.list_item(
@@ -369,8 +357,8 @@ def education_item_compact(edu: dict) -> rx.Component:
     end_date = edu.get("endDate")
     area = edu["area"]
 
-    start_year = format_education_year(start_date)
-    end_year = format_education_year(end_date)
+    start_year = format_date_to_year(start_date)
+    end_year = format_date_to_year(end_date)
     years = f"{start_year} - {end_year}"
 
     return rx.box(

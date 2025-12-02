@@ -1,10 +1,11 @@
 from dataclasses import dataclass, field
-from typing import Callable, Dict, List
+from typing import List
 
 import reflex as rx
 
 from portfolio.components.section import section_component
 from portfolio.components.styles.styles import GlobalThemeVariables
+from portfolio.utils.icons import SKILLS_ICONS
 
 
 @dataclass
@@ -67,149 +68,6 @@ skills = [
     {"name": "Python"},
     {"name": "PostgreSQL"},
 ]
-
-
-# Componentes de iconos (simulados con emojis)
-# En tu implementación real, usarías SVGs o iconos reales
-def html_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/html5.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def css_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/css3.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def javascript_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/javascript.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def typescript_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/typescript.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def react_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/react.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def node_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/nodedotjs.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def mysql_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/mysql.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def git_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/git.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def github_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/github.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def next_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/nextdotjs.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def tailwind_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/tailwindcss.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def swift_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/swift.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def swiftui_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/swiftui.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def kotlin_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/kotlin.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def flutter_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/flutter.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def python_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/python.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-def postgresql_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/postgresql.svg",
-        style={"width": "16px", "height": "16px"},
-    )
-
-
-# Mapeo de iconos de habilidades
-SKILLS_ICONS: Dict[str, Callable] = {
-    "HTML": html_icon,
-    "CSS": css_icon,
-    "JavaScript": javascript_icon,
-    "TypeScript": typescript_icon,
-    "React": react_icon,
-    "Node": node_icon,
-    "MySQL": mysql_icon,
-    "Git": git_icon,
-    "GitHub": github_icon,
-    "Next": next_icon,  # Mapeo especial para Next.js
-    "Tailwind": tailwind_icon,
-    "Swift": swift_icon,
-    "SwiftUI": swiftui_icon,
-    "Kotlin": kotlin_icon,
-    "Flutter": flutter_icon,
-    "Python": python_icon,
-    "PostgreSQL": postgresql_icon,
-}
 
 
 def skill_item(skill: dict) -> rx.Component:

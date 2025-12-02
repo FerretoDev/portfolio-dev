@@ -1,6 +1,7 @@
 import reflex as rx
 
 from portfolio.components.section import section_component
+from portfolio.utils.icons import github_icon
 
 # Simulamos la importación de datos de proyectos
 # En tu caso real, importarías desde tu archivo de datos
@@ -22,14 +23,6 @@ projects = [
         "highlights": ["Python", "Reflex", "FastAPI", "CSS"],
     },
 ]
-
-
-# Componente de icono GitHub (simulado)
-def github_icon():
-    return rx.image(
-        src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/github.svg",
-        style={"width": "16px", "height": "16px"},
-    )
 
 
 def project_item(project: dict) -> rx.Component:
