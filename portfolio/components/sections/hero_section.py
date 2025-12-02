@@ -3,7 +3,7 @@ from typing import Any
 
 import reflex as rx
 
-from portfolio.components.section import section
+from portfolio.components.section import section_component
 from portfolio.components.styles.styles import GlobalThemeVariables
 from portfolio.constants import basics
 
@@ -102,65 +102,63 @@ HeroStyle: HeroStyle = HeroStyle()
 
 def hero_section1() -> rx.Component:
     """Sección principal del hero."""
-    return rx.fragment(
-        section(
-            children=[
-                rx.box(
-                    rx.avatar(
-                        src="Designer.jpeg",
-                        **HeroStyle.hero_image,
+    return section_component(
+        children=[
+            rx.box(
+                rx.avatar(
+                    src="Designer.jpeg",
+                    **HeroStyle.hero_image,
+                ),
+                rx.vstack(
+                    rx.heading(
+                        "Marcos Ferreto Estrada",
+                        **HeroStyle.hero_title,
                     ),
-                    rx.vstack(
-                        rx.heading(
-                            "Marcos Ferreto Estrada",
-                            **HeroStyle.hero_title,
+                    rx.text(
+                        "Especializado en desarrollo de software, modelación matemática y análisis de datos. "
+                        "Creando soluciones innovadoras con un enfoque analítico y técnico.",
+                        **HeroStyle.hero_h2,
+                    ),
+                    rx.hstack(
+                        rx.icon(
+                            "map-pinned",
+                            # _as="span",
                         ),
                         rx.text(
-                            "Especializado en desarrollo de software, modelación matemática y análisis de datos. "
-                            "Creando soluciones innovadoras con un enfoque analítico y técnico.",
-                            **HeroStyle.hero_h2,
-                        ),
-                        rx.hstack(
-                            rx.icon(
-                                "map-pinned",
-                                # _as="span",
-                            ),
-                            rx.text(
-                                "Buenos Aires de Puntarenas, Costa Rica",
-                                _as="span",
-                            ),
+                            "Buenos Aires de Puntarenas, Costa Rica",
                             _as="span",
-                            **HeroStyle.span,
                         ),
-                        rx.hstack(
-                            rx.button(
-                                "Ver Proyectos",
-                                # background_color=rx.color_mode_cond(
-                                #    light=GlobalThemeVariables.LIGHT.value["--primary"],
-                                #    dark=GlobalThemeVariables.DARK.value["--primary"],
-                                # ),
-                                background_color=rx.Color("accent", 11),
-                                color="white",
-                                padding_x="1.5rem",
-                                padding_y="0.75rem",
-                                margin_right="1rem",
-                            ),
-                            rx.button(
-                                "Descargar CV",
-                                background_color="transparent",
-                                border=f"1px solid {GlobalThemeVariables.LIGHT.value['--primary']}",
-                                color=rx.Color("accent", 11),
-                                padding_x="1.5rem",
-                                padding_y="0.75rem",
-                            ),
-                        ),
-                        # width="75%",
+                        _as="span",
+                        **HeroStyle.span,
                     ),
-                    # width="100%",
-                    **HeroStyle.info,
+                    rx.hstack(
+                        rx.button(
+                            "Ver Proyectos",
+                            # background_color=rx.color_mode_cond(
+                            #    light=GlobalThemeVariables.LIGHT.value["--primary"],
+                            #    dark=GlobalThemeVariables.DARK.value["--primary"],
+                            # ),
+                            background_color=rx.Color("accent", 11),
+                            color="white",
+                            padding_x="1.5rem",
+                            padding_y="0.75rem",
+                            margin_right="1rem",
+                        ),
+                        rx.button(
+                            "Descargar CV",
+                            background_color="transparent",
+                            border=f"1px solid {GlobalThemeVariables.LIGHT.value['--primary']}",
+                            color=rx.Color("accent", 11),
+                            padding_x="1.5rem",
+                            padding_y="0.75rem",
+                        ),
+                    ),
+                    # width="75%",
                 ),
-            ],
-        ),
+                # width="100%",
+                **HeroStyle.info,
+            ),
+        ],
         **HeroStyle.container,
     )
 
@@ -191,60 +189,58 @@ def hero_section() -> rx.Component:
         city = ""
         region = ""
 
-    return rx.fragment(
-        section(
-            children=[
-                rx.flex(
-                    # Sección de información
+    return section_component(
+        children=[
+            rx.flex(
+                # Sección de información
+                rx.box(
+                    rx.heading(name, level=1, style=h1_style),
+                    rx.heading(
+                        label,
+                        level=2,
+                        style=h2_style,
+                    ),
                     rx.box(
-                        rx.heading(name, level=1, style=h1_style),
-                        rx.heading(
-                            label,
-                            level=2,
-                            style=h2_style,
-                        ),
-                        rx.box(
-                            rx.icon("map-pin"),
-                            rx.text(
-                                rx.text(f"{city}, {region}"),
-                                style=location_style,
-                            ),
-                            _as="span",
+                        rx.icon("map-pin"),
+                        rx.text(
+                            rx.text(f"{city}, {region}"),
                             style=location_style,
                         ),
-                        rx.box(
-                            rx.hstack(
-                                *[
-                                    rx.link(
-                                        SOCIAL_ICONS.get(
-                                            profile.get("network", ""), rx.icon("link")
-                                        ),
-                                        href=profile.get("url", "#"),
-                                        style=link_style,
-                                        _as="a",
-                                    )
-                                    for profile in profiles
-                                    if isinstance(profile, dict)
-                                ],
-                            ),
-                            style={"margin_top": "0.5rem"},
-                        ),
-                        class_name="info",
-                        style=info_style,
+                        _as="span",
+                        style=location_style,
                     ),
-                    # Figura con imagen
                     rx.box(
-                        rx.avatar(
-                            src="Designer.jpeg",
-                            alt="Marcus",
-                            style=img_style,
+                        rx.hstack(
+                            *[
+                                rx.link(
+                                    SOCIAL_ICONS.get(
+                                        profile.get("network", ""), rx.icon("link")
+                                    ),
+                                    href=profile.get("url", "#"),
+                                    style=link_style,
+                                    _as="a",
+                                )
+                                for profile in profiles
+                                if isinstance(profile, dict)
+                            ],
                         ),
-                        style={"margin": "0"},
+                        style={"margin_top": "0.5rem"},
                     ),
-                    style=container_style,
+                    class_name="info",
+                    style=info_style,
                 ),
-            ],
-        ),
+                # Figura con imagen
+                rx.box(
+                    rx.avatar(
+                        src="Designer.jpeg",
+                        alt="Marcus",
+                        style=img_style,
+                    ),
+                    style={"margin": "0"},
+                ),
+                style=container_style,
+            ),
+        ],
     )
 
 
