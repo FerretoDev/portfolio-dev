@@ -1,10 +1,6 @@
-from typing import List, Optional
-
 import reflex as rx
 
-from portfolio.components.card import card
-from portfolio.components.section import section
-from portfolio.components.styles.styles import GlobalThemeVariables, section_style
+from portfolio.components.section import section_component
 
 # Simulamos la importación de datos de proyectos
 # En tu caso real, importarías desde tu archivo de datos
@@ -33,44 +29,6 @@ def github_icon():
     return rx.image(
         src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/github.svg",
         style={"width": "16px", "height": "16px"},
-    )
-
-
-def section_component(
-    title: Optional[str] = None, children: Optional[List[rx.Component]] = None
-) -> rx.Component:
-    """Componente Section (importado anteriormente)"""
-    if children is None:
-        children = []
-
-    section_content = []
-
-    if title:
-        section_content.append(
-            rx.heading(
-                title,
-                level=2,
-                style={
-                    "margin_bottom": "8px",
-                    "font_weight": "700",
-                    "line_height": "1.5",
-                    "font_size": "1.5rem",
-                },
-            )
-        )
-
-    section_content.extend(children)
-
-    return rx.box(
-        *section_content,
-        # tag="section",
-        style={
-            "max_width": "700px",
-            "margin": "0 auto 48px",
-            "@media (max-width: 700px)": {
-                "margin_bottom": "38px",
-            },
-        },
     )
 
 
