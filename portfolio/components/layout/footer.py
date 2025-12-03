@@ -4,11 +4,7 @@ import reflex as rx
 
 from portfolio import constants
 from portfolio.components.sections.common_styles import link_style
-from portfolio.components.styles.styles import (
-    FooterStyle,
-    footer_container_style,
-    footer_copyright_style,
-)
+from portfolio.components.styles.styles import FooterStyle
 
 
 def media(name: str, link: str) -> rx.Component:
@@ -44,11 +40,12 @@ def footer():
         ),
         rx.text(
             f"© 2024-{current_year} Marcos Eduardo Ferreto Estrada v1.",
-            style=footer_copyright_style,
+            size="2",  # Tamaño de Reflex (más confiable en Cloud)
+            color="#666",
+            text_align="center",  # Siempre centrado
         ),
         width="100%",
-        align_items="center",
+        align="center",  # Alineación de Reflex (más confiable)
         padding_y="3rem",
         spacing="4",
-        style=footer_container_style,
     )
