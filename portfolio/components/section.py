@@ -18,10 +18,18 @@ def section_component(
                 title,
                 level=2,
                 style={
-                    "margin_bottom": "8px",
+                    "margin_bottom": "16px",
                     "font_weight": "700",
-                    "line_height": "1.5",
-                    "font_size": "1.5rem",
+                    "line_height": "1.3",
+                    "font_size": "1.75rem",
+                    "@media (max-width: 768px)": {
+                        "font_size": "1.5rem",
+                        "margin_bottom": "12px",
+                    },
+                    "@media (max-width: 640px)": {
+                        "font_size": "1.35rem",
+                        "margin_bottom": "10px",
+                    },
                 },
             )
         )
@@ -30,12 +38,19 @@ def section_component(
 
     return rx.box(
         *section_content,
-        # tag="section",
+        as_="section",
         style={
-            "max_width": "700px",
+            "max_width": "800px",
             "margin": "0 auto 48px",
-            "@media (max-width: 700px)": {
+            "padding": "0 1rem",
+            "scroll_margin_top": "80px",  # Para navegación con scroll suave
+            "@media (max-width: 768px)": {
                 "margin_bottom": "38px",
+                "padding": "0 0.5rem",
+            },
+            "@media (max-width: 640px)": {
+                "margin_bottom": "28px",
+                "padding": "0",
             },
         },
     )

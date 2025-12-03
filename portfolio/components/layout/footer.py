@@ -36,11 +36,26 @@ def footer():
                 href=constants.TWITTER_X_URL,
                 style=link_style,
             ),
+            spacing="3",
         ),
         rx.text(
             f"© 2024-{current_year} Marcos Eduardo Ferreto Estrada v1.",
+            style={
+                "font_size": "0.875rem",
+                "color": "#666",
+                "@media (max-width: 640px)": {
+                    "font_size": "0.75rem",
+                    "text_align": "center",
+                },
+            },
         ),
         width="100%",
         align_items="center",
-        padding_y="2rem",
+        padding_y="3rem",
+        spacing="4",
+        style={
+            "@media (max-width: 640px)": {
+                "padding_y": "2rem",
+            },
+        },
     )

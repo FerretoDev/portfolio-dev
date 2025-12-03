@@ -15,6 +15,9 @@ def about_section() -> rx.Component:
                 text_component(
                     "Mi enfoque se centra en combinar rigor matemático con implementaciones de software eficientes y escalables, utilizando las últimas tecnologías en desarrollo y análisis de datos."
                 ),
+                spacing="3",
+                align_items="start",
+                width="100%",
             ),
         ],
     )
