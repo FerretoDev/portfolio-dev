@@ -506,3 +506,24 @@ layout_box_style: dict[str, str | dict] = {
         "padding": "0 1rem",
     },
 }
+
+
+"""
+Footer Styles
+"""
+
+
+footer_container_style: dict[str, str | dict] = {
+    "@media (max-width: 640px)": {
+        "padding_y": "2rem",
+    },
+}
+
+footer_copyright_style: dict[str, str | dict] = {
+    "font_size": "0.875rem",
+    "color": "#666",
+    "@media (max-width: 640px)": {
+        "font_size": "0.75rem",
+        "text_align": "center",
+    },
+}
