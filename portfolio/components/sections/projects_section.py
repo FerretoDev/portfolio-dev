@@ -18,7 +18,7 @@ def project_item(project: dict) -> rx.Component:
     highlights = project.get("highlights", [])
 
     # Construir el header del proyecto
-    header_elements = [
+    header_elements: list[rx.Component] = [
         rx.link(
             name,
             href=url,
