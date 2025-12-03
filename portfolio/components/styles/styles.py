@@ -50,7 +50,12 @@ def global_style() -> Any:
         "html": {
             "scroll_behavior": "smooth",  # Scroll suave para navegación
         },
-        "body, figure": {
+        "body": {
+            "margin": "0",
+            "padding": "0",
+            "font_family": "Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        },
+        "figure": {
             "margin": "0",
             "padding": "0",
         },
@@ -67,7 +72,7 @@ def global_style() -> Any:
         },
         "h1, h2, h3, h4": {
             "margin": "0",
-            "font_family": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans_serif",
+            "font_family": "inherit",
         },
         "p": {
             "color": "#666",
@@ -476,7 +481,6 @@ Layout Styles
 
 
 layout_box_style: dict[str, str | dict] = {
-    "font_family": "Menlo, Monaco, 'Lucida Console', 'Courier New', Courier, monospace",
     "letter_spacing": "-0.025rem",
     "margin": "0 auto",
     "padding": "0 2rem",
