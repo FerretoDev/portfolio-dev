@@ -73,6 +73,29 @@ def global_style() -> Any:
             "margin": "0",
             "text_wrap": "pretty",
         },
+        # Responsive typography
+        "@media (max-width: 768px)": {
+            "p": {
+                "font_size": "0.85rem",
+            },
+            "h1": {
+                "font_size": "1.75rem",
+            },
+            "h2": {
+                "font_size": "1.5rem",
+            },
+        },
+        "@media (max-width: 640px)": {
+            "p": {
+                "font_size": "0.8rem",
+            },
+            "h1": {
+                "font_size": "1.5rem",
+            },
+            "h2": {
+                "font_size": "1.25rem",
+            },
+        },
         ".print": {
             "display": "none !important",
         },
@@ -306,18 +329,21 @@ The LayoutStyle
 
 @dataclass
 class LayoutStyle:
-    base: dict[str, str] = field(
+    base: dict[str, str | dict] = field(
         default_factory=lambda: {
             "padding": "4rem",
             "margin": "auto",
             "width": "100%",
-        }
-    )
-    # Estilos responsive
-    style_mobile: dict[str, dict[str, str]] = field(
-        default_factory=lambda: {
-            "@media (width <= 700px)": {
+            "max_width": "800px",
+            "@media (max-width: 1024px)": {
+                "padding": "3rem",
+                "max_width": "100%",
+            },
+            "@media (max-width: 768px)": {
                 "padding": "2rem",
+            },
+            "@media (max-width: 640px)": {
+                "padding": "1rem",
             },
         }
     )
@@ -355,32 +381,34 @@ The SectionStyle
 @dataclass
 class SectionStyle:
     # Estilos base para la sección
-    section_style: dict[str, str] = field(
+    section_style: dict[str, str | dict] = field(
         default_factory=lambda: {
             "max_width": "700px",
             "margin": "0 auto 48px",
+            "@media (max-width: 768px)": {
+                "margin": "0 auto 38px",
+                "max_width": "100%",
+            },
+            "@media (max-width: 640px)": {
+                "margin": "0 auto 28px",
+            },
         }
     )
     # Estilos para el título
-    title_style: dict[str, str] = field(
+    title_style: dict[str, str | dict] = field(
         default_factory=lambda: {
             "level": "2",
             "margin_bottom": "8px",
             "font_weight": "700",
             "line_height": "1.5",
             "font_size": "1.5rem",
-            # "color": rx.color_mode_cond(
-            #    light=GlobalThemeVariables.LIGHT.value["--primary"],
-            #    dark=GlobalThemeVariables.DARK.value["--primary"],
-            # ),
-        }  # Este deberia ser utilizado en todos los componentes que usen el componente section
-    )
-    # Estilos responsive
-    section_style_mobile: dict[str, dict[str, str]] = field(
-        default_factory=lambda: {
-            "@media (width <= 700px)": {
-                "margin_bottom": "38px",
-            }
+            "@media (max-width: 768px)": {
+                "font_size": "1.35rem",
+            },
+            "@media (max-width: 640px)": {
+                "font_size": "1.25rem",
+                "margin_bottom": "6px",
+            },
         }
     )
 

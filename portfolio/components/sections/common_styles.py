@@ -1,5 +1,12 @@
 """Estilos comunes para las secciones del portfolio"""
 
+# Breakpoints para responsive design
+BREAKPOINTS = {
+    "mobile": "640px",  # Smartphones
+    "tablet": "768px",  # Tablets
+    "desktop": "1024px",  # Laptops/Desktop
+}
+
 # Estilos para listas
 list_vertical_style = {
     "display": "flex",
@@ -8,6 +15,9 @@ list_vertical_style = {
     "list_style": "none",
     "margin": "0",
     "padding": "0",
+    "@media (max-width: 640px)": {
+        "gap": "24px",  # Menos espacio en móvil
+    },
 }
 
 # Estilos para headers de items
@@ -16,6 +26,11 @@ item_header_style = {
     "justify_content": "space-between",
     "align_items": "flex-start",
     "margin_bottom": "4px",
+    "gap": "8px",
+    "@media (max-width: 640px)": {
+        "flex_direction": "column",
+        "gap": "4px",
+    },
 }
 
 # Estilos para fechas/tiempo
@@ -23,6 +38,10 @@ time_display_style = {
     "color": "#555",
     "font_size": "0.85rem",
     "min_width": "102px",
+    "@media (max-width: 640px)": {
+        "font_size": "0.75rem",
+        "min_width": "auto",
+    },
 }
 
 # Estilos para badges/highlights
@@ -33,6 +52,10 @@ badge_style = {
     "font_size": "0.6rem",
     "font_weight": "500",
     "padding": "0.2rem 0.6rem",
+    "@media (max-width: 640px)": {
+        "font_size": "0.55rem",
+        "padding": "0.15rem 0.5rem",
+    },
 }
 
 # Estilos para items de habilidades
@@ -46,6 +69,10 @@ skill_badge_style = {
     "font_weight": "500",
     "gap": "4px",
     "padding": "0.2rem 0.6rem",
+    "@media (max-width: 640px)": {
+        "font_size": "0.7rem",
+        "padding": "0.15rem 0.5rem",
+    },
 }
 
 # Estilos para artículos/cards
@@ -57,12 +84,23 @@ card_style = {
     "flex_direction": "column",
     "padding": "16px",
     "height": "100%",
+    "@media (max-width: 640px)": {
+        "padding": "12px",
+        "gap": "12px",
+    },
 }
 
 # Estilos para Hero Section
 h1_style = {
     "font_size": "2rem",
     "margin": "0",
+    "@media (max-width: 768px)": {
+        "font_size": "1.75rem",
+    },
+    "@media (max-width: 640px)": {
+        "font_size": "1.5rem",
+        "text_align": "center",
+    },
 }
 
 h2_style = {
@@ -71,6 +109,13 @@ h2_style = {
     "font_size": "1.1rem",
     "text_wrap": "balance",
     "margin": "0",
+    "@media (max-width: 768px)": {
+        "font_size": "1rem",
+    },
+    "@media (max-width: 640px)": {
+        "font_size": "0.9rem",
+        "text_align": "center",
+    },
 }
 
 img_style = {
@@ -79,6 +124,12 @@ img_style = {
     "width": "128px",
     "height": "auto",
     "border_radius": "16px",
+    "@media (max-width: 768px)": {
+        "width": "112px",
+    },
+    "@media (max-width: 640px)": {
+        "width": "96px",
+    },
 }
 
 location_style = {
@@ -88,6 +139,10 @@ location_style = {
     "gap": "0.25rem",
     "font_size": "0.85rem",
     "letter_spacing": "-0.05rem",
+    "@media (max-width: 640px)": {
+        "font_size": "0.75rem",
+        "justify_content": "center",
+    },
 }
 
 link_style = {
@@ -106,6 +161,10 @@ link_style = {
         "background": "#eee",
         "border": "1px solid #ddd",
     },
+    "@media (max-width: 640px)": {
+        "height": "28px",
+        "width": "28px",
+    },
 }
 
 container_style = {
@@ -115,6 +174,16 @@ container_style = {
     "justify_content": "space-between",
     "gap": "1rem",
     "padding_top": "4.5rem",
+    "@media (max-width: 768px)": {
+        "padding_top": "3.5rem",
+        "gap": "0.75rem",
+    },
+    "@media (max-width: 640px)": {
+        "flex_direction": "column-reverse",
+        "padding_top": "2.5rem",
+        "gap": "1rem",
+        "text_align": "center",
+    },
 }
 
 info_style = {
@@ -122,6 +191,14 @@ info_style = {
     "flex_direction": "column",
     "gap": "0.5rem",
     "padding_right": "32px",
+    "@media (max-width: 768px)": {
+        "padding_right": "16px",
+    },
+    "@media (max-width: 640px)": {
+        "padding_right": "0",
+        "align_items": "center",
+        "width": "100%",
+    },
 }
 
 # Estilos para Projects Section
@@ -155,6 +232,10 @@ project_description_style = {
     "line_height": "1.2rem",
     "margin_bottom": "4px",
     "color": "#666",
+    "@media (max-width: 640px)": {
+        "font_size": "0.7rem",
+        "line_height": "1.1rem",
+    },
 }
 
 project_highlights_container_style = {
@@ -171,6 +252,16 @@ projects_grid_style = {
     "list_style": "none",
     "margin": "0 -16px",
     "padding": "0",
+    "@media (max-width: 768px)": {
+        "grid_template_columns": "repeat(auto-fit, minmax(180px, 1fr))",
+        "margin": "0 -8px",
+        "gap": "0.75rem",
+    },
+    "@media (max-width: 640px)": {
+        "grid_template_columns": "1fr",
+        "margin": "0",
+        "gap": "0.5rem",
+    },
 }
 
 # Estilos para Skills Section
@@ -178,6 +269,9 @@ skill_text_style = {
     "color": "black",
     "font_size": "0.8rem",
     "font_weight": "500",
+    "@media (max-width: 640px)": {
+        "font_size": "0.7rem",
+    },
 }
 
 skills_list_style = {
@@ -187,4 +281,8 @@ skills_list_style = {
     "list_style": "none",
     "margin": "0",
     "padding": "0",
+    "@media (max-width: 640px)": {
+        "gap": "6px",
+        "justify_content": "center",
+    },
 }
