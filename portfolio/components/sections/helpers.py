@@ -44,7 +44,7 @@ def create_item_header(
             level=3,
             style={
                 "font_weight": "500",
-                "color": "#111",
+                "color": "#111 !important",
                 "margin": "0",
             },
         )
@@ -54,7 +54,7 @@ def create_item_header(
             level=3,
             style={
                 "font_weight": "500",
-                "color": "#111",
+                "color": "#111 !important",
                 "margin": "0",
             },
         )
@@ -68,7 +68,7 @@ def create_item_header(
                 subtitle,
                 level=4,
                 style={
-                    "color": "#222",
+                    "color": "#222 !important",
                     "font_weight": "400",
                     "margin": "0",
                 },
@@ -148,9 +148,12 @@ def create_link_or_text(
             target="_blank",
             rel="noopener noreferrer",
             style={
-                "color": "#111",
+                "color": "#111 !important",
                 "text_decoration": "none",
-                "_hover": {"text_decoration": "underline"},
+                "_hover": {
+                    "text_decoration": "underline",
+                    "color": "#000 !important",
+                },
             },
         )
-    return rx.text(text, style={"color": "#111"})
+    return rx.text(text, style={"color": "#111 !important"})
