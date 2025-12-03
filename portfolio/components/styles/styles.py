@@ -67,7 +67,7 @@ def global_style() -> Any:
         },
         "h1, h2, h3, h4": {
             "margin": "0",
-            "font:family:": " system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans_serif",
+            "font_family": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans_serif",
         },
         "p": {
             "color": "#666",
