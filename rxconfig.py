@@ -3,10 +3,8 @@ from reflex.plugins.sitemap import SitemapPlugin
 
 config = rx.Config(
     app_name="portfolio",
-    # plugins=[
-    # SitemapPlugin(),
-    # ],
-    disable_plugins=[
-        "reflex.plugins.sitemap.SitemapPlugin",
+    plugins=[
+        rx.plugins.SitemapPlugin(),
     ],
+    disable_plugins=[],
 )
