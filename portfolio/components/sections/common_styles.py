@@ -146,7 +146,7 @@ location_style = {
 }
 
 link_style = {
-    "color": "#777",
+    "color": "#555 !important",
     "display": "inline-flex",
     "align_items": "center",
     "justify_content": "center",
@@ -160,6 +160,7 @@ link_style = {
     "_hover": {
         "background": "#eee",
         "border": "1px solid #ddd",
+        "color": "#222 !important",
         "transform": "translateY(-2px)",
     },
     "@media (max-width: 640px)": {
