@@ -47,6 +47,9 @@ class GlobalThemeVariables(Enum):
 def global_style() -> Any:
     return {
         # CSS Global como componente de estilo
+        "html": {
+            "scroll_behavior": "smooth",  # Scroll suave para navegación
+        },
         "body, figure": {
             "margin": "0",
             "padding": "0",
@@ -414,3 +417,92 @@ class SectionStyle:
 
 
 section_style: SectionStyle = SectionStyle()
+
+
+"""
+Text Component Styles
+"""
+
+
+@dataclass
+class TextStyle:
+    # Estilos para texto de párrafo
+    paragraph: dict[str, str | dict] = field(
+        default_factory=lambda: {
+            "color": "#555",
+            "font_size": "1rem",
+            "line_height": "1.6",
+            "margin_bottom": "0.75rem",
+            "text_align": "justify",
+            "@media (max-width: 768px)": {
+                "font_size": "0.95rem",
+                "line_height": "1.55",
+            },
+            "@media (max-width: 640px)": {
+                "font_size": "0.9rem",
+                "line_height": "1.5",
+                "text_align": "left",
+            },
+        }
+    )
+
+
+text_style: TextStyle = TextStyle()
+
+
+"""
+Section Component Styles
+"""
+
+
+# Estilos para el componente section
+section_box_style: dict[str, str | dict] = {
+    "max_width": "800px",
+    "margin": "0 auto 48px",
+    "padding": "0 1rem",
+    "scroll_margin_top": "80px",
+    "@media (max-width: 768px)": {
+        "margin_bottom": "38px",
+        "padding": "0 0.5rem",
+    },
+    "@media (max-width: 640px)": {
+        "margin_bottom": "28px",
+        "padding": "0",
+    },
+}
+
+section_title_style: dict[str, str | dict] = {
+    "margin_bottom": "16px",
+    "font_weight": "700",
+    "line_height": "1.3",
+    "font_size": "1.75rem",
+    "@media (max-width: 768px)": {
+        "font_size": "1.5rem",
+        "margin_bottom": "12px",
+    },
+    "@media (max-width: 640px)": {
+        "font_size": "1.35rem",
+        "margin_bottom": "10px",
+    },
+}
+
+
+"""
+Layout Styles
+"""
+
+
+layout_box_style: dict[str, str | dict] = {
+    "font_family": "Menlo, Monaco, 'Lucida Console', 'Courier New', Courier, monospace",
+    "letter_spacing": "-0.025rem",
+    "margin": "0 auto",
+    "padding": "0 2rem",
+    "max_width": "1200px",
+    "width": "100%",
+    "@media (max-width: 768px)": {
+        "padding": "0 1.5rem",
+    },
+    "@media (max-width: 640px)": {
+        "padding": "0 1rem",
+    },
+}

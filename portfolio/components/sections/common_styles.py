@@ -160,10 +160,11 @@ link_style = {
     "_hover": {
         "background": "#eee",
         "border": "1px solid #ddd",
+        "transform": "translateY(-2px)",
     },
     "@media (max-width: 640px)": {
-        "height": "28px",
-        "width": "28px",
+        "height": "36px",  # Más grande para táctil
+        "width": "36px",
     },
 }
 
@@ -205,26 +206,41 @@ info_style = {
 project_link_style = {
     "color": "#111",
     "text_decoration": "none",
-    "_hover": {"text_decoration": "underline"},
+    "transition": "color 0.2s ease",
+    "_hover": {"text_decoration": "underline", "color": "#0077b6"},
+    "@media (max-width: 640px)": {
+        "font_size": "0.95rem",
+    },
 }
 
 active_indicator_style = {
     "color": "rgb(29, 196, 71)",
     "margin_left": "8px",
+    "font_size": "1rem",
 }
 
 github_link_style = {
     "margin_left": "5px",
     "color": "#111",
     "text_decoration": "none",
+    "transition": "opacity 0.2s ease",
     "_hover": {"opacity": "0.7"},
+    # Área táctil más grande en móvil
+    "@media (max-width: 640px)": {
+        "padding": "4px",
+        "margin_left": "8px",
+    },
 }
 
 project_header_style = {
-    "margin": "0 0 4px 0",
+    "margin": "0 0 8px 0",
     "display": "flex",
     "align_items": "center",
     "flex_wrap": "wrap",
+    "gap": "4px",
+    "@media (max-width: 640px)": {
+        "margin": "0 0 6px 0",
+    },
 }
 
 project_description_style = {

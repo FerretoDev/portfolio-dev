@@ -21,10 +21,17 @@ def layout(title="Mi CV", children: Optional[List[Any]] = None) -> rx.Component:
             *children,
             style={
                 "font_family": "Menlo, Monaco, 'Lucida Console', 'Courier New', Courier, monospace",
-                # "background": "#fff", # Color de fondo, no usar, aplicar desde portfolio.py, en rx.theme
                 "letter_spacing": "-0.025rem",
-                "margin": "0",
-                "padding": "0",
+                "margin": "0 auto",
+                "padding": "0 2rem",
+                "max_width": "1200px",
+                "width": "100%",
+                "@media (max-width: 768px)": {
+                    "padding": "0 1.5rem",
+                },
+                "@media (max-width: 640px)": {
+                    "padding": "0 1rem",
+                },
             },
         ),
     )  # Como usar rx.fragment para envolver el layout completo en https://reflex.dev/docs/library/layout/fragment/
