@@ -1,6 +1,6 @@
 """Utilidades para iconos"""
 
-from typing import Callable, Dict
+from typing import Any, Callable, Dict
 
 import reflex as rx
 
@@ -22,6 +22,45 @@ def create_simple_icon(icon_name: str) -> rx.Component:
         src=f"https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/{icon_name}.svg",
         style=ICON_STYLE,
     )
+
+
+# Funciones de iconos de redes sociales
+def email_icon() -> rx.Component:
+    return create_simple_icon("gmail")
+
+
+def phone_icon() -> rx.Component:
+    return create_simple_icon("phone")
+
+
+def github_social_icon() -> rx.Component:
+    return create_simple_icon("github")
+
+
+def linkedin_icon() -> rx.Component:
+    return create_simple_icon("linkedin")
+
+
+def twitter_icon() -> rx.Component:
+    return create_simple_icon("twitter")
+
+
+def link_icon() -> rx.Component:
+    return create_simple_icon("link")
+
+
+def map_pin_icon() -> rx.Component:
+    return create_simple_icon("googlemaps")
+
+
+# Diccionario de iconos de redes sociales
+SOCIAL_ICONS: dict[str, Any] = {
+    "Email": email_icon,
+    "Phone": phone_icon,
+    "GitHub": github_social_icon,
+    "LinkedIn": linkedin_icon,
+    "X": twitter_icon,
+}
 
 
 # Funciones de iconos individuales
