@@ -2,8 +2,6 @@
 
 import reflex as rx
 
-from portfolio.components.styles.styles import global_style
-
 # from portfolio.components.ui.starfield import starfield_page
 from portfolio.pages.index import index  # noqa: F401
 
@@ -12,7 +10,9 @@ config = rx.Config(
     app_name="portfolio",
 )
 app = rx.App(
-    style=global_style(),
+    stylesheets=[
+        "/styles/styles.css",  # Estilos globales desde CSS para compatibilidad con Reflex Cloud
+    ],
     theme=rx.theme(
         # appearance="inherit",  # tema inicial
         appearance="light",  # tema inicial
