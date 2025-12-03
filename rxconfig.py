@@ -1,5 +1,5 @@
 import reflex as rx
-import reflex.plugins.sitemap.SitemapPlugin as SitemapPlugin
+from reflex.plugins.sitemap import SitemapPlugin
 
 config = rx.Config(
     app_name="portfolio",
