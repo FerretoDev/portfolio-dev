@@ -15,14 +15,9 @@ app = rx.App(
     # stylesheets=[
     # "/styles/styles.css",  # Estilos globales desde CSS para compatibilidad con Reflex Cloud
     # ],
-    style=global_style(),
+    # style=global_style(),
     theme=rx.theme(
         # appearance="inherit",  # tema inicial
         appearance="light",  # tema inicial
     ),
 )
-
-# app.add_page(index(), "/", "Index Page")
-# app.stylesheets(BackgroundDos.keyframes)
-# app.add_page(index(), "/", "Index Page")
-# app.stylesheets(BackgroundDos.keyframes)
