@@ -99,23 +99,6 @@ def global_style() -> Any:
                 "font_size": "1.25rem",
             },
         },
-        ".print": {
-            "display": "none !important",
-        },
-        "@media print": {
-            ".no-print": {
-                "display": "none !important",
-            },
-            ".print": {
-                "display": "block !important",
-            },
-            "astro-dev-toolbar": {
-                "display": "none !important",
-            },
-            "article:": {
-                "break,inside": "avoid",
-            },
-        },
     }
 
 
