@@ -3,7 +3,7 @@ G_TAG = "G-3YGHT3XJFS"
 
 # Cabecera
 GITHUB_URL = "https://github.com/FerretoDev"
-TWITTER_X_URL = "https://x.com/MarcosFerretoE"
+TWITTER_X_URL = "https://x.com/FerretoDev"
 LINKEDIN_URL = "https://www.linkedin.com/in/marcos-ferreto/"
 
 
@@ -42,7 +42,7 @@ basics: dict[str, dict[str, str] | list[dict[str, str]] | str] = {
         {
             "network": "X",
             "url": TWITTER_X_URL,
-            "username": "MarcosFerretoE",
+            "username": "FerretoDev",
         },
         {
             "network": "GitHub",
@@ -87,8 +87,8 @@ work = [
 education = [
     {
         "institution": "Universidad de Costa Rica",
-        "startDate": "2021-06-01",
-        "endDate": "2021-11-30",
+        "startDate": "2025-03-18",
+        "endDate": None,
         "area": "Bachillerato en Modelación Matemática",
     },
 ]
