@@ -1,28 +1,9 @@
 import reflex as rx
 
 from portfolio.components.section import section_component
+from portfolio.components.sections.common_styles import badge_style, card_style
+from portfolio.constants import projects
 from portfolio.utils.icons import github_icon
-
-# Simulamos la importación de datos de proyectos
-# En tu caso real, importarías desde tu archivo de datos
-projects = [
-    # {
-    #    "name": "Task Manager ",
-    #    "url": "https://taskmanager-app.com",
-    #    "github": "https://github.com/usuario/task-manager",
-    #    "description": "Aplicación de gestión de tareas con funcionalidades de colaboración en tiempo real.",
-    #    "isActive": True,
-    #    "highlights": ["Vue.js", "Firebase", "PWA", "WebSockets"],
-    # },
-    {
-        "name": "Portfolio",
-        "url": "https://ferreto.dev",
-        "github": None,
-        "description": "Sitio web portfolio minimalista y diseño responsivo.",
-        "isActive": True,
-        "highlights": ["Python", "Reflex", "FastAPI", "CSS"],
-    },
-]
 
 
 def project_item(project: dict) -> rx.Component:
@@ -157,15 +138,7 @@ projects_ul_style = {
     "padding": "0",
 }
 
-article_style = {
-    "border_radius": "8px",
-    "border": "1px solid #f2f2f2",
-    "gap": "16px",
-    "display": "flex",
-    "flex_direction": "column",
-    "padding": "16px",
-    "height": "100%",
-}
+article_style = card_style
 
 footer_style = {
     "display": "flex",
@@ -174,14 +147,7 @@ footer_style = {
     "font_size": "0.6rem",
 }
 
-highlight_style = {
-    "border_radius": "6px",
-    "background": "#eee",
-    "color": "#444",
-    "font_size": "0.6rem",
-    "font_weight": "500",
-    "padding": "0.2rem 0.6rem",
-}
+highlight_style = badge_style
 
 
 # Versión alternativa con filtros por estado

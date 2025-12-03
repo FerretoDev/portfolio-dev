@@ -1,37 +1,13 @@
 import reflex as rx
 
 from portfolio.components.section import section_component
+from portfolio.components.sections.common_styles import (
+    item_header_style,
+    list_vertical_style,
+    time_display_style,
+)
+from portfolio.constants import work
 from portfolio.utils.date_utils import format_date_to_year
-
-# Simulamos la importación de datos de trabajo
-# En tu caso real, importarías desde tu archivo de datos
-work = [
-    {
-        "name": "Proyectos Personales",
-        "startDate": "2023-01-01",
-        "endDate": None,
-        "position": "Desarrollador Full Stack",
-        "summary": "Desarrollo de aplicaciones web y de escritorio utilizando Python, FastAPI, Reflex, Flet, Docker y otras tecnologías. Enfoque en automatización, visualización de datos y productividad.",
-        "highlights": [
-            "Desarrollé una app de tareas multiplataforma con Flet y Flutter",
-            "Creé una API de scraping con FastAPI y Selenium, incluyendo visualización con Seaborn y Pandas",
-            "Desarrollé una app de inventario web con Reflex y FastAPI",
-        ],
-        "url": None,
-    },
-    {
-        "name": "Python Software Foundation",
-        "startDate": "2024-01-01",
-        "endDate": None,
-        "position": "Colaborador en Traducción",
-        "summary": "Participación voluntaria en la traducción oficial de la documentación de Python al español.",
-        "highlights": [
-            "Traducción de documentación técnica de Python para el público hispanohablante",
-            "Colaboración con otros miembros de la comunidad de código abierto",
-        ],
-        "url": "https://www.python.org/psf/",
-    },
-]
 
 
 def experience_item(job: dict) -> rx.Component:
@@ -147,28 +123,9 @@ def experience_section() -> rx.Component:
 
 
 # Estilos definidos como diccionarios
-ul_style = {
-    "display": "flex",
-    "flex_direction": "column",
-    "gap": "32px",
-    "list_style": "none",
-    "margin": "0",
-    "padding": "0",
-}
-
-header_style = {
-    "display": "flex",
-    "justify_content": "space-between",
-    "align_items": "flex-start",
-    "margin_bottom": "4px",
-}
-
-time_style = {
-    "color": "#555",
-    "font_size": "0.85rem",
-    "min_width": "102px",
-    "cursor": "default",
-}
+ul_style = list_vertical_style
+header_style = item_header_style
+time_style = {**time_display_style, "cursor": "default"}
 
 
 # Versión alternativa con highlights (si los quieres mostrar)
