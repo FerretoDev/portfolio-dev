@@ -27,45 +27,39 @@ def project_item(project: dict) -> rx.Component:
     is_active = project.get("isActive", False)
     highlights = project.get("highlights", [])
 
-    # Construir el header del proyecto
-    header_elements = [
-        rx.link(
-            name,
-            href=url,
-            target="_blank",
-            title=f"Ver el proyecto {name}",
-            style=project_link_style,
-        )
-    ]
-
-    # Indicador de proyecto activo
-    if is_active:
-        header_elements.append(
-            rx.text(
-                "•",
-                class_name="active-indicator",
-                style=active_indicator_style,
-            )
-        )
-
-    # Enlace al código fuente en GitHub
-    if github:
-        header_elements.append(
-            rx.link(
-                github_icon(),
-                href=github,
-                target="_blank",
-                title=f"Ver código fuente del proyecto {name}",
-                class_name="github-code-link",
-                style=github_link_style,
-            )
-        )
-
     return rx.list_item(
         rx.box(
             rx.box(
-                rx.hstack(
-                    *header_elements,
+                # Header con título, indicador activo y enlace a GitHub
+                rx.box(
+                    rx.link(
+                        name,
+                        href=url,
+                        target="_blank",
+                        title=f"Ver el proyecto {name}",
+                        style=project_link_style,
+                    ),
+                    (
+                        rx.text(
+                            "•",
+                            class_name="active-indicator",
+                            style=active_indicator_style,
+                        )
+                        if is_active
+                        else None
+                    ),
+                    (
+                        rx.link(
+                            github_icon(),
+                            href=github,
+                            target="_blank",
+                            title=f"Ver código fuente del proyecto {name}",
+                            class_name="github-code-link",
+                            style=github_link_style,
+                        )
+                        if github
+                        else None
+                    ),
                     style=project_header_style,
                 ),
                 rx.text(

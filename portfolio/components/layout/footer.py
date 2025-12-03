@@ -3,6 +3,7 @@ import datetime
 import reflex as rx
 
 from portfolio import constants
+from portfolio.components.sections.common_styles import link_style
 from portfolio.components.styles.styles import FooterStyle
 
 
@@ -43,22 +44,3 @@ def footer():
         align_items="center",
         padding_y="2rem",
     )
-
-
-link_style: dict[str, dict[str, str] | str] = {
-    "color": "#777",
-    "display": "inline-flex",
-    "align_items": "center",
-    "justify_content": "center",
-    "border": "1px solid #eee",
-    "padding": "4px",
-    "height": "32px",
-    "width": "32px",
-    "border_radius": "6px",
-    "transition": "all 0.3s ease",
-    "text_decoration": "none",
-    "_hover": {
-        "background": "#eee",
-        "border": "1px solid #ddd",
-    },
-}
