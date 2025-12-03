@@ -5,11 +5,13 @@ import reflex as rx
 from portfolio import constants
 from portfolio.components.styles.styles import FooterStyle
 
-# from portfolio.constants import basics
-
 
 def media(name: str, link: str) -> rx.Component:
-    return rx.link(rx.text(name, **FooterStyle.link), href=link)
+    return rx.link(
+        rx.text(name),
+        href=link,
+        style=FooterStyle.link,
+    )
 
 
 def footer():
@@ -20,17 +22,17 @@ def footer():
         rx.hstack(
             rx.link(
                 rx.icon(tag="github"),
-                href="https://github.com/FerretoDev",
+                href=constants.GITHUB_URL,
                 style=link_style,
             ),
             rx.link(
                 rx.icon(tag="linkedin"),
-                href="https://linkedin.com/in/marcos-ferreto/",
+                href=constants.LINKEDIN_URL,
                 style=link_style,
             ),
             rx.link(
                 rx.icon(tag="twitter"),
-                href="https://x.com/MarcosFerretoE",
+                href=constants.TWITTER_X_URL,
                 style=link_style,
             ),
         ),
