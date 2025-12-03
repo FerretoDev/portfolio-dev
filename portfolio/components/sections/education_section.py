@@ -1,18 +1,13 @@
 import reflex as rx
 
 from portfolio.components.section import section_component
+from portfolio.components.sections.common_styles import (
+    item_header_style,
+    list_vertical_style,
+    time_display_style,
+)
+from portfolio.constants import education
 from portfolio.utils.date_utils import format_date_to_year
-
-# Simulamos la importación de datos de educación
-# En tu caso real, importarías desde tu archivo de datos
-education = [
-    {
-        "institution": "Universidad de Costa Rica",
-        "startDate": "2021-06-01",
-        "endDate": "2021-11-30",
-        "area": "Bachillerato en Modelación Matemática",
-    },
-]
 
 
 def education_item(edu: dict) -> rx.Component:
@@ -99,27 +94,9 @@ def education_section() -> rx.Component:
 
 
 # Estilos definidos como diccionarios
-education_ul_style = {
-    "display": "flex",
-    "flex_direction": "column",
-    "gap": "32px",
-    "list_style": "none",
-    "margin": "0",
-    "padding": "0",
-}
-
-header_style = {
-    "display": "flex",
-    "justify_content": "space-between",
-    "align_items": "flex-start",
-    "margin_bottom": "4px",
-}
-
-time_style = {
-    "color": "#555",
-    "font_size": "0.85rem",
-    "min_width": "102px",
-}
+education_ul_style = list_vertical_style
+header_style = item_header_style
+time_style = time_display_style
 
 # Versión extendida con más información
 education_extended = [

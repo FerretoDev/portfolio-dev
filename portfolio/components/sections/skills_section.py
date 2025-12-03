@@ -4,7 +4,9 @@ from typing import List
 import reflex as rx
 
 from portfolio.components.section import section_component
+from portfolio.components.sections.common_styles import skill_badge_style
 from portfolio.components.styles.styles import GlobalThemeVariables
+from portfolio.constants import skills
 from portfolio.utils.icons import SKILLS_ICONS
 
 
@@ -45,29 +47,6 @@ class SkillsStyle:
 
 
 SkillsStyle: SkillsStyle = SkillsStyle()
-
-
-# Simulamos la importación de datos de habilidades
-# En tu caso real, importarías desde tu archivo de datos
-skills = [
-    {"name": "HTML"},
-    {"name": "CSS"},
-    {"name": "JavaScript"},
-    # {"name": "TypeScript"},
-    # {"name": "React"},
-    # {"name": "Node"},
-    # {"name": "MySQL"},
-    {"name": "Git"},
-    {"name": "GitHub"},
-    # {"name": "Next.js"},
-    # {"name": "Tailwind"},
-    # {"name": "Swift"},
-    # {"name": "SwiftUI"},
-    # {"name": "Kotlin"},
-    # {"name": "Flutter"},
-    {"name": "Python"},
-    {"name": "PostgreSQL"},
-]
 
 
 def skill_item(skill: dict) -> rx.Component:
@@ -131,17 +110,7 @@ skills_ul_style = {
     "padding": "0",
 }
 
-skill_item_style = {
-    "align_items": "center",
-    "background": "#eee",
-    "border_radius": "6px",
-    "color": "black",
-    "display": "flex",
-    "font_size": "0.8rem",
-    "font_weight": "500",
-    "gap": "4px",
-    "padding": "0.2rem 0.6rem",
-}
+skill_item_style = skill_badge_style
 
 # Versión alternativa con niveles de competencia
 skills_with_levels = [

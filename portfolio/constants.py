@@ -53,3 +53,65 @@ basics: dict[str, dict[str, str] | list[dict[str, str]] | str] = {
     "phone": PHONE,
     "email": EMAIL,
 }
+
+# Experiencia laboral
+work = [
+    {
+        "name": "Proyectos Personales",
+        "startDate": "2023-01-01",
+        "endDate": None,
+        "position": "Desarrollador Full Stack",
+        "summary": "Desarrollo de aplicaciones web y de escritorio utilizando Python, FastAPI, Reflex, Flet, Docker y otras tecnologías. Enfoque en automatización, visualización de datos y productividad.",
+        "highlights": [
+            "Desarrollé una app de tareas multiplataforma con Flet y Flutter",
+            "Creé una API de scraping con FastAPI y Selenium, incluyendo visualización con Seaborn y Pandas",
+            "Desarrollé una app de inventario web con Reflex y FastAPI",
+        ],
+        "url": None,
+    },
+    {
+        "name": "Python Software Foundation",
+        "startDate": "2024-01-01",
+        "endDate": None,
+        "position": "Colaborador en Traducción",
+        "summary": "Participación voluntaria en la traducción oficial de la documentación de Python al español.",
+        "highlights": [
+            "Traducción de documentación técnica de Python para el público hispanohablante",
+            "Colaboración con otros miembros de la comunidad de código abierto",
+        ],
+        "url": "https://www.python.org/psf/",
+    },
+]
+
+# Educación
+education = [
+    {
+        "institution": "Universidad de Costa Rica",
+        "startDate": "2021-06-01",
+        "endDate": "2021-11-30",
+        "area": "Bachillerato en Modelación Matemática",
+    },
+]
+
+# Habilidades
+skills = [
+    {"name": "HTML"},
+    {"name": "CSS"},
+    {"name": "JavaScript"},
+    {"name": "Git"},
+    {"name": "GitHub"},
+    {"name": "Python"},
+    {"name": "PostgreSQL"},
+]
+
+# Proyectos
+projects = [
+    {
+        "name": "Portfolio",
+        "url": "https://ferreto.dev",
+        "github": None,
+        "description": "Sitio web portfolio minimalista y diseño responsivo.",
+        "isActive": True,
+        "highlights": ["Python", "Reflex", "FastAPI", "CSS"],
+    },
+]
