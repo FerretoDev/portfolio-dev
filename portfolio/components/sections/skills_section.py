@@ -1,7 +1,11 @@
 import reflex as rx
 
 from portfolio.components.section import section_component
-from portfolio.components.sections.common_styles import skill_badge_style
+from portfolio.components.sections.common_styles import (
+    skill_badge_style,
+    skill_text_style,
+    skills_list_style,
+)
 from portfolio.constants import skills
 from portfolio.utils.icons import SKILLS_ICONS
 
@@ -29,11 +33,7 @@ def skill_item(skill: dict) -> rx.Component:
     item_content.append(
         rx.text(
             name,
-            style={
-                "color": "black",
-                "font_size": "0.8rem",
-                "font_weight": "500",
-            },
+            style=skill_text_style,
         )
     )
 
@@ -49,14 +49,7 @@ def skills_section() -> rx.Component:
         children=[
             rx.unordered_list(
                 *[skill_item(skill) for skill in skills],
-                style={
-                    "display": "inline-flex",
-                    "gap": "8px",
-                    "flex_wrap": "wrap",
-                    "list_style": "none",
-                    "margin": "0",
-                    "padding": "0",
-                },
+                style=skills_list_style,
             )
         ],
     )
