@@ -7,11 +7,10 @@ from portfolio.components.styles.styles import global_style
 # from portfolio.components.ui.starfield import starfield_page
 from portfolio.pages.index import index  # noqa: F401
 
-# Configuración del tema
-config = rx.Config(
-    app_name="portfolio",
-)
+# La configuración está en rxconfig.py
 app = rx.App(
     style=global_style(),
-    # Sin theme personalizado para evitar sobrescritura de estilos
+    stylesheets=[
+        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+    ],
 )
