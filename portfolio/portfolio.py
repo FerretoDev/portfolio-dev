@@ -12,12 +12,6 @@ config = rx.Config(
     app_name="portfolio",
 )
 app = rx.App(
-    # stylesheets=[
-    # "/styles/styles.css",  # Estilos globales desde CSS para compatibilidad con Reflex Cloud
-    # ],
-    # style=global_style(),
-    theme=rx.theme(
-        # appearance="inherit",  # tema inicial
-        appearance="light",  # tema inicial
-    ),
+    style=global_style(),
+    # Sin theme personalizado para evitar sobrescritura de estilos
 )
