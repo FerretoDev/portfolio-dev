@@ -84,7 +84,7 @@ def create_text_content(text: str, is_summary: bool = False) -> rx.Component:
         Componente de texto formateado
     """
     base_style = {
-        "color": rx.color_mode_cond(light="#666", dark="#aaa"),
+        "color": rx.color_mode_cond(light="#666", dark="#d4d4d4"),
         "line_height": "1.5",
         "margin": "0",
     }

@@ -37,7 +37,7 @@ item_header_style = {
 
 # Estilos para fechas/tiempo
 time_display_style = {
-    "color": rx.color_mode_cond(light="#555", dark="#aaa"),
+    "color": rx.color_mode_cond(light="#555", dark="#b8b8b8"),
     "cursor": "default",
     "font_size": "0.85rem",
     "min_width": "102px",
@@ -51,7 +51,7 @@ time_display_style = {
 badge_style = {
     "border_radius": "6px",
     "background": rx.color_mode_cond(light="#eee", dark="#2a2a2a"),
-    "color": rx.color_mode_cond(light="#444", dark="#ccc"),
+    "color": rx.color_mode_cond(light="#444", dark="#d0d0d0"),
     "font_size": "0.6rem",
     "font_weight": "500",
     "padding": "0.2rem 0.6rem",
@@ -110,7 +110,7 @@ item_subtitle_style = {
 date_box_style = {
     "display": "flex",
     "align_items": "center",
-    "color": rx.color_mode_cond(light="#555", dark="#aaa"),
+    "color": rx.color_mode_cond(light="#555", dark="#b8b8b8"),
     "font_size": "0.85rem",
 }
 
@@ -141,7 +141,7 @@ h1_style = {
 }
 
 h2_style = {
-    "color": rx.color_mode_cond(light="#444", dark="#ccc"),
+    "color": rx.color_mode_cond(light="#444", dark="#d0d0d0"),
     "font_weight": "500",
     "font_size": "1.1rem",
     "text_wrap": "balance",
@@ -170,7 +170,7 @@ img_style = {
 }
 
 location_style = {
-    "color": rx.color_mode_cond(light="#666", dark="#aaa"),
+    "color": rx.color_mode_cond(light="#666", dark="#c0c0c0"),
     "display": "flex",
     "align_items": "center",
     "gap": "0.25rem",
@@ -293,7 +293,7 @@ project_description_style = {
     "font_size": "0.75rem",
     "line_height": "1.2rem",
     "margin_bottom": "4px",
-    "color": rx.color_mode_cond(light="#666", dark="#aaa"),
+    "color": rx.color_mode_cond(light="#666", dark="#c0c0c0"),
     "@media (max-width: 640px)": {
         "font_size": "0.7rem",
         "line_height": "1.1rem",
