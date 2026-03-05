@@ -28,7 +28,7 @@ def project_item(project: dict) -> rx.Component:
     is_active = project.get("isActive", False)
     highlights = project.get("highlights", [])
 
-    return rx.list_item(
+    return rx.box(
         rx.box(
             rx.box(
                 # Header con título, indicador activo y enlace a GitHub
@@ -43,6 +43,7 @@ def project_item(project: dict) -> rx.Component:
                     (
                         rx.text(
                             "•",
+                            as_="span",
                             class_name="active-indicator",
                             style=active_indicator_style,
                         )
@@ -70,7 +71,10 @@ def project_item(project: dict) -> rx.Component:
                 style=project_content_style,
             ),
             rx.box(
-                *[rx.text(highlight, style=badge_style) for highlight in highlights],
+                *[
+                    rx.text(highlight, as_="span", style=badge_style)
+                    for highlight in highlights
+                ],
                 style=project_highlights_container_style,
             ),
             style=card_style,
@@ -85,7 +89,7 @@ def projects_section() -> rx.Component:
     return section_component(
         title="Proyectos",
         children=[
-            rx.unordered_list(
+            rx.box(
                 *[project_item(project) for project in projects],
                 style=projects_grid_style,
             )
