@@ -6,6 +6,7 @@ from portfolio.components.sections.common_styles import (
     badge_style,
     card_style,
     github_link_style,
+    project_content_style,
     project_description_style,
     project_header_style,
     project_highlights_container_style,
@@ -66,7 +67,7 @@ def project_item(project: dict) -> rx.Component:
                     description,
                     style=project_description_style,
                 ),
-                style={"flex": "1"},
+                style=project_content_style,
             ),
             rx.box(
                 *[rx.text(highlight, style=badge_style) for highlight in highlights],

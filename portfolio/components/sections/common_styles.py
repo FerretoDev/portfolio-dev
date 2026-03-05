@@ -36,6 +36,7 @@ item_header_style = {
 # Estilos para fechas/tiempo
 time_display_style = {
     "color": "#555",
+    "cursor": "default",
     "font_size": "0.85rem",
     "min_width": "102px",
     "@media (max-width: 640px)": {
@@ -88,6 +89,39 @@ card_style = {
         "padding": "12px",
         "gap": "12px",
     },
+}
+
+# Estilos para componentes helpers
+item_title_style = {
+    "font_weight": "500",
+    "color": "#111 !important",
+    "margin": "0",
+}
+
+item_subtitle_style = {
+    "color": "#222 !important",
+    "font_weight": "400",
+    "margin": "0",
+}
+
+date_box_style = {
+    "display": "flex",
+    "align_items": "center",
+    "color": "#555",
+    "font_size": "0.85rem",
+}
+
+item_link_style = {
+    "color": "#111 !important",
+    "text_decoration": "none",
+    "_hover": {
+        "text_decoration": "underline",
+        "color": "#000 !important",
+    },
+}
+
+item_text_style = {
+    "color": "#111 !important",
 }
 
 # Estilos para Hero Section
@@ -203,6 +237,14 @@ info_style = {
     },
 }
 
+social_links_wrapper_style = {
+    "margin_top": "0.5rem",
+}
+
+avatar_wrapper_style = {
+    "margin": "0",
+}
+
 # Estilos para Projects Section
 project_link_style = {
     "color": "#111",
@@ -260,6 +302,10 @@ project_highlights_container_style = {
     "flex_wrap": "wrap",
     "gap": "4px",
     "font_size": "0.6rem",
+}
+
+project_content_style = {
+    "flex": "1",
 }
 
 projects_grid_style = {
