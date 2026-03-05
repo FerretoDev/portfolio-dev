@@ -3,7 +3,12 @@
 import reflex as rx
 
 from portfolio.components.sections.common_styles import (
+    date_box_style,
     item_header_style,
+    item_link_style,
+    item_subtitle_style,
+    item_text_style,
+    item_title_style,
     time_display_style,
 )
 from portfolio.utils.date_utils import format_date_to_year
@@ -38,41 +43,14 @@ def create_item_header(
     title_content = []
 
     # Si title es un string, crear un heading, si no, usarlo directamente
-    if isinstance(title, str):
-        title_component = rx.heading(
-            title,
-            level=3,
-            style={
-                "font_weight": "500",
-                "color": "#111 !important",
-                "margin": "0",
-            },
-        )
-    else:
-        title_component = rx.heading(
-            title,
-            level=3,
-            style={
-                "font_weight": "500",
-                "color": "#111 !important",
-                "margin": "0",
-            },
-        )
+    title_component = rx.heading(title, level=3, style=item_title_style)
 
     title_content.append(title_component)
 
     # Agregar subtítulo si existe
     if subtitle:
         title_content.append(
-            rx.heading(
-                subtitle,
-                level=4,
-                style={
-                    "color": "#222 !important",
-                    "font_weight": "400",
-                    "margin": "0",
-                },
-            )
+            rx.heading(subtitle, level=4, style=item_subtitle_style)
         )
 
     # Crear box del título/subtítulo
@@ -85,15 +63,10 @@ def create_item_header(
                 years_display,
                 datetime=start_date if start_date else "",
                 data_title=start_date if start_date else "",
-                style={**time_display_style, "cursor": "default"},
+                style=time_display_style,
                 class_name="tooltip-trigger" if start_date else "",
             ),
-            style={
-                "display": "flex",
-                "align_items": "center",
-                "color": "#555",
-                "font_size": "0.85rem",
-            },
+            style=date_box_style,
         )
 
         return rx.box(title_box, date_box, style=item_header_style)
@@ -147,13 +120,6 @@ def create_link_or_text(
             title=title or f"Ver {text}",
             target="_blank",
             rel="noopener noreferrer",
-            style={
-                "color": "#111 !important",
-                "text_decoration": "none",
-                "_hover": {
-                    "text_decoration": "underline",
-                    "color": "#000 !important",
-                },
-            },
+            style=item_link_style,
         )
-    return rx.text(text, style={"color": "#111 !important"})
+    return rx.text(text, style=item_text_style)

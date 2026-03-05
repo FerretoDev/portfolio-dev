@@ -2,6 +2,7 @@ import reflex as rx
 
 from portfolio.components.section import section_component
 from portfolio.components.sections.common_styles import (
+    avatar_wrapper_style,
     container_style,
     h1_style,
     h2_style,
@@ -9,6 +10,7 @@ from portfolio.components.sections.common_styles import (
     info_style,
     link_style,
     location_style,
+    social_links_wrapper_style,
 )
 from portfolio.constants import basics
 from portfolio.utils.icons import SOCIAL_ICONS, map_pin_icon
@@ -23,7 +25,7 @@ def hero_section() -> rx.Component:
     location = basics["location"]
     profiles = basics["profiles"]
 
-    # Fix: handle location as list, dict, or str
+    # Manejo de location como lista, dict o string
     if isinstance(location, list) and location and isinstance(location[0], dict):
         city = location[0].get("city", "")
         region = location[0].get("region", "")
@@ -75,7 +77,7 @@ def hero_section() -> rx.Component:
                                 )
                             ],
                         ),
-                        style={"margin_top": "0.5rem"},
+                        style=social_links_wrapper_style,
                     ),
                     class_name="info",
                     style=info_style,
@@ -87,7 +89,7 @@ def hero_section() -> rx.Component:
                         alt="Marcus",
                         style=img_style,
                     ),
-                    style={"margin": "0"},
+                    style=avatar_wrapper_style,
                 ),
                 style=container_style,
             ),
