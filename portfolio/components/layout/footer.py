@@ -16,7 +16,6 @@ def media(name: str, link: str) -> rx.Component:
 
 
 def footer():
-    # Extraemos datos del basics
     """Pie de página."""
     current_year = datetime.date.today().year
     return rx.vstack(
@@ -40,12 +39,16 @@ def footer():
         ),
         rx.text(
             f"© 2024-{current_year} Marcos Eduardo Ferreto Estrada v1.",
-            size="2",  # Tamaño de Reflex (más confiable en Cloud)
-            style={"color": rx.color_mode_cond(light="#666", dark="#aaa")},
-            text_align="center",  # Siempre centrado
+            style={
+                "color": rx.color_mode_cond(light="#666", dark="#aaa"),
+                "font_size": "0.8rem",
+                "text_align": "center",
+                "overflow_wrap": "break-word",
+                "word_break": "break-word",
+            },
         ),
         width="100%",
-        align="center",  # Alineación de Reflex (más confiable)
-        padding_y="3rem",
+        align="center",
+        padding_y="2.5rem",
         spacing="4",
     )
