@@ -81,6 +81,10 @@ def global_style() -> Any:
             "margin": "0",
             "text_wrap": "pretty",
         },
+        # Dark mode para etiquetas p globales (CSS puro, theme.js no soporta JS en runtime)
+        ".dark p": {
+            "color": "#aaa",
+        },
         # Responsive typography
         "@media (max-width: 768px)": {
             "p": {
@@ -417,7 +421,7 @@ class TextStyle:
     # Estilos para texto de párrafo
     paragraph: dict[str, str | dict] = field(
         default_factory=lambda: {
-            "color": "#555",
+            "color": rx.color_mode_cond(light="#555", dark="#aaa"),
             "font_size": "1rem",
             "line_height": "1.6",
             "margin_bottom": "0.75rem",
@@ -508,7 +512,7 @@ footer_container_style: dict[str, str | dict] = {
 
 footer_copyright_style: dict[str, str | dict] = {
     "font_size": "0.875rem",
-    "color": "#666",
+    "color": rx.color_mode_cond(light="#666", dark="#aaa"),
     "@media (max-width: 640px)": {
         "font_size": "0.75rem",
         "text_align": "center",

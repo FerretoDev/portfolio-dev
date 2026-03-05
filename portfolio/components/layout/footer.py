@@ -41,7 +41,7 @@ def footer():
         rx.text(
             f"© 2024-{current_year} Marcos Eduardo Ferreto Estrada v1.",
             size="2",  # Tamaño de Reflex (más confiable en Cloud)
-            color="#666",
+            style={"color": rx.color_mode_cond(light="#666", dark="#aaa")},
             text_align="center",  # Siempre centrado
         ),
         width="100%",
