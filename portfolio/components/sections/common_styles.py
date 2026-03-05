@@ -37,7 +37,7 @@ item_header_style = {
 
 # Estilos para fechas/tiempo
 time_display_style = {
-    "color": rx.color_mode_cond(light="#555", dark="#b8b8b8"),
+    "color": rx.color_mode_cond(light="#718096", dark="#94a3b8"),
     "cursor": "default",
     "font_size": "0.85rem",
     "min_width": "102px",
@@ -50,8 +50,8 @@ time_display_style = {
 # Estilos para badges/highlights
 badge_style = {
     "border_radius": "6px",
-    "background": rx.color_mode_cond(light="#eee", dark="#2a2a2a"),
-    "color": rx.color_mode_cond(light="#444", dark="#d0d0d0"),
+    "background": rx.color_mode_cond(light="#edf2f7", dark="#1e293b"),
+    "color": rx.color_mode_cond(light="#4a5568", dark="#cbd5e0"),
     "font_size": "0.6rem",
     "font_weight": "500",
     "padding": "0.2rem 0.6rem",
@@ -64,9 +64,9 @@ badge_style = {
 # Estilos para items de habilidades
 skill_badge_style = {
     "align_items": "center",
-    "background": rx.color_mode_cond(light="#eee", dark="#2a2a2a"),
+    "background": rx.color_mode_cond(light="#edf2f7", dark="#1e293b"),
     "border_radius": "6px",
-    "color": rx.color_mode_cond(light="#111", dark="#f0f0f0"),
+    "color": rx.color_mode_cond(light="#1a202c", dark="#f1f5f9"),
     "display": "flex",
     "font_size": "0.8rem",
     "font_weight": "500",
@@ -81,8 +81,9 @@ skill_badge_style = {
 # Estilos para artículos/cards
 card_style = {
     "border_radius": "8px",
-    "background": rx.color_mode_cond(light="white", dark="#161616"),
-    "border": rx.color_mode_cond(light="1px solid #f2f2f2", dark="1px solid #2a2a2a"),
+    "background": rx.color_mode_cond(light="#ffffff", dark="#0f172a"),
+    "border": rx.color_mode_cond(light="1px solid #e2e8f0", dark="1px solid #1e293b"),
+    "box_shadow": rx.color_mode_cond(light="0 1px 4px rgba(0,0,0,0.06)", dark="none"),
     "gap": "16px",
     "display": "flex",
     "flex_direction": "column",
@@ -96,13 +97,13 @@ card_style = {
 
 # Estilos para componentes helpers
 item_title_style = {
-    "font_weight": "500",
-    "color": rx.color_mode_cond(light="#111", dark="#f0f0f0"),
+    "font_weight": "600",
+    "color": rx.color_mode_cond(light="#1a202c", dark="#f1f5f9"),
     "margin": "0",
 }
 
 item_subtitle_style = {
-    "color": rx.color_mode_cond(light="#222", dark="#e0e0e0"),
+    "color": rx.color_mode_cond(light="#2d3748", dark="#cbd5e0"),
     "font_weight": "400",
     "margin": "0",
 }
@@ -110,21 +111,21 @@ item_subtitle_style = {
 date_box_style = {
     "display": "flex",
     "align_items": "center",
-    "color": rx.color_mode_cond(light="#555", dark="#b8b8b8"),
+    "color": rx.color_mode_cond(light="#718096", dark="#94a3b8"),
     "font_size": "0.85rem",
 }
 
 item_link_style = {
-    "color": rx.color_mode_cond(light="#111", dark="#f0f0f0"),
+    "color": rx.color_mode_cond(light="#1a202c", dark="#f1f5f9"),
     "text_decoration": "none",
     "_hover": {
         "text_decoration": "underline",
-        "color": rx.color_mode_cond(light="#000", dark="#fff"),
+        "color": rx.color_mode_cond(light="#0077b6", dark="#00b4d8"),
     },
 }
 
 item_text_style = {
-    "color": rx.color_mode_cond(light="#111", dark="#f0f0f0"),
+    "color": rx.color_mode_cond(light="#1a202c", dark="#f1f5f9"),
 }
 
 # Estilos para Hero Section
@@ -141,7 +142,7 @@ h1_style = {
 }
 
 h2_style = {
-    "color": rx.color_mode_cond(light="#444", dark="#d0d0d0"),
+    "color": rx.color_mode_cond(light="#4a5568", dark="#cbd5e0"),
     "font_weight": "500",
     "font_size": "1.1rem",
     "text_wrap": "balance",
@@ -170,7 +171,7 @@ img_style = {
 }
 
 location_style = {
-    "color": rx.color_mode_cond(light="#666", dark="#c0c0c0"),
+    "color": rx.color_mode_cond(light="#718096", dark="#94a3b8"),
     "display": "flex",
     "align_items": "center",
     "gap": "0.25rem",
@@ -183,11 +184,11 @@ location_style = {
 }
 
 link_style = {
-    "color": rx.color_mode_cond(light="#555", dark="#aaa"),
+    "color": rx.color_mode_cond(light="#4a5568", dark="#94a3b8"),
     "display": "inline-flex",
     "align_items": "center",
     "justify_content": "center",
-    "border": rx.color_mode_cond(light="1px solid #eee", dark="1px solid #333"),
+    "border": rx.color_mode_cond(light="1px solid #e2e8f0", dark="1px solid #334155"),
     "padding": "4px",
     "height": "32px",
     "width": "32px",
@@ -195,9 +196,11 @@ link_style = {
     "transition": "all 0.3s ease",
     "text_decoration": "none",
     "_hover": {
-        "background": rx.color_mode_cond(light="#eee", dark="#2a2a2a"),
-        "border": rx.color_mode_cond(light="1px solid #ddd", dark="1px solid #444"),
-        "color": rx.color_mode_cond(light="#222", dark="#fff"),
+        "background": rx.color_mode_cond(light="#edf2f7", dark="#1e293b"),
+        "border": rx.color_mode_cond(
+            light="1px solid #cbd5e0", dark="1px solid #334155"
+        ),
+        "color": rx.color_mode_cond(light="#0077b6", dark="#00b4d8"),
         "transform": "translateY(-2px)",
     },
     "@media (max-width: 640px)": {
@@ -250,10 +253,13 @@ avatar_wrapper_style = {
 
 # Estilos para Projects Section
 project_link_style = {
-    "color": rx.color_mode_cond(light="#111", dark="#f0f0f0"),
+    "color": rx.color_mode_cond(light="#1a202c", dark="#f1f5f9"),
     "text_decoration": "none",
     "transition": "color 0.2s ease",
-    "_hover": {"text_decoration": "underline", "color": "#0077b6"},
+    "_hover": {
+        "text_decoration": "underline",
+        "color": rx.color_mode_cond(light="#0077b6", dark="#00b4d8"),
+    },
     "@media (max-width: 640px)": {
         "font_size": "0.95rem",
     },
@@ -267,7 +273,7 @@ active_indicator_style = {
 
 github_link_style = {
     "margin_left": "5px",
-    "color": rx.color_mode_cond(light="#111", dark="#f0f0f0"),
+    "color": rx.color_mode_cond(light="#4a5568", dark="#94a3b8"),
     "text_decoration": "none",
     "transition": "opacity 0.2s ease",
     "_hover": {"opacity": "0.7"},
@@ -293,7 +299,7 @@ project_description_style = {
     "font_size": "0.75rem",
     "line_height": "1.2rem",
     "margin_bottom": "4px",
-    "color": rx.color_mode_cond(light="#666", dark="#c0c0c0"),
+    "color": rx.color_mode_cond(light="#718096", dark="#94a3b8"),
     "@media (max-width: 640px)": {
         "font_size": "0.7rem",
         "line_height": "1.1rem",
@@ -332,7 +338,7 @@ projects_grid_style = {
 
 # Estilos para Skills Section
 skill_text_style = {
-    "color": rx.color_mode_cond(light="#111", dark="#f0f0f0"),
+    "color": rx.color_mode_cond(light="#1a202c", dark="#f1f5f9"),
     "font_size": "0.8rem",
     "font_weight": "500",
     "@media (max-width: 640px)": {
