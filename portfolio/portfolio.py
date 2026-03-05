@@ -9,8 +9,9 @@ from portfolio.pages.index import index  # noqa: F401
 
 # La configuración está en rxconfig.py
 app = rx.App(
+    theme=rx.theme(font_family="Inter"),
     style=global_style(),
     stylesheets=[
-        "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+        "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
     ],
 )

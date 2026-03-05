@@ -69,7 +69,7 @@ Refactorizaciones acordadas y en progreso, en orden:
 
 1. ✅ **Datos de educación en `constants.py`** — resuelto, `education_section.py` ya importa desde `constants`.
 2. ✅ **Duplicación de `section_component`** — resuelto, todos los archivos importan desde `components/section.py`.
-3. **Inconsistencia de estilos** — algunos archivos (como versiones viejas de `hero_section.py`) definían estilos como dicts sueltos al final del archivo en lugar del patrón `@dataclass`. Verificar que todas las secciones usen `common_styles.py` o los dataclasses de `styles.py`.
-4. **`state/` sin usar** — decidir si eliminar `auth.py` y `projects.py` o implementarlos.
-5. **Patrón de impresión** — revisar si los `class_name="print"` / `class_name="no-print"` están correctamente aplicados en todas las secciones que lo necesitan.
-6. **Idioma consistente** — asegurar que todos los comentarios y strings de UI estén en español.
+3. ✅ **Inconsistencia de estilos** — resuelto, todos los dicts inline movidos a `common_styles.py`.
+4. ✅ **`state/` sin usar** — resuelto, `auth.py` y `projects.py` eliminados (estaban vacíos).
+5. ~~**Patrón de impresión**~~ — descartado, no es prioritario.
+6. ✅ **Idioma consistente** — resuelto, todos los comentarios están en español.

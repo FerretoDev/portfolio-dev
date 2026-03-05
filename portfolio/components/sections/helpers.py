@@ -49,9 +49,7 @@ def create_item_header(
 
     # Agregar subtítulo si existe
     if subtitle:
-        title_content.append(
-            rx.heading(subtitle, level=4, style=item_subtitle_style)
-        )
+        title_content.append(rx.heading(subtitle, level=4, style=item_subtitle_style))
 
     # Crear box del título/subtítulo
     title_box = rx.box(*title_content)
@@ -86,7 +84,7 @@ def create_text_content(text: str, is_summary: bool = False) -> rx.Component:
         Componente de texto formateado
     """
     base_style = {
-        "color": "#666",
+        "color": rx.color_mode_cond(light="#666", dark="#aaa"),
         "line_height": "1.5",
         "margin": "0",
     }
