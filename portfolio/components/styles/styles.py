@@ -75,13 +75,13 @@ def global_style() -> Any:
             "font_family": "inherit",
         },
         "p": {
-            "color": "#718096",
+            "color": "#64748b",
             "font_size": "0.9rem",
             "line_height": "1.5",
             "margin": "0",
             "text_wrap": "pretty",
         },
-        # Dark mode para etiquetas p globales (CSS puro, theme.js no soporta JS en runtime)
+        # Dark mode para p global (CSS puro, no acepta rx.color_mode_cond)
         ".dark p": {
             "color": "#94a3b8",
         },
@@ -421,7 +421,7 @@ class TextStyle:
     # Estilos para texto de párrafo
     paragraph: dict[str, Any] = field(
         default_factory=lambda: {
-            "color": rx.color_mode_cond(light="#4a5568", dark="#cbd5e0"),
+            "color": rx.color_mode_cond(light="#475569", dark="#94a3b8"),
             "font_size": "1rem",
             "line_height": "1.6",
             "margin_bottom": "0.75rem",
@@ -463,7 +463,7 @@ section_box_style: dict[str, str | dict] = {
     },
 }
 
-section_title_style: dict[str, str | dict] = {
+section_title_style: dict[str, Any] = {
     "margin_bottom": "16px",
     "font_weight": "700",
     "line_height": "1.3",
@@ -512,7 +512,7 @@ footer_container_style: dict[str, str | dict] = {
 
 footer_copyright_style: dict[str, Any] = {
     "font_size": "0.875rem",
-    "color": rx.color_mode_cond(light="#718096", dark="#94a3b8"),
+    "color": rx.color_mode_cond(light="#64748b", dark="#94a3b8"),
     "@media (max-width: 640px)": {
         "font_size": "0.75rem",
         "text_align": "center",

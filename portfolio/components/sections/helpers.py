@@ -1,5 +1,7 @@
 """Helpers reutilizables para componentes de secciones"""
 
+from typing import Any
+
 import reflex as rx
 
 from portfolio.components.sections.common_styles import (
@@ -83,14 +85,16 @@ def create_text_content(text: str, is_summary: bool = False) -> rx.Component:
     Returns:
         Componente de texto formateado
     """
-    base_style = {
-        "color": rx.color_mode_cond(light="#4a5568", dark="#94a3b8"),
+    base_style: dict[str, Any] = {
+        "color": rx.color_mode_cond(light="#475569", dark="#94a3b8"),
         "line_height": "1.5",
         "margin": "0",
     }
 
     if is_summary:
         base_style["font_size"] = "0.9rem"
+        base_style["@media (max-width: 768px)"] = {"font_size": "0.85rem"}
+        base_style["@media (max-width: 640px)"] = {"font_size": "0.8rem"}
 
     return rx.text(text, style=base_style)
 
