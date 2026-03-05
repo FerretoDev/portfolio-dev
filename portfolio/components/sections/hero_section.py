@@ -84,8 +84,8 @@ def hero_section() -> rx.Component:
                 ),
                 # Figura con imagen
                 rx.box(
-                    rx.avatar(
-                        src="/Designer.jpeg",  # Ruta absoluta desde assets/
+                    rx.image(
+                        src="/Designer.jpeg",
                         alt="Marcus",
                         style=img_style,
                     ),

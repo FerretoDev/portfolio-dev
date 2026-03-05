@@ -24,7 +24,7 @@ def experience_item(job: dict) -> rx.Component:
     # Crear nombre de empresa como link o texto
     company_name = create_link_or_text(name, url, f"Ver {name}")
 
-    return rx.list_item(
+    return rx.box(
         rx.box(
             create_item_header(
                 title=company_name,
@@ -46,7 +46,7 @@ def experience_section() -> rx.Component:
     return section_component(
         title="Experiencia laboral",
         children=[
-            rx.unordered_list(
+            rx.box(
                 *[experience_item(job) for job in work],
                 style=list_vertical_style,
             )

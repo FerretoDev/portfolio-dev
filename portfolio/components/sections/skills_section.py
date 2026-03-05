@@ -37,7 +37,7 @@ def skill_item(skill: dict) -> rx.Component:
         )
     )
 
-    return rx.list_item(*item_content, style=skill_badge_style)
+    return rx.box(*item_content, style=skill_badge_style)
 
 
 def skills_section() -> rx.Component:
@@ -47,7 +47,7 @@ def skills_section() -> rx.Component:
     return section_component(
         title="Habilidades",
         children=[
-            rx.unordered_list(
+            rx.box(
                 *[skill_item(skill) for skill in skills],
                 style=skills_list_style,
             )

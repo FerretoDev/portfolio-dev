@@ -18,7 +18,7 @@ def education_item(edu: dict) -> rx.Component:
     end_date = edu.get("endDate")
     area = edu["area"]
 
-    return rx.list_item(
+    return rx.box(
         rx.box(
             create_item_header(
                 title=institution,
@@ -39,7 +39,7 @@ def education_section() -> rx.Component:
     return section_component(
         title="Educación",
         children=[
-            rx.unordered_list(
+            rx.box(
                 *[education_item(edu) for edu in education],
                 style=list_vertical_style,
             )
