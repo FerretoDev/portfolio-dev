@@ -75,15 +75,11 @@ def global_style() -> Any:
             "font_family": "inherit",
         },
         "p": {
-            "color": "#64748b",
+            "color": "var(--slate-11)",
             "font_size": "0.9rem",
             "line_height": "1.5",
             "margin": "0",
             "text_wrap": "pretty",
-        },
-        # Dark mode para p global (CSS puro, no acepta rx.color_mode_cond)
-        ".dark p": {
-            "color": "#94a3b8",
         },
         # Responsive typography
         "@media (max-width: 768px)": {
@@ -245,10 +241,7 @@ class NavbarStyle:
             "top": "0px",
             "z_index": "1000",
             "backdrop_filter": "blur(10px)",
-            "background": rx.color_mode_cond(
-                light=GlobalThemeVariables.LIGHT.value["--background"],
-                dark=GlobalThemeVariables.DARK.value["--background"],
-            ),
+            "background": rx.color("slate", 1),
         },
     )
 
@@ -421,7 +414,7 @@ class TextStyle:
     # Estilos para texto de párrafo
     paragraph: dict[str, Any] = field(
         default_factory=lambda: {
-            "color": rx.color_mode_cond(light="#475569", dark="#94a3b8"),
+            "color": rx.color("slate", 11),
             "font_size": "1rem",
             "line_height": "1.6",
             "margin_bottom": "0.75rem",
@@ -512,7 +505,7 @@ footer_container_style: dict[str, str | dict] = {
 
 footer_copyright_style: dict[str, Any] = {
     "font_size": "0.875rem",
-    "color": rx.color_mode_cond(light="#64748b", dark="#94a3b8"),
+    "color": rx.color("slate", 11),
     "@media (max-width: 640px)": {
         "font_size": "0.75rem",
         "text_align": "center",

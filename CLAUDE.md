@@ -48,14 +48,22 @@ All CV data lives in `portfolio/constants.py`: `basics`, `work`, `education`, `s
 
 ### Styling Conventions
 
-- Global theme tokens are in `GlobalThemeVariables` enum (`styles.py`); use `rx.color_mode_cond(light=..., dark=...)` for theme-aware values.
+- **Colores con `rx.color(name, shade)`** — forma correcta según la documentación de Reflex. Genera variables CSS de Radix (`var(--slate-11)`) que funcionan en SSR sin problemas de hidratación. El shade va de 1 (más claro) a 12 (más oscuro). Ejemplos de uso:
+  - Texto primario: `rx.color("slate", 12)`
+  - Texto secundario/muted: `rx.color("slate", 11)`
+  - Fondos sutiles/badges: `rx.color("slate", 3)`
+  - Bordes: `rx.color("slate", 6)`
+  - Color de acento (hover, links activos): `rx.color("accent", 10)` — hereda del `accent_color` del tema
+- **NO usar `rx.color_mode_cond(light="#hex", dark="#hex")`** para colores fijos — causa mismatch de hidratación SSR. Reservar `rx.color_mode_cond` solo para valores que no tienen equivalente en Radix (e.g., gradientes, `rgba()`).
+- **NO usar `rx.color_mode_cond()` dentro de `global_style()`** — esa función compila a CSS estático en `theme.js` donde las expresiones JS no están disponibles. Usar `"var(--slate-11)"` directamente o selectores CSS `.dark p {}`.
+- Paleta del tema en `rx.App`: `theme=rx.theme(font_family="Inter", appearance="light", accent_color="cyan")`.
 - Responsive breakpoints: `640px` (mobile), `768px` (tablet), `1024px` (desktop) — defined as `BREAKPOINTS` in `common_styles.py`.
 - CSS media queries as nested dicts: `"@media (max-width: 640px)": {...}`.
 
 ### Reflex-Specific Patterns
 
 - Pages registered via `@rx.page(route, title)` — no manual `app.add_page()` needed.
-- `rx.cond()` and `rx.color_mode_cond()` for conditional rendering.
+- `rx.cond()` y `rx.color_mode_cond()` para renderizado condicional (componentes o props no-color).
 - Static assets in `assets/`, referenced by filename only (e.g., `src="Designer.jpg"`).
 
 ### Unused Scaffolding

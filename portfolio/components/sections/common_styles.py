@@ -37,7 +37,7 @@ item_header_style = {
 
 # Estilos para fechas/tiempo
 time_display_style = {
-    "color": rx.color_mode_cond(light="#64748b", dark="#94a3b8"),
+    "color": rx.color("slate", 11),
     "cursor": "default",
     "font_size": "0.85rem",
     "min_width": "102px",
@@ -50,8 +50,8 @@ time_display_style = {
 # Estilos para badges/highlights
 badge_style = {
     "border_radius": "6px",
-    "background": rx.color_mode_cond(light="#f3f4f6", dark="#1f2937"),
-    "color": rx.color_mode_cond(light="#475569", dark="#94a3b8"),
+    "background": rx.color("slate", 3),
+    "color": rx.color("slate", 11),
     "font_size": "0.6rem",
     "font_weight": "500",
     "padding": "0.2rem 0.6rem",
@@ -64,9 +64,9 @@ badge_style = {
 # Estilos para items de habilidades
 skill_badge_style = {
     "align_items": "center",
-    "background": rx.color_mode_cond(light="#f3f4f6", dark="#1f2937"),
+    "background": rx.color("slate", 3),
     "border_radius": "6px",
-    "color": rx.color_mode_cond(light="#111111", dark="#f9fafb"),
+    "color": rx.color("slate", 12),
     "display": "flex",
     "font_size": "0.8rem",
     "font_weight": "500",
@@ -81,8 +81,8 @@ skill_badge_style = {
 # Estilos para artículos/cards
 card_style = {
     "border_radius": "8px",
-    "background": rx.color_mode_cond(light="#ffffff", dark="#0f172a"),
-    "border": rx.color_mode_cond(light="1px solid #f3f4f6", dark="1px solid #1f2937"),
+    "background": rx.color("slate", 1),
+    "border": f"1px solid {rx.color('slate', 4)}",
     "box_shadow": rx.color_mode_cond(light="0 1px 4px rgba(0,0,0,0.06)", dark="none"),
     "gap": "16px",
     "display": "flex",
@@ -98,16 +98,16 @@ card_style = {
 # Estilos para componentes helpers
 item_title_style = {
     "font_weight": "600",
-    "color": rx.color_mode_cond(light="#111111", dark="#f9fafb"),
+    "color": rx.color("slate", 12),
     "margin": "0",
     "transition": "color 0.2s ease",
     "_hover": {
-        "color": rx.color_mode_cond(light="#0096c7", dark="#48cae4"),
+        "color": rx.color("accent", 10),
     },
 }
 
 item_subtitle_style = {
-    "color": rx.color_mode_cond(light="#475569", dark="#94a3b8"),
+    "color": rx.color("slate", 11),
     "font_weight": "400",
     "margin": "0",
 }
@@ -115,20 +115,20 @@ item_subtitle_style = {
 date_box_style = {
     "display": "flex",
     "align_items": "center",
-    "color": rx.color_mode_cond(light="#718096", dark="#94a3b8"),
+    "color": rx.color("slate", 11),
 }
 
 item_link_style = {
-    "color": rx.color_mode_cond(light="#111111", dark="#f9fafb"),
+    "color": rx.color("slate", 12),
     "text_decoration": "none",
     "_hover": {
         "text_decoration": "underline",
-        "color": rx.color_mode_cond(light="#0096c7", dark="#48cae4"),
+        "color": rx.color("accent", 10),
     },
 }
 
 item_text_style = {
-    "color": rx.color_mode_cond(light="#111111", dark="#f9fafb"),
+    "color": rx.color("slate", 12),
 }
 
 # Estilos para Hero Section
@@ -145,7 +145,7 @@ h1_style = {
 }
 
 h2_style = {
-    "color": rx.color_mode_cond(light="#475569", dark="#94a3b8"),
+    "color": rx.color("slate", 11),
     "font_weight": "500",
     "font_size": "1.1rem",
     "text_wrap": "balance",
@@ -174,7 +174,7 @@ img_style = {
 }
 
 location_style = {
-    "color": rx.color_mode_cond(light="#64748b", dark="#94a3b8"),
+    "color": rx.color("slate", 11),
     "display": "flex",
     "align_items": "center",
     "gap": "0.25rem",
@@ -187,11 +187,11 @@ location_style = {
 }
 
 link_style = {
-    "color": rx.color_mode_cond(light="#64748b", dark="#94a3b8"),
+    "color": rx.color("slate", 11),
     "display": "inline-flex",
     "align_items": "center",
     "justify_content": "center",
-    "border": rx.color_mode_cond(light="1px solid #e5e7eb", dark="1px solid #374151"),
+    "border": f"1px solid {rx.color('slate', 6)}",
     "padding": "4px",
     "height": "32px",
     "width": "32px",
@@ -199,11 +199,9 @@ link_style = {
     "transition": "all 0.3s ease",
     "text_decoration": "none",
     "_hover": {
-        "background": rx.color_mode_cond(light="#f3f4f6", dark="#1f2937"),
-        "border": rx.color_mode_cond(
-            light="1px solid #d1d5db", dark="1px solid #374151"
-        ),
-        "color": rx.color_mode_cond(light="#0096c7", dark="#48cae4"),
+        "background": rx.color("slate", 3),
+        "border": f"1px solid {rx.color('slate', 7)}",
+        "color": rx.color("accent", 10),
         "transform": "translateY(-2px)",
     },
     "@media (max-width: 640px)": {
@@ -256,13 +254,13 @@ avatar_wrapper_style = {
 
 # Estilos para Projects Section
 project_link_style = {
-    "color": rx.color_mode_cond(light="#111111", dark="#f9fafb"),
+    "color": rx.color("slate", 12),
     "font_weight": "500",
     "text_decoration": "none",
     "transition": "color 0.2s ease",
     "_hover": {
         "text_decoration": "underline",
-        "color": rx.color_mode_cond(light="#0096c7", dark="#48cae4"),
+        "color": rx.color("accent", 10),
     },
     "@media (max-width: 640px)": {
         "font_size": "0.95rem",
@@ -277,11 +275,11 @@ active_indicator_style = {
 
 github_link_style = {
     "margin_left": "5px",
-    "color": rx.color_mode_cond(light="#64748b", dark="#94a3b8"),
+    "color": rx.color("slate", 11),
     "text_decoration": "none",
     "transition": "color 0.2s ease",
     "_hover": {
-        "color": rx.color_mode_cond(light="#0096c7", dark="#48cae4"),
+        "color": rx.color("accent", 10),
         "opacity": "1",
     },
     # Área táctil más grande en móvil
@@ -306,7 +304,7 @@ project_description_style = {
     "font_size": "0.75rem",
     "line_height": "1.2rem",
     "margin_bottom": "4px",
-    "color": rx.color_mode_cond(light="#64748b", dark="#94a3b8"),
+    "color": rx.color("slate", 11),
     "@media (max-width: 640px)": {
         "font_size": "0.7rem",
         "line_height": "1.1rem",
@@ -345,7 +343,7 @@ projects_grid_style = {
 
 # Estilos para Skills Section
 skill_text_style = {
-    "color": rx.color_mode_cond(light="#111111", dark="#f9fafb"),
+    "color": rx.color("slate", 12),
     "font_size": "0.8rem",
     "font_weight": "500",
     "@media (max-width: 640px)": {
