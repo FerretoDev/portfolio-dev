@@ -83,7 +83,7 @@ def global_style() -> Any:
         },
         # Dark mode para etiquetas p globales (CSS puro, theme.js no soporta JS en runtime)
         ".dark p": {
-            "color": "#aaa",
+            "color": "#d4d4d4",
         },
         # Responsive typography
         "@media (max-width: 768px)": {
@@ -419,9 +419,9 @@ Text Component Styles
 @dataclass
 class TextStyle:
     # Estilos para texto de párrafo
-    paragraph: dict[str, str | dict] = field(
+    paragraph: dict[str, Any] = field(
         default_factory=lambda: {
-            "color": rx.color_mode_cond(light="#555", dark="#aaa"),
+            "color": rx.color_mode_cond(light="#555", dark="#d4d4d4"),
             "font_size": "1rem",
             "line_height": "1.6",
             "margin_bottom": "0.75rem",
@@ -510,7 +510,7 @@ footer_container_style: dict[str, str | dict] = {
     },
 }
 
-footer_copyright_style: dict[str, str | dict] = {
+footer_copyright_style: dict[str, Any] = {
     "font_size": "0.875rem",
     "color": rx.color_mode_cond(light="#666", dark="#aaa"),
     "@media (max-width: 640px)": {
