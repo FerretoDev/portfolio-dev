@@ -86,7 +86,7 @@ def create_text_content(text: str, is_summary: bool = False) -> rx.Component:
         Componente de texto formateado
     """
     base_style: dict[str, Any] = {
-        "color": rx.color_mode_cond(light="#475569", dark="#94a3b8"),
+        "color": rx.color("slate", 11),
         "line_height": "1.5",
         "margin": "0",
     }

@@ -40,7 +40,7 @@ def footer():
         rx.text(
             f"© 2024-{current_year} Marcos Eduardo Ferreto Estrada v1.",
             style={
-                "color": rx.color_mode_cond(light="#666", dark="#aaa"),
+                "color": rx.color("slate", 11),
                 "font_size": "0.8rem",
                 "text_align": "center",
                 "overflow_wrap": "break-word",
