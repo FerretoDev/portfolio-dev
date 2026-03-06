@@ -111,6 +111,7 @@ item_title_style = {
 
 item_subtitle_style = {
     "color": rx.color("slate", 11),
+    "display": "block",
     "font_weight": "400",
     "margin": "0",
 }
@@ -165,14 +166,14 @@ h2_style = {
 img_style = {
     "aspect_ratio": "1 / 1",
     "object_fit": "cover",
-    "width": "128px",
+    "width": "220px",
     "height": "auto",
     "border_radius": "16px",
     "@media (max-width: 768px)": {
-        "width": "112px",
+        "width": "180px",
     },
     "@media (max-width: 640px)": {
-        "width": "96px",
+        "width": "100px",
     },
 }
 
@@ -235,6 +236,7 @@ container_style = {
 info_style = {
     "display": "flex",
     "flex_direction": "column",
+    "flex": "1",
     "gap": "0.5rem",
     "padding_right": "32px",
     "@media (max-width: 768px)": {
@@ -253,6 +255,7 @@ social_links_wrapper_style = {
 
 avatar_wrapper_style = {
     "margin": "0",
+    "flex_shrink": "0",
 }
 
 # Estilos para Projects Section

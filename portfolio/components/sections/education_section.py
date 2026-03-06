@@ -23,11 +23,9 @@ def education_item(edu: dict) -> rx.Component:
         rx.box(
             create_item_header(
                 title=institution,
+                subtitle=area,
                 start_date=start_date,
                 end_date=end_date,
-            ),
-            rx.box(
-                create_text_content(area, is_summary=True),
             ),
             *(
                 [

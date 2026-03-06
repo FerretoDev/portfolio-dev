@@ -53,7 +53,11 @@ def hero_section() -> rx.Component:
                     ),
                     rx.box(
                         map_pin_icon(),
-                        rx.text(f"{city}, {region}", as_="span"),
+                        rx.text(
+                            # f"{city}, {region}",
+                            f"{region}",
+                            as_="span",
+                        ),
                         style=location_style,
                     ),
                     rx.box(
@@ -62,6 +66,7 @@ def hero_section() -> rx.Component:
                                 rx.link(
                                     icon_func(),
                                     href=profile.get("url", "#"),
+                                    class_name="social-link",
                                     style=link_style,
                                 )
                                 for profile in profiles
