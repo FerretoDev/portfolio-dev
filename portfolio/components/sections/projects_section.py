@@ -2,7 +2,6 @@ import reflex as rx
 
 from portfolio.components.section import section_component
 from portfolio.components.sections.common_styles import (
-    active_indicator_style,
     badge_style,
     card_style,
     github_link_style,
@@ -45,7 +44,6 @@ def project_item(project: dict) -> rx.Component:
                             "•",
                             as_="span",
                             class_name="active-indicator",
-                            style=active_indicator_style,
                         )
                         if is_active
                         else None
