@@ -2,6 +2,18 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-optical-sizing: auto;
+}
+
+/* Iconos SVG (img) dentro de links sociales: tint cian al hacer hover */
+.social-link:hover img {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(99%) saturate(361%) hue-rotate(152deg) brightness(95%);
+    transition: filter 0.3s ease;
+}
+
 @keyframes active-pulse {
     0%, 100% { color: rgb(29, 196, 71); }
     50%       { color: #111; }

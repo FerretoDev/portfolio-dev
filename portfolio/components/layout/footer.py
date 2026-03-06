@@ -47,6 +47,16 @@ def footer():
                 "word_break": "break-word",
             },
         ),
+        rx.text(
+            f"Always learning, building and exploring the intersection between mathematics and technology.",
+            style={
+                "color": rx.color("slate", 11),
+                "font_size": "0.8rem",
+                "text_align": "center",
+                "overflow_wrap": "break-word",
+                "word_break": "break-word",
+            },
+        ),
         width="100%",
         align="center",
         padding_y="2.5rem",

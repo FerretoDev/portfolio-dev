@@ -17,7 +17,7 @@ basics: dict = {
     "name": "Marcos Ferreto Estrada",
     "label": "Software Developer & Mathematical Modeling Student Building data-driven systems at the intersection of mathematics, software engineering and machine learning.",
     "image": "Designer.jpeg",
-    "location": {"city": "Grecia", "region": "Costa Rica"},
+    "location": {"city": "", "region": "Costa Rica"},
     # Texto de la sección "Sobre mí" — un string por párrafo
     "summary": [
         "Soy desarrollador de software y estudiante de Modelación Matemática en la Universidad de Costa Rica. Mi interés principal se encuentra en la intersección entre matemáticas, ciencia de datos y desarrollo de software.",
@@ -61,15 +61,13 @@ basics: dict = {
 # endDate: None = "Actual"
 work = [
     {
-        "name": "Proyectos Personales",
+        "name": "Full Stack Developer",
         "startDate": "2023-01-01",
         "endDate": None,
-        "position": "Desarrollador Full Stack",
-        "summary": "Desarrollo de aplicaciones web y de escritorio utilizando Python, FastAPI, Reflex, Flet, Docker y otras tecnologías. Enfoque en automatización, visualización de datos y productividad.",
+        "position": "Proyectos Personales",
+        "summary": "Desarrollo aplicaciones web y herramientas orientadas al análisis de datos y automatización utilizando Python. Trabajo principalmente en la construcción de APIs, sistemas backend y herramientas que facilitan la manipulación y visualización de datos.",
         "highlights": [
-            "Desarrollé una app de tareas multiplataforma con Flet y Flutter",
-            "Creé una API de scraping con FastAPI y Selenium, incluyendo visualización con Seaborn y Pandas",
-            "Desarrollé una app de inventario web con Reflex y FastAPI",
+            "Tecnologías utilizadas: Python, FastAPI, Reflex, Flet, Docker."
         ],
         "url": None,
     },
@@ -78,7 +76,7 @@ work = [
         "startDate": "2024-01-01",
         "endDate": None,
         "position": "Colaborador en Traducción",
-        "summary": "Participación voluntaria en la traducción oficial de la documentación de Python al español.",
+        "summary": "Participo como voluntario en la traducción oficial de la documentación de Python al español. Este trabajo contribuye a mejorar el acceso a recursos educativos y documentación técnica para la comunidad hispanohablante.",
         "highlights": [
             "Traducción de documentación técnica de Python para el público hispanohablante",
             "Colaboración con otros miembros de la comunidad de código abierto",
@@ -116,11 +114,35 @@ skills = [
 # github: None si el repositorio es privado o no existe
 projects = [
     {
-        "name": "Portfolio",
+        "name": "Portfolio Website",
         "url": "https://ferreto.dev",
         "github": None,
-        "description": "Sitio web portfolio minimalista y diseño responsivo.",
+        "description": "Sitio web personal desarrollado para presentar proyectos, experiencia y habilidades en desarrollo de software y ciencia de datos.",
         "isActive": True,
         "highlights": ["Python", "Reflex", "FastAPI", "CSS"],
+    },
+    {
+        "name": "Web Scraper API Visualization",
+        "url": None,
+        "github": None,
+        "description": "Aplicación que realiza web scraping automatizado, expone los datos mediante una API REST y permite analizarlos o visualizarlos utilizando herramientas de ciencia de datos.",
+        "isActive": False,
+        "highlights": ["Python", "FastAPI", "Reflex", "Pandas", "Docker"],
+    },
+    {
+        "name": "MyTaskCalendar",
+        "url": None,
+        "github": None,
+        "description": "Aplicación multiplataforma para gestión de tareas y calendario que permite organizar proyectos, tareas y recordatorios de forma eficiente.",
+        "isActive": False,
+        "highlights": ["Python", "Flet"],
+    },
+    {
+        "name": "Inventory Management Web App",
+        "url": None,
+        "github": None,
+        "description": "Aplicación web para la gestión de inventarios desarrollada utilizando FastAPI y Reflex.",
+        "isActive": False,
+        "highlights": ["Python", "FastAPI", "Reflex", "PostgreSQL"],
     },
 ]
