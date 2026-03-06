@@ -70,6 +70,7 @@ skill_badge_style = {
     "border_radius": "6px",
     "color": rx.color("slate", 12),
     "display": "flex",
+    "flex_direction": "row",
     "font_size": "0.8rem",
     "font_weight": "500",
     "gap": "4px",

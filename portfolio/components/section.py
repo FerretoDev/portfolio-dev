@@ -18,7 +18,7 @@ def section_component(
         section_content.append(
             rx.heading(
                 title,
-                level=2,
+                as_="h2",
                 style=section_title_style,
             )
         )

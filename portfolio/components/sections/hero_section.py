@@ -45,19 +45,15 @@ def hero_section() -> rx.Component:
             rx.flex(
                 # Sección de información
                 rx.box(
-                    rx.heading(name, level=1, style=h1_style),
+                    rx.heading(name, as_="h1", style=h1_style),
                     rx.heading(
                         label,
-                        level=2,
+                        as_="h2",
                         style=h2_style,
                     ),
                     rx.box(
                         map_pin_icon(),
-                        rx.text(
-                            rx.text(f"{city}, {region}"),
-                            style=location_style,
-                        ),
-                        _as="span",
+                        rx.text(f"{city}, {region}", as_="span"),
                         style=location_style,
                     ),
                     rx.box(
@@ -67,7 +63,6 @@ def hero_section() -> rx.Component:
                                     icon_func(),
                                     href=profile.get("url", "#"),
                                     style=link_style,
-                                    _as="a",
                                 )
                                 for profile in profiles
                                 if isinstance(profile, dict)
