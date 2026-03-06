@@ -22,7 +22,7 @@ def email_icon() -> rx.Component:
 
 
 def phone_icon() -> rx.Component:
-    return rx.icon(tag="phone", width="16px", height="16px")
+    return create_simple_icon("phone")
 
 
 def github_social_icon() -> rx.Component:
