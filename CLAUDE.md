@@ -57,6 +57,8 @@ All CV data lives in `portfolio/constants.py`: `basics`, `work`, `education`, `s
 - **NO usar `rx.color_mode_cond()` para nada** — genera expresiones JS (`resolvedColorMode`) que se evalúan en el cliente después de la hidratación SSR, causando que la página "se rompa" ~1 segundo después de cargar (hydration mismatch). La excepción es condicionales de componentes completos (no props de estilo).
 - **NO usar `rx.color_mode_cond()` dentro de `global_style()`** — esa función compila a CSS estático en `theme.js` donde las expresiones JS no están disponibles. Usar `"var(--slate-11)"` directamente.
 - **NO instanciar Vars de `rx.color_mode_cond()` a nivel de módulo** (ej. en `default_factory` de un `@dataclass` que se instancia al importar) — aunque el estilo no se use en ningún componente, el Var se crea al importar el módulo e inyecta lógica en el bundle.
+- **NO usar `style=global_style()` en `rx.App` con selectores nativos** — aplicar CSS sobre `p`, `h1`, `h2`, `ul`, `a` etc. desde Python colisiona con las reglas que Radix UI inyecta en runtime. El servidor SSR renderiza sin esos estilos de Radix, el cliente los aplica → mismatch → `removeChild` crash. Usar CSS puro en `assets/` en su lugar.
+- **`enable_state=False` en `rx.App`** cuando no hay `rx.State` activo — elimina el WebSocket, el overlay flotante de conexión, y el `useEffect` del `RadixThemesColorModeProvider` que manipula el DOM post-hidratación.
 - Paleta del tema en `rx.App`: `theme=rx.theme(font_family="Inter", appearance="light", accent_color="cyan")`.
 - Responsive breakpoints: `640px` (mobile), `768px` (tablet), `1024px` (desktop) — defined as `BREAKPOINTS` in `common_styles.py`.
 - CSS media queries as nested dicts: `"@media (max-width: 640px)": {...}`.
@@ -80,7 +82,9 @@ All CV data lives in `portfolio/constants.py`: `basics`, `work`, `education`, `s
 
 - **`rx.unordered_list` / `rx.list_item` prohibidos** — generan `<ul><li>` con bullets del browser que Next.js/Radix no resetean consistentemente. Usar `rx.box` en su lugar.
 - **`rx.avatar` prohibido para imágenes reales** — renderiza `<span>` + `<img>` interno; `object_fit` y `aspect_ratio` aplican al span, no al img. Usar `rx.image` directamente.
-- **`rx.text` con `as_="span"`** para badges/indicadores inline — `rx.text` sin `as_` genera `<p>` (block-level) que rompe el flex layout.
+- **`rx.text` con `as_="span"`** para badges/indicadores inline — `rx.text` sin `as_` genera `<p>` (block-level) que rompe el flex layout. También usar `as_="span"` en `create_link_or_text` y subtítulos para evitar `<p>` dentro de elementos de bloque.
+- **`rx.heading` usa `as_="h1"`/`"h2"`/etc., NO `level=N`** — `level` no es un prop válido en Radix y es ignorado, generando siempre `<h1>` → hydration mismatch.
+- **No anidar componentes dentro de `rx.heading`** — si el título ya es un `rx.link` o `rx.text`, usarlo directamente sin envolverlo en `rx.heading`. `<h3><a>` es válido pero `<h3><p>` no lo es.
 - **`rx.foreach` solo para State vars reactivos** — con listas Python estáticas de `constants.py`, usar comprehensions `*[fn(item) for item in items]`. `rx.foreach` convierte cada elemento a `Var[dict]` y hace que los `if url:`, `.get()` etc. fallen.
 
 ## Mejoras Pendientes

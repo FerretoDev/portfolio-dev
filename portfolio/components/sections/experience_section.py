@@ -45,10 +45,6 @@ def experience_section() -> rx.Component:
     """
     return section_component(
         title="Experiencia laboral",
-        children=[
-            rx.box(
-                *[experience_item(job) for job in work],
-                style=list_vertical_style,
-            )
-        ],
+        children=[experience_item(job) for job in work],
+        content_style=list_vertical_style,
     )

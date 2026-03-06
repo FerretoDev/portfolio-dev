@@ -86,10 +86,6 @@ def projects_section() -> rx.Component:
     """
     return section_component(
         title="Proyectos",
-        children=[
-            rx.box(
-                *[project_item(project) for project in projects],
-                style=projects_grid_style,
-            )
-        ],
+        children=[project_item(project) for project in projects],
+        content_style=projects_grid_style,
     )

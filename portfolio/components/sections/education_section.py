@@ -17,6 +17,7 @@ def education_item(edu: dict) -> rx.Component:
     start_date = edu["startDate"]
     end_date = edu.get("endDate")
     area = edu["area"]
+    summary = edu.get("summary", "")
 
     return rx.box(
         rx.box(
@@ -28,6 +29,16 @@ def education_item(edu: dict) -> rx.Component:
             rx.box(
                 create_text_content(area, is_summary=True),
             ),
+            *(
+                [
+                    rx.box(
+                        create_text_content(summary, is_summary=True),
+                        style={"margin_top": "4px"},
+                    )
+                ]
+                if summary
+                else []
+            ),
         )
     )
 
@@ -38,10 +49,6 @@ def education_section() -> rx.Component:
     """
     return section_component(
         title="Educación",
-        children=[
-            rx.box(
-                *[education_item(edu) for edu in education],
-                style=list_vertical_style,
-            )
-        ],
+        children=[education_item(edu) for edu in education],
+        content_style=list_vertical_style,
     )

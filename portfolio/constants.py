@@ -15,13 +15,15 @@ PHONE = "+506 6352-8891"
 # Editar aquí para actualizar el hero y el about
 basics: dict = {
     "name": "Marcos Ferreto Estrada",
-    "label": "Especializado en desarrollo de software, modelación matemática y análisis de datos.",
+    "label": "Software Developer & Mathematical Modeling Student Building data-driven systems at the intersection of mathematics, software engineering and machine learning.",
     "image": "Designer.jpeg",
     "location": {"city": "Grecia", "region": "Costa Rica"},
     # Texto de la sección "Sobre mí" — un string por párrafo
     "summary": [
-        "Soy un desarrollador de software apasionado por la intersección entre matemáticas, ciencia de datos y tecnología. Me especializo en crear soluciones innovadoras que transforman datos complejos en información accionable.",
-        "Mi enfoque se centra en combinar rigor matemático con implementaciones de software eficientes y escalables, utilizando las últimas tecnologías en desarrollo y análisis de datos.",
+        "Soy desarrollador de software y estudiante de Modelación Matemática en la Universidad de Costa Rica. Mi interés principal se encuentra en la intersección entre matemáticas, ciencia de datos y desarrollo de software.",
+        "Disfruto construir herramientas y sistemas que permiten transformar datos complejos en información útil. Me interesa especialmente el desarrollo de software orientado al análisis de datos, la automatización de procesos y la creación de sistemas escalables.",
+        "Actualmente estoy explorando áreas como Machine Learning, Data Science, Big Data y modelado matemático aplicado, combinando pensamiento matemático con desarrollo de software para construir soluciones eficientes y reproducibles.",
+        "Además, contribuyo a proyectos open source como colaborador en la traducción oficial de la documentación de Python al español.",
     ],
     "profiles": [
         {
@@ -93,6 +95,7 @@ education = [
         "startDate": "2025-03-18",
         "endDate": None,
         "area": "Bachillerato en Modelación Matemática",
+        "summary": "Formación enfocada en matemáticas aplicadas, modelado matemático, análisis numérico y herramientas computacionales para la resolución de problemas complejos.",
     },
 ]
 
