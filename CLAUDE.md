@@ -54,8 +54,9 @@ All CV data lives in `portfolio/constants.py`: `basics`, `work`, `education`, `s
   - Fondos sutiles/badges: `rx.color("slate", 3)`
   - Bordes: `rx.color("slate", 6)`
   - Color de acento (hover, links activos): `rx.color("accent", 10)` — hereda del `accent_color` del tema
-- **NO usar `rx.color_mode_cond(light="#hex", dark="#hex")`** para colores fijos — causa mismatch de hidratación SSR. Reservar `rx.color_mode_cond` solo para valores que no tienen equivalente en Radix (e.g., gradientes, `rgba()`).
-- **NO usar `rx.color_mode_cond()` dentro de `global_style()`** — esa función compila a CSS estático en `theme.js` donde las expresiones JS no están disponibles. Usar `"var(--slate-11)"` directamente o selectores CSS `.dark p {}`.
+- **NO usar `rx.color_mode_cond()` para nada** — genera expresiones JS (`resolvedColorMode`) que se evalúan en el cliente después de la hidratación SSR, causando que la página "se rompa" ~1 segundo después de cargar (hydration mismatch). La excepción es condicionales de componentes completos (no props de estilo).
+- **NO usar `rx.color_mode_cond()` dentro de `global_style()`** — esa función compila a CSS estático en `theme.js` donde las expresiones JS no están disponibles. Usar `"var(--slate-11)"` directamente.
+- **NO instanciar Vars de `rx.color_mode_cond()` a nivel de módulo** (ej. en `default_factory` de un `@dataclass` que se instancia al importar) — aunque el estilo no se use en ningún componente, el Var se crea al importar el módulo e inyecta lógica en el bundle.
 - Paleta del tema en `rx.App`: `theme=rx.theme(font_family="Inter", appearance="light", accent_color="cyan")`.
 - Responsive breakpoints: `640px` (mobile), `768px` (tablet), `1024px` (desktop) — defined as `BREAKPOINTS` in `common_styles.py`.
 - CSS media queries as nested dicts: `"@media (max-width: 640px)": {...}`.
@@ -70,14 +71,34 @@ All CV data lives in `portfolio/constants.py`: `basics`, `work`, `education`, `s
 
 - `state/auth.py`, `state/projects.py` — not actively used
 - `translation/schemas.py`, `translation/es.py` — ES/EN translation scaffold, not wired up
+- `components/styles/styles.py` — `NavbarStyle`, `HeaderStyle`, `LayoutStyle`, `PageStyle`, `SectionStyle`, `CardStyle` están definidos pero **no se usan** en el layout actual. Solo se usan `footer_style`, `text_style`, `section_box_style`, `section_title_style`, `layout_box_style`, `footer_copyright_style`.
+- `components/ui/project_card.py` — componente alternativo de card, no está conectado a ninguna página.
+- `components/button_color_mode.py` — botón de toggle de modo oscuro/claro, no está montado en ninguna página.
+- `pages/projects/[id].py` — página de detalle de proyecto, actualmente **vacía**.
+
+### Patrones de Componentización
+
+- **`rx.unordered_list` / `rx.list_item` prohibidos** — generan `<ul><li>` con bullets del browser que Next.js/Radix no resetean consistentemente. Usar `rx.box` en su lugar.
+- **`rx.avatar` prohibido para imágenes reales** — renderiza `<span>` + `<img>` interno; `object_fit` y `aspect_ratio` aplican al span, no al img. Usar `rx.image` directamente.
+- **`rx.text` con `as_="span"`** para badges/indicadores inline — `rx.text` sin `as_` genera `<p>` (block-level) que rompe el flex layout.
+- **`rx.foreach` solo para State vars reactivos** — con listas Python estáticas de `constants.py`, usar comprehensions `*[fn(item) for item in items]`. `rx.foreach` convierte cada elemento a `Var[dict]` y hace que los `if url:`, `.get()` etc. fallen.
 
 ## Mejoras Pendientes
 
 Refactorizaciones acordadas y en progreso, en orden:
 
-1. ✅ **Datos de educación en `constants.py`** — resuelto, `education_section.py` ya importa desde `constants`.
-2. ✅ **Duplicación de `section_component`** — resuelto, todos los archivos importan desde `components/section.py`.
-3. ✅ **Inconsistencia de estilos** — resuelto, todos los dicts inline movidos a `common_styles.py`.
-4. ✅ **`state/` sin usar** — resuelto, `auth.py` y `projects.py` eliminados (estaban vacíos).
-5. ~~**Patrón de impresión**~~ — descartado, no es prioritario.
-6. ✅ **Idioma consistente** — resuelto, todos los comentarios están en español.
+1. ✅ **Datos de educación en `constants.py`** — resuelto.
+2. ✅ **Duplicación de `section_component`** — resuelto.
+3. ✅ **Inconsistencia de estilos** — resuelto, dicts en `common_styles.py`.
+4. ✅ **`state/` sin usar** — resuelto.
+5. ✅ **Colores con `rx.color()`** — resuelto, eliminado todo `rx.color_mode_cond` en props de estilo.
+6. ✅ **`rx.unordered_list`/`rx.list_item` → `rx.box`** — resuelto en todas las secciones.
+7. ✅ **`rx.avatar` → `rx.image`** — resuelto en hero_section.
+8. ✅ **`not_found.py` vacío** — resuelto, página 404 creada e importada.
+9. ✅ **`pages/projects/[id].py` vacío** — stub mínimo de página agregado con `@rx.page("/projects/[id]")`. No importada aún desde `portfolio.py` hasta implementar la página completa.
+10. ✅ **`GlobalThemeVariables` enum en `styles.py`** — eliminado. Era código muerto con hex hardcodeados de paleta antigua.
+11. ✅ **Dataclasses sin usar en `styles.py`** — `NavbarStyle`, `HeaderStyle`, `LayoutStyle`, `PageStyle`, `SectionStyle`, `CardStyle` eliminados. Solo quedan `FooterStyle` y `TextStyle` que sí se usan.
+12. ✅ **Iconos cargados desde CDN externo** — SVGs descargados a `assets/icons/` (gmail, linkedin, twitter, github, html5, css3, javascript, git, python, postgresql). `map_pin_icon()` y `phone_icon()` usan `rx.icon()` (Lucide, bundled).
+13. ⚠️ **`constants.py` referencias externas** — `BOOK_URL`, `BOOKS_URL`, `SETUP_URL`, `COFFEE_URL`, `MYPUBLICINBOX_URL` apuntan a `mouredev.com` (datos de ejemplo copiados). Actualizar con datos reales.
+14. ✅ **`layout.py` tiene `basics` hardcodeado** — dict `basics` dummy y param `title` eliminados.
+

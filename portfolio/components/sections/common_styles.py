@@ -49,6 +49,8 @@ time_display_style = {
 
 # Estilos para badges/highlights
 badge_style = {
+    "display": "inline-flex",
+    "align_items": "center",
     "border_radius": "6px",
     "background": rx.color("slate", 3),
     "color": rx.color("slate", 11),
@@ -83,7 +85,7 @@ card_style = {
     "border_radius": "8px",
     "background": rx.color("slate", 1),
     "border": f"1px solid {rx.color('slate', 4)}",
-    "box_shadow": rx.color_mode_cond(light="0 1px 4px rgba(0,0,0,0.06)", dark="none"),
+    "box_shadow": f"0 1px 4px {rx.color('slate', 4, True)}",
     "gap": "16px",
     "display": "flex",
     "flex_direction": "column",
@@ -267,11 +269,6 @@ project_link_style = {
     },
 }
 
-active_indicator_style = {
-    "color": "rgb(29, 196, 71)",
-    "margin_left": "8px",
-    "font_size": "1rem",
-}
 
 github_link_style = {
     "margin_left": "5px",
