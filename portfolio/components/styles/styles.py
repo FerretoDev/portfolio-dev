@@ -62,7 +62,6 @@ class TextStyle:
             "font_size": "1rem",
             "line_height": "1.6",
             "margin_bottom": "0.75rem",
-            "text_align": "justify",
             "@media (max-width: 768px)": {
                 "font_size": "0.95rem",
                 "line_height": "1.55",

@@ -47,10 +47,6 @@ def skills_section() -> rx.Component:
     """
     return section_component(
         title="Habilidades",
-        children=[
-            rx.box(
-                *[skill_item(skill) for skill in skills],
-                style=skills_list_style,
-            )
-        ],
+        children=[skill_item(skill) for skill in skills],
+        content_style=skills_list_style,
     )
