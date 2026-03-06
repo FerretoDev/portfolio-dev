@@ -33,6 +33,7 @@ def skill_item(skill: dict) -> rx.Component:
     item_content.append(
         rx.text(
             name,
+            as_="span",
             style=skill_text_style,
         )
     )

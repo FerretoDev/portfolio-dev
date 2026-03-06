@@ -22,6 +22,7 @@ def hero_section() -> rx.Component:
     # Extraemos datos del basics
     name = basics["name"]
     label = basics["label"]
+    image = basics["image"]
     location = basics["location"]
     profiles = basics["profiles"]
 
@@ -85,8 +86,8 @@ def hero_section() -> rx.Component:
                 # Figura con imagen
                 rx.box(
                     rx.image(
-                        src="/Designer.jpeg",
-                        alt="Marcus",
+                        src=image,
+                        alt=name,
                         style=img_style,
                     ),
                     style=avatar_wrapper_style,
