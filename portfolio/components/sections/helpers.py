@@ -44,14 +44,17 @@ def create_item_header(
     # Crear contenido del título
     title_content = []
 
-    # Si title es un string, crear un heading, si no, usarlo directamente
-    title_component = rx.heading(title, level=3, style=item_title_style)
+    # Si title es un string, crear un heading; si ya es un componente, usarlo directo
+    if isinstance(title, str):
+        title_component = rx.heading(title, as_="h3", style=item_title_style)
+    else:
+        title_component = title
 
     title_content.append(title_component)
 
     # Agregar subtítulo si existe
     if subtitle:
-        title_content.append(rx.heading(subtitle, level=4, style=item_subtitle_style))
+        title_content.append(rx.text(subtitle, as_="span", style=item_subtitle_style))
 
     # Crear box del título/subtítulo
     title_box = rx.box(*title_content)
@@ -124,4 +127,4 @@ def create_link_or_text(
             rel="noopener noreferrer",
             style=item_link_style,
         )
-    return rx.text(text, style=item_text_style)
+    return rx.text(text, as_="span", style=item_text_style)
