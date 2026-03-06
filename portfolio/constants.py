@@ -1,28 +1,28 @@
-# Comunes
+# ─── Analytics ────────────────────────────────────────────────────────────────
+# Google Analytics — conectar en rxconfig.py cuando esté listo
 G_TAG = "G-3YGHT3XJFS"
 
-# Cabecera
+# ─── URLs de redes sociales ────────────────────────────────────────────────────
 GITHUB_URL = "https://github.com/FerretoDev"
 TWITTER_X_URL = "https://x.com/FerretoDev"
 LINKEDIN_URL = "https://www.linkedin.com/in/marcos-ferreto/"
 
-
-# Recursos y más
-BOOK_URL = "https://mouredev.com/libro-git"
-BOOKS_URL = "https://amazon.es/shop/mouredev/list/2ZIHJJFJ9AVZ3"
-SETUP_URL = "https://mouredev.com/setup"
-COFFEE_URL = "https://buymeacoffee.com/mouredev"
-
-# Contacto
-MYPUBLICINBOX_URL = "https://mypublicinbox.com/mouredev"
+# ─── Contacto ──────────────────────────────────────────────────────────────────
 EMAIL = "marcosferretoestrada@gmail.com"
 PHONE = "+506 6352-8891"
 
-basics: dict[str, dict[str, str] | list[dict[str, str]] | str] = {
+# ─── Datos básicos del CV ──────────────────────────────────────────────────────
+# Editar aquí para actualizar el hero y el about
+basics: dict = {
     "name": "Marcos Ferreto Estrada",
     "label": "Especializado en desarrollo de software, modelación matemática y análisis de datos.",
-    "image": "Designer.jpg",
+    "image": "Designer.jpeg",
     "location": {"city": "Grecia", "region": "Costa Rica"},
+    # Texto de la sección "Sobre mí" — un string por párrafo
+    "summary": [
+        "Soy un desarrollador de software apasionado por la intersección entre matemáticas, ciencia de datos y tecnología. Me especializo en crear soluciones innovadoras que transforman datos complejos en información accionable.",
+        "Mi enfoque se centra en combinar rigor matemático con implementaciones de software eficientes y escalables, utilizando las últimas tecnologías en desarrollo y análisis de datos.",
+    ],
     "profiles": [
         {
             "network": "Email",
@@ -37,7 +37,7 @@ basics: dict[str, dict[str, str] | list[dict[str, str]] | str] = {
         {
             "network": "LinkedIn",
             "url": LINKEDIN_URL,
-            "username": "usuario",
+            "username": "marcos-ferreto",
         },
         {
             "network": "X",
@@ -54,7 +54,9 @@ basics: dict[str, dict[str, str] | list[dict[str, str]] | str] = {
     "email": EMAIL,
 }
 
-# Experiencia laboral
+# ─── Experiencia laboral ───────────────────────────────────────────────────────
+# Orden: más reciente primero
+# endDate: None = "Actual"
 work = [
     {
         "name": "Proyectos Personales",
@@ -83,7 +85,8 @@ work = [
     },
 ]
 
-# Educación
+# ─── Educación ─────────────────────────────────────────────────────────────────
+# endDate: None = "Actual"
 education = [
     {
         "institution": "Universidad de Costa Rica",
@@ -93,7 +96,8 @@ education = [
     },
 ]
 
-# Habilidades
+# ─── Habilidades ───────────────────────────────────────────────────────────────
+# Nombres deben coincidir con las claves de SKILLS_ICONS en utils/icons.py
 skills = [
     {"name": "HTML"},
     {"name": "CSS"},
@@ -104,7 +108,9 @@ skills = [
     {"name": "PostgreSQL"},
 ]
 
-# Proyectos
+# ─── Proyectos ─────────────────────────────────────────────────────────────────
+# isActive: True muestra el indicador animado de proyecto activo
+# github: None si el repositorio es privado o no existe
 projects = [
     {
         "name": "Portfolio",

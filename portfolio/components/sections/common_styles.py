@@ -349,7 +349,7 @@ skill_text_style = {
 }
 
 skills_list_style = {
-    "display": "inline-flex",
+    "display": "flex",
     "gap": "8px",
     "flex_wrap": "wrap",
     "list_style": "none",
