@@ -16,7 +16,7 @@ PHONE = "+506 6352-8891"
 basics: dict = {
     "name": "Marcos Ferreto Estrada",
     "label": "Software Developer & Mathematical Modeling Student Building data-driven systems at the intersection of mathematics, software engineering and machine learning.",
-    "image": "Designer.jpeg",
+    "image": "icon-ferreto-nobg.svg",
     "location": {"city": "", "region": "Costa Rica"},
     # Texto de la sección "Sobre mí" — un string por párrafo
     "summary": [
