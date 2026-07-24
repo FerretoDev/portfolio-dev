@@ -168,12 +168,15 @@ img_style = {
     "object_fit": "cover",
     "width": "220px",
     "height": "auto",
-    "border_radius": "16px",
+    "border_radius": "50%",
+    "background_color": "white",
+    "box_shadow": f"0 4px 14px {rx.color('slate', 6, True)}",
+    "padding": "4px",
     "@media (max-width: 768px)": {
         "width": "180px",
     },
     "@media (max-width: 640px)": {
-        "width": "100px",
+        "width": "120px",
     },
 }
 
