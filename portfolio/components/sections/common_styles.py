@@ -168,7 +168,7 @@ img_style = {
     "object_fit": "cover",
     "width": "220px",
     "height": "auto",
-    "border_radius": "50%",
+    "border_radius": "16px",
     "background_color": "white",
     "box_shadow": f"0 4px 14px {rx.color('slate', 6, True)}",
     "padding": "4px",
