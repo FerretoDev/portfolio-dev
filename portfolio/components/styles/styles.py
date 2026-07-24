@@ -4,49 +4,6 @@ from typing import Any
 import reflex as rx
 from reflex.constants.colors import Color
 
-"""
-The FooterStyle
-"""
-
-
-active: Color = rx.color("slate", 12)
-
-
-@dataclass
-class FooterStyle:
-    base: dict[str, str] = field(
-        default_factory=lambda: {
-            "width": "100%",
-            "height": "20vh",
-            "align": "center",
-            "justify": "center",
-            "padding": "0em 1em",
-        },
-    )
-
-    content: dict[str, str] = field(
-        default_factory=lambda: {
-            "width": "100%",
-            "max_width": "35em",
-            "justify": "between",
-            "align": "center",
-            "padding": "1em 0em",
-        },
-    )
-    link: dict[str, str | Color] = field(
-        default_factory=lambda: {
-            "color": rx.color("slate", 11),
-            "weight": "medium",
-            "size": "2",
-        },
-    )
-    brand: dict[str, str | Color] = field(
-        default_factory=lambda: {"color": active, "size": "2"},
-    )
-
-
-footer_style: FooterStyle = FooterStyle()
-
 
 """
 Text Component Styles
