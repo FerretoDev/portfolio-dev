@@ -8,9 +8,10 @@ from portfolio.components.sections.experience_section import experience_section
 from portfolio.components.sections.hero_section import hero_section
 from portfolio.components.sections.projects_section import projects_section
 from portfolio.components.sections.skills_section import skills_section
+from portfolio import constants
 
 
-@rx.page("/", title="Portfolio - Marcos Ferreto Estrada")  # type: ignore
+@rx.page("/", title=f"Portfolio - {constants.basics['name']}")  # type: ignore
 def index() -> rx.Component:
     """Página principal del portfolio."""
     return layout(
