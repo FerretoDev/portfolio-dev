@@ -6,8 +6,8 @@ import reflex as rx
 
 # Estilo estándar para iconos de tecnologías con soporte para modo oscuro
 ICON_STYLE: dict[str, Any] = {
-    "width": "16px",
-    "height": "16px",
+    "width": "20px",
+    "height": "20px",
     "filter": rx.color_mode_cond(
         light="none",
         dark="brightness(0) invert(1)",
@@ -46,11 +46,12 @@ def twitter_icon() -> rx.Component:
 
 
 def link_icon() -> rx.Component:
-    return rx.icon("link", size=16)
+    return rx.icon("link", size=20)
 
 
 def map_pin_icon() -> rx.Component:
-    return rx.icon("map-pin", size=16)
+    return rx.icon("map-pin", size=20)
+
 
 
 
