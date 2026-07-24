@@ -149,13 +149,30 @@ h1_style = {
 }
 
 h2_style = {
-    "color": rx.color("slate", 11),
+    "color": rx.color("slate", 12),
     "font_weight": "500",
-    "font_size": "1.1rem",
+    "font_size": "1.2rem",
     "text_wrap": "balance",
     "margin": "0",
+    "margin_bottom": "0.25rem",
     "@media (max-width: 768px)": {
+        "font_size": "1.1rem",
+    },
+    "@media (max-width: 640px)": {
         "font_size": "1rem",
+        "text_align": "center",
+    },
+}
+
+hero_des_style = {
+    "color": rx.color("slate", 11),
+    "font_weight": "400",
+    "font_size": "1rem",
+    "text_wrap": "balance",
+    "line_height": "1.5",
+    "margin": "0",
+    "@media (max-width: 768px)": {
+        "font_size": "0.95rem",
     },
     "@media (max-width: 640px)": {
         "font_size": "0.9rem",

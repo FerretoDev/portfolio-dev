@@ -6,6 +6,7 @@ from portfolio.components.sections.common_styles import (
     container_style,
     h1_style,
     h2_style,
+    hero_des_style,
     img_style,
     info_style,
     link_style,
@@ -21,7 +22,8 @@ def hero_section() -> rx.Component:
 
     # Extraemos datos del basics
     name = basics["name"]
-    label = basics["label"]
+    title = basics.get("title", "")
+    description = basics.get("description", "")
     image = basics["image"]
     location = basics["location"]
     profiles = basics["profiles"]
@@ -47,9 +49,13 @@ def hero_section() -> rx.Component:
                 rx.box(
                     rx.heading(name, as_="h1", style=h1_style),
                     rx.heading(
-                        label,
+                        title,
                         as_="h2",
                         style=h2_style,
+                    ),
+                    rx.text(
+                        description,
+                        style=hero_des_style,
                     ),
                     rx.box(
                         map_pin_icon(),
