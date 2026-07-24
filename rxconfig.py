@@ -8,7 +8,7 @@ config = rx.Config(
     plugins=[
         SitemapPlugin(),
         RadixThemesPlugin(
-            theme=rx.theme(font_family="Inter", appearance="light", accent_color="cyan")
+            theme=rx.theme(font_family="Inter", appearance="inherit", accent_color="cyan")
         ),
     ],
     disable_plugins=[],
