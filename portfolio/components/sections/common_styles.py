@@ -71,13 +71,13 @@ skill_badge_style = {
     "color": rx.color("slate", 12),
     "display": "flex",
     "flex_direction": "row",
-    "font_size": "0.8rem",
+    "font_size": "0.85rem",
     "font_weight": "500",
-    "gap": "4px",
-    "padding": "0.2rem 0.6rem",
+    "gap": "6px",
+    "padding": "0.4rem 0.8rem",
     "@media (max-width: 640px)": {
-        "font_size": "0.7rem",
-        "padding": "0.15rem 0.5rem",
+        "font_size": "0.75rem",
+        "padding": "0.3rem 0.6rem",
     },
 }
 
@@ -196,10 +196,10 @@ link_style = {
     "align_items": "center",
     "justify_content": "center",
     "border": f"1px solid {rx.color('slate', 6)}",
-    "padding": "4px",
-    "height": "32px",
-    "width": "32px",
-    "border_radius": "6px",
+    "padding": "6px",
+    "height": "38px",
+    "width": "38px",
+    "border_radius": "8px",
     "transition": "all 0.3s ease",
     "text_decoration": "none",
     "_hover": {
@@ -209,8 +209,8 @@ link_style = {
         "transform": "translateY(-2px)",
     },
     "@media (max-width: 640px)": {
-        "height": "36px",  # Más grande para táctil
-        "width": "36px",
+        "height": "42px",  # Más grande para táctil
+        "width": "42px",
     },
 }
 
