@@ -9,20 +9,11 @@ ICON_STYLE: dict[str, str] = {"width": "16px", "height": "16px"}
 
 
 def create_simple_icon(icon_name: str) -> rx.Component:
-    """
-    Crea un icono oficial de tecnología desde simple-icons CDN.
-
-    Args:
-        icon_name: Nombre del icono en simple-icons (ej: "linkedin", "python")
-
-    Returns:
-        Componente rx.image con el icono SVG
-    """
+    """Crea un icono desde assets/icons/ (SVGs locales de simple-icons)."""
     return rx.image(
-        src=f"https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/{icon_name}.svg",
+        src=f"/icons/{icon_name}.svg",
         style=ICON_STYLE,
     )
-
 
 
 # Funciones de iconos de redes sociales y UI (usando Lucide nativo)
@@ -32,7 +23,6 @@ def email_icon() -> rx.Component:
 
 def phone_icon() -> rx.Component:
     return rx.image(src="/icons/phone.svg", style=ICON_STYLE)
-
 
 
 def github_social_icon() -> rx.Component:
@@ -47,14 +37,13 @@ def twitter_icon() -> rx.Component:
     return create_simple_icon("twitter")
 
 
-
-
 def link_icon() -> rx.Component:
     return rx.icon("link", size=16)
 
 
 def map_pin_icon() -> rx.Component:
     return rx.icon("map-pin", size=16)
+
 
 
 # Diccionario de iconos de redes sociales

@@ -1,5 +1,7 @@
 """Estilos comunes para las secciones del portfolio"""
 
+import reflex as rx
+
 # Breakpoints para responsive design
 BREAKPOINTS = {
     "mobile": "640px",  # Smartphones
@@ -35,7 +37,8 @@ item_header_style = {
 
 # Estilos para fechas/tiempo
 time_display_style = {
-    "color": "#555",
+    "color": rx.color("slate", 11),
+    "cursor": "default",
     "font_size": "0.85rem",
     "min_width": "102px",
     "@media (max-width: 640px)": {
@@ -46,9 +49,11 @@ time_display_style = {
 
 # Estilos para badges/highlights
 badge_style = {
+    "display": "inline-flex",
+    "align_items": "center",
     "border_radius": "6px",
-    "background": "#eee",
-    "color": "#444",
+    "background": rx.color("slate", 3),
+    "color": rx.color("slate", 11),
     "font_size": "0.6rem",
     "font_weight": "500",
     "padding": "0.2rem 0.6rem",
@@ -61,10 +66,11 @@ badge_style = {
 # Estilos para items de habilidades
 skill_badge_style = {
     "align_items": "center",
-    "background": "#eee",
+    "background": rx.color("slate", 3),
     "border_radius": "6px",
-    "color": "black",
+    "color": rx.color("slate", 12),
     "display": "flex",
+    "flex_direction": "row",
     "font_size": "0.8rem",
     "font_weight": "500",
     "gap": "4px",
@@ -78,7 +84,9 @@ skill_badge_style = {
 # Estilos para artículos/cards
 card_style = {
     "border_radius": "8px",
-    "border": "1px solid #f2f2f2",
+    "background": rx.color("slate", 1),
+    "border": f"1px solid {rx.color('slate', 4)}",
+    "box_shadow": f"0 1px 4px {rx.color('slate', 4, True)}",
     "gap": "16px",
     "display": "flex",
     "flex_direction": "column",
@@ -88,6 +96,43 @@ card_style = {
         "padding": "12px",
         "gap": "12px",
     },
+}
+
+# Estilos para componentes helpers
+item_title_style = {
+    "font_weight": "600",
+    "color": rx.color("slate", 12),
+    "margin": "0",
+    "transition": "color 0.2s ease",
+    "_hover": {
+        "color": rx.color("accent", 10),
+    },
+}
+
+item_subtitle_style = {
+    "color": rx.color("slate", 11),
+    "display": "block",
+    "font_weight": "400",
+    "margin": "0",
+}
+
+date_box_style = {
+    "display": "flex",
+    "align_items": "center",
+    "color": rx.color("slate", 11),
+}
+
+item_link_style = {
+    "color": rx.color("slate", 12),
+    "text_decoration": "none",
+    "_hover": {
+        "text_decoration": "underline",
+        "color": rx.color("accent", 10),
+    },
+}
+
+item_text_style = {
+    "color": rx.color("slate", 12),
 }
 
 # Estilos para Hero Section
@@ -104,7 +149,7 @@ h1_style = {
 }
 
 h2_style = {
-    "color": "#444",
+    "color": rx.color("slate", 11),
     "font_weight": "500",
     "font_size": "1.1rem",
     "text_wrap": "balance",
@@ -121,19 +166,19 @@ h2_style = {
 img_style = {
     "aspect_ratio": "1 / 1",
     "object_fit": "cover",
-    "width": "128px",
+    "width": "220px",
     "height": "auto",
     "border_radius": "16px",
     "@media (max-width: 768px)": {
-        "width": "112px",
+        "width": "180px",
     },
     "@media (max-width: 640px)": {
-        "width": "96px",
+        "width": "100px",
     },
 }
 
 location_style = {
-    "color": "#666",
+    "color": rx.color("slate", 11),
     "display": "flex",
     "align_items": "center",
     "gap": "0.25rem",
@@ -146,11 +191,11 @@ location_style = {
 }
 
 link_style = {
-    "color": "#555 !important",
+    "color": rx.color("slate", 11),
     "display": "inline-flex",
     "align_items": "center",
     "justify_content": "center",
-    "border": "1px solid #eee",
+    "border": f"1px solid {rx.color('slate', 6)}",
     "padding": "4px",
     "height": "32px",
     "width": "32px",
@@ -158,9 +203,9 @@ link_style = {
     "transition": "all 0.3s ease",
     "text_decoration": "none",
     "_hover": {
-        "background": "#eee",
-        "border": "1px solid #ddd",
-        "color": "#222 !important",
+        "background": rx.color("slate", 3),
+        "border": f"1px solid {rx.color('slate', 7)}",
+        "color": rx.color("accent", 10),
         "transform": "translateY(-2px)",
     },
     "@media (max-width: 640px)": {
@@ -191,6 +236,7 @@ container_style = {
 info_style = {
     "display": "flex",
     "flex_direction": "column",
+    "flex": "1",
     "gap": "0.5rem",
     "padding_right": "32px",
     "@media (max-width: 768px)": {
@@ -203,29 +249,40 @@ info_style = {
     },
 }
 
+social_links_wrapper_style = {
+    "margin_top": "0.5rem",
+}
+
+avatar_wrapper_style = {
+    "margin": "0",
+    "flex_shrink": "0",
+}
+
 # Estilos para Projects Section
 project_link_style = {
-    "color": "#111",
+    "color": rx.color("slate", 12),
+    "font_weight": "500",
     "text_decoration": "none",
     "transition": "color 0.2s ease",
-    "_hover": {"text_decoration": "underline", "color": "#0077b6"},
+    "_hover": {
+        "text_decoration": "underline",
+        "color": rx.color("accent", 10),
+    },
     "@media (max-width: 640px)": {
         "font_size": "0.95rem",
     },
 }
 
-active_indicator_style = {
-    "color": "rgb(29, 196, 71)",
-    "margin_left": "8px",
-    "font_size": "1rem",
-}
 
 github_link_style = {
     "margin_left": "5px",
-    "color": "#111",
+    "color": rx.color("slate", 11),
     "text_decoration": "none",
-    "transition": "opacity 0.2s ease",
-    "_hover": {"opacity": "0.7"},
+    "transition": "color 0.2s ease",
+    "_hover": {
+        "color": rx.color("accent", 10),
+        "opacity": "1",
+    },
     # Área táctil más grande en móvil
     "@media (max-width: 640px)": {
         "padding": "4px",
@@ -248,7 +305,7 @@ project_description_style = {
     "font_size": "0.75rem",
     "line_height": "1.2rem",
     "margin_bottom": "4px",
-    "color": "#666",
+    "color": rx.color("slate", 11),
     "@media (max-width: 640px)": {
         "font_size": "0.7rem",
         "line_height": "1.1rem",
@@ -260,6 +317,10 @@ project_highlights_container_style = {
     "flex_wrap": "wrap",
     "gap": "4px",
     "font_size": "0.6rem",
+}
+
+project_content_style = {
+    "flex": "1",
 }
 
 projects_grid_style = {
@@ -283,7 +344,7 @@ projects_grid_style = {
 
 # Estilos para Skills Section
 skill_text_style = {
-    "color": "black",
+    "color": rx.color("slate", 12),
     "font_size": "0.8rem",
     "font_weight": "500",
     "@media (max-width: 640px)": {
@@ -292,7 +353,7 @@ skill_text_style = {
 }
 
 skills_list_style = {
-    "display": "inline-flex",
+    "display": "flex",
     "gap": "8px",
     "flex_wrap": "wrap",
     "list_style": "none",

@@ -33,11 +33,12 @@ def skill_item(skill: dict) -> rx.Component:
     item_content.append(
         rx.text(
             name,
+            as_="span",
             style=skill_text_style,
         )
     )
 
-    return rx.list_item(*item_content, style=skill_badge_style)
+    return rx.box(*item_content, style=skill_badge_style)
 
 
 def skills_section() -> rx.Component:
@@ -46,10 +47,6 @@ def skills_section() -> rx.Component:
     """
     return section_component(
         title="Habilidades",
-        children=[
-            rx.unordered_list(
-                *[skill_item(skill) for skill in skills],
-                style=skills_list_style,
-            )
-        ],
+        children=[skill_item(skill) for skill in skills],
+        content_style=skills_list_style,
     )

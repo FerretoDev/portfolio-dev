@@ -2,10 +2,10 @@ import reflex as rx
 
 from portfolio.components.section import section_component
 from portfolio.components.sections.common_styles import (
-    active_indicator_style,
     badge_style,
     card_style,
     github_link_style,
+    project_content_style,
     project_description_style,
     project_header_style,
     project_highlights_container_style,
@@ -27,7 +27,7 @@ def project_item(project: dict) -> rx.Component:
     is_active = project.get("isActive", False)
     highlights = project.get("highlights", [])
 
-    return rx.list_item(
+    return rx.box(
         rx.box(
             rx.box(
                 # Header con título, indicador activo y enlace a GitHub
@@ -42,8 +42,8 @@ def project_item(project: dict) -> rx.Component:
                     (
                         rx.text(
                             "•",
+                            as_="span",
                             class_name="active-indicator",
-                            style=active_indicator_style,
                         )
                         if is_active
                         else None
@@ -66,10 +66,13 @@ def project_item(project: dict) -> rx.Component:
                     description,
                     style=project_description_style,
                 ),
-                style={"flex": "1"},
+                style=project_content_style,
             ),
             rx.box(
-                *[rx.text(highlight, style=badge_style) for highlight in highlights],
+                *[
+                    rx.text(highlight, as_="span", style=badge_style)
+                    for highlight in highlights
+                ],
                 style=project_highlights_container_style,
             ),
             style=card_style,
@@ -83,10 +86,6 @@ def projects_section() -> rx.Component:
     """
     return section_component(
         title="Proyectos",
-        children=[
-            rx.unordered_list(
-                *[project_item(project) for project in projects],
-                style=projects_grid_style,
-            )
-        ],
+        children=[project_item(project) for project in projects],
+        content_style=projects_grid_style,
     )
