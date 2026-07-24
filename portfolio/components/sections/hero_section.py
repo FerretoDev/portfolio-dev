@@ -90,6 +90,7 @@ def hero_section() -> rx.Component:
                         alt=name,
                         style=img_style,
                     ),
+                    class_name="avatar-float",
                     style=avatar_wrapper_style,
                 ),
                 style=container_style,
