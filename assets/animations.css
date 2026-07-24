@@ -24,13 +24,3 @@ body {
     margin-left: 8px;
     font-size: 1rem;
 }
-
-@keyframes floating {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-.avatar-float {
-    animation: floating 4s ease-in-out infinite;
-}
