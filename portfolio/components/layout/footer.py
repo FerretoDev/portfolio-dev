@@ -42,7 +42,7 @@ def footer() -> rx.Component:
             spacing="3",
         ),
         rx.text(
-            f"© 2024-{current_year} Marcos Eduardo Ferreto Estrada",
+            f"© 2024-{current_year} {constants.basics['name']}",
             style={
                 "color": rx.color("slate", 11),
                 "font_size": "0.8rem",

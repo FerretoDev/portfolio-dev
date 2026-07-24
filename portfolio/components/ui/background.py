@@ -1,4 +1,5 @@
 import reflex as rx
+from portfolio import constants
 
 
 def background() -> rx.Component:
@@ -11,7 +12,7 @@ def background() -> rx.Component:
             height="65vh",
         ),
         rx.center(
-            rx.heading("Marcos Ferreto", size="7", weight="bold", z_index="20"),
+            rx.heading(constants.basics["name"], size="7", weight="bold", z_index="20"),
             position="absolute",
             top="50%",
             left="50%",
