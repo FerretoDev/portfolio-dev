@@ -4,23 +4,15 @@ from typing import Any, Callable, Dict
 
 import reflex as rx
 
-# Estilo estándar para iconos de tecnologías con soporte para modo oscuro
-ICON_STYLE: dict[str, Any] = {
-    "width": "20px",
-    "height": "20px",
-    "filter": rx.color_mode_cond(
-        light="none",
-        dark="brightness(0) invert(1)",
-    ),
-}
-
-
-
+# Los SVGs locales se renderizan usando CSS mask para heredar 'currentColor'
 def create_simple_icon(icon_name: str) -> rx.Component:
-    """Crea un icono desde assets/icons/ (SVGs locales de simple-icons)."""
-    return rx.image(
-        src=f"/icons/{icon_name}.svg",
-        style=ICON_STYLE,
+    """Crea un icono desde assets/icons/ usando máscaras para heredar el color."""
+    return rx.box(
+        width="20px",
+        height="20px",
+        background_color="currentColor",
+        mask=f"url('/icons/{icon_name}.svg') no-repeat center / contain",
+        WebkitMask=f"url('/icons/{icon_name}.svg') no-repeat center / contain",
     )
 
 
@@ -30,7 +22,7 @@ def email_icon() -> rx.Component:
 
 
 def phone_icon() -> rx.Component:
-    return rx.image(src="/icons/phone.svg", style=ICON_STYLE)
+    return create_simple_icon("phone")
 
 
 def github_social_icon() -> rx.Component:
