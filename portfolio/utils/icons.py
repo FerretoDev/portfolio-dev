@@ -4,8 +4,16 @@ from typing import Any, Callable, Dict
 
 import reflex as rx
 
-# Estilo estándar para iconos de tecnologías (Simple Icons)
-ICON_STYLE: dict[str, str] = {"width": "16px", "height": "16px"}
+# Estilo estándar para iconos de tecnologías con soporte para modo oscuro
+ICON_STYLE: dict[str, Any] = {
+    "width": "16px",
+    "height": "16px",
+    "filter": rx.color_mode_cond(
+        light="none",
+        dark="brightness(0) invert(1)",
+    ),
+}
+
 
 
 def create_simple_icon(icon_name: str) -> rx.Component:
