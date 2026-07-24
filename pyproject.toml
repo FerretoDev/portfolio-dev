@@ -1,3 +1,13 @@
+[project]
+name = "portfolio"
+version = "0.1.0"
+description = "Portfolio personal en Reflex"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "reflex>=0.8.20",
+]
+
 [tool.mypy]
     files = ["portfolio/"]  # Rutas a analizar
     # ignore_missing_imports = true  # Ignorar errores por módulos no encontrados
@@ -5,3 +15,4 @@
 
 [tool.pyrefly]
 project-includes = ["portfolio/"]
+

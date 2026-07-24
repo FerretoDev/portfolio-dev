@@ -34,32 +34,18 @@ def create_item_header(
         end_year = format_date_to_year(end_date)
         years_display = f"{start_year} - {end_year}"
 
-    # Crear contenido del título
-    title_content = []
+    # Crear componente de título
+    title_component = rx.heading(
+        title,
+        level=3,
+        style={
+            "font_weight": "500",
+            "color": "#111 !important",
+            "margin": "0",
+        },
+    )
+    title_content = [title_component]
 
-    # Si title es un string, crear un heading, si no, usarlo directamente
-    if isinstance(title, str):
-        title_component = rx.heading(
-            title,
-            level=3,
-            style={
-                "font_weight": "500",
-                "color": "#111 !important",
-                "margin": "0",
-            },
-        )
-    else:
-        title_component = rx.heading(
-            title,
-            level=3,
-            style={
-                "font_weight": "500",
-                "color": "#111 !important",
-                "margin": "0",
-            },
-        )
-
-    title_content.append(title_component)
 
     # Agregar subtítulo si existe
     if subtitle:

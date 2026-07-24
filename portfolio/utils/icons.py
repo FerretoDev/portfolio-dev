@@ -1,22 +1,22 @@
-"""Utilidades para iconos"""
+"""Utilidades para iconos del portfolio"""
 
 from typing import Any, Callable, Dict
 
 import reflex as rx
 
-# Estilo estándar para iconos
+# Estilo estándar para iconos de tecnologías (Simple Icons)
 ICON_STYLE: dict[str, str] = {"width": "16px", "height": "16px"}
 
 
 def create_simple_icon(icon_name: str) -> rx.Component:
     """
-    Crea un icono desde simple-icons CDN.
+    Crea un icono oficial de tecnología desde simple-icons CDN.
 
     Args:
-        icon_name: Nombre del icono en simple-icons (ej: "github", "python")
+        icon_name: Nombre del icono en simple-icons (ej: "linkedin", "python")
 
     Returns:
-        Componente de imagen de Reflex con el icono
+        Componente rx.image con el icono SVG
     """
     return rx.image(
         src=f"https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/{icon_name}.svg",
@@ -24,13 +24,15 @@ def create_simple_icon(icon_name: str) -> rx.Component:
     )
 
 
-# Funciones de iconos de redes sociales
+
+# Funciones de iconos de redes sociales y UI (usando Lucide nativo)
 def email_icon() -> rx.Component:
-    return create_simple_icon("gmail")
+    return rx.icon("mail", size=16)
 
 
 def phone_icon() -> rx.Component:
-    return create_simple_icon("phone")
+    return rx.image(src="/icons/phone.svg", style=ICON_STYLE)
+
 
 
 def github_social_icon() -> rx.Component:
@@ -45,12 +47,14 @@ def twitter_icon() -> rx.Component:
     return create_simple_icon("twitter")
 
 
+
+
 def link_icon() -> rx.Component:
-    return create_simple_icon("link")
+    return rx.icon("link", size=16)
 
 
 def map_pin_icon() -> rx.Component:
-    return create_simple_icon("googlemaps")
+    return rx.icon("map-pin", size=16)
 
 
 # Diccionario de iconos de redes sociales
@@ -63,7 +67,7 @@ SOCIAL_ICONS: dict[str, Any] = {
 }
 
 
-# Funciones de iconos individuales
+# Funciones de iconos de tecnologías (Simple Icons oficiales)
 def html_icon() -> rx.Component:
     return create_simple_icon("html5")
 
@@ -100,6 +104,7 @@ def github_icon() -> rx.Component:
     return create_simple_icon("github")
 
 
+
 def next_icon() -> rx.Component:
     return create_simple_icon("nextdotjs")
 
@@ -133,7 +138,7 @@ def postgresql_icon() -> rx.Component:
 
 
 # Mapeo de nombres a funciones de iconos
-SKILLS_ICONS: Dict[str, Callable] = {
+SKILLS_ICONS: Dict[str, Callable[[], rx.Component]] = {
     "HTML": html_icon,
     "CSS": css_icon,
     "JavaScript": javascript_icon,
@@ -152,3 +157,4 @@ SKILLS_ICONS: Dict[str, Callable] = {
     "Python": python_icon,
     "PostgreSQL": postgresql_icon,
 }
+

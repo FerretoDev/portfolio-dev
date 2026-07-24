@@ -9,20 +9,19 @@ from portfolio.components.sections.hero_section import hero_section
 from portfolio.components.sections.projects_section import projects_section
 from portfolio.components.sections.skills_section import skills_section
 
-# from portfolio.components.styles.styles import PageStyle
 
-
-@rx.page("/", "Portfolio")  # type: ignore
+@rx.page("/", title="Portfolio - Marcos Ferreto Estrada")  # type: ignore
 def index() -> rx.Component:
-
+    """Página principal del portfolio."""
     return layout(
         children=[
-            hero_section(),  # Listo
-            about_section(),  # Listo
-            experience_section(),  # Listo
+            hero_section(),
+            about_section(),
+            experience_section(),
             education_section(),
             projects_section(),
-            skills_section(),  # Listo
-            footer(),  # Listo
+            skills_section(),
+            footer(),
         ],
     )
+
