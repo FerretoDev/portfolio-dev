@@ -7,8 +7,11 @@ config = rx.Config(
     app_name="portfolio",
     plugins=[
         SitemapPlugin(),
-        RadixThemesPlugin(),
+        RadixThemesPlugin(
+            theme=rx.theme(font_family="Inter", appearance="light", accent_color="cyan")
+        ),
     ],
     disable_plugins=[],
 )
+
 
