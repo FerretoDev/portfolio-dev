@@ -41,7 +41,7 @@ def footer() -> rx.Component:
             style=footer_copyright_style,
         ),
         rx.text(
-            "Inspired by ",
+            f"{constants.VERSION} • Inspired by ",
             rx.link(
                 "Bartosz Jarocki",
                 href="https://cv.jarocki.me/",

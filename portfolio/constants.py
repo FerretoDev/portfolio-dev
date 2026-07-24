@@ -11,12 +11,16 @@ LINKEDIN_URL = "https://www.linkedin.com/in/marcos-ferreto/"
 EMAIL = "marcosferretoestrada@gmail.com"
 PHONE = "+506 6352-8891"
 
+# ─── Configuración del sitio ───────────────────────────────────────────────────
+VERSION = "v1.0.0"
+
 # ─── Datos básicos del CV ──────────────────────────────────────────────────────
 # Editar aquí para actualizar el hero y el about
 basics: dict = {
     "name": "Marcos Ferreto Estrada",
-    "label": "Software Developer & Mathematical Modeling Student Building data-driven systems at the intersection of mathematics, software engineering and machine learning.",
-    "image": "icon-ferreto-nobg.svg",
+    "title": "Software Developer & Mathematical Modeling Student",
+    "description": "Building software where mathematics, data and engineering meet.",
+    "image": "icon.svg",
     "location": {"city": "", "region": "Costa Rica"},
     # Texto de la sección "Sobre mí" — un string por párrafo
     "summary": [
@@ -120,29 +124,5 @@ projects = [
         "description": "Sitio web personal desarrollado para presentar proyectos, experiencia y habilidades en desarrollo de software y ciencia de datos.",
         "isActive": True,
         "highlights": ["Python", "Reflex", "FastAPI", "CSS"],
-    },
-    {
-        "name": "Web Scraper API Visualization",
-        "url": None,
-        "github": None,
-        "description": "Aplicación que realiza web scraping automatizado, expone los datos mediante una API REST y permite analizarlos o visualizarlos utilizando herramientas de ciencia de datos.",
-        "isActive": False,
-        "highlights": ["Python", "FastAPI", "Reflex", "Pandas", "Docker"],
-    },
-    {
-        "name": "MyTaskCalendar",
-        "url": None,
-        "github": None,
-        "description": "Aplicación multiplataforma para gestión de tareas y calendario que permite organizar proyectos, tareas y recordatorios de forma eficiente.",
-        "isActive": False,
-        "highlights": ["Python", "Flet"],
-    },
-    {
-        "name": "Inventory Management Web App",
-        "url": None,
-        "github": None,
-        "description": "Aplicación web para la gestión de inventarios desarrollada utilizando FastAPI y Reflex.",
-        "isActive": False,
-        "highlights": ["Python", "FastAPI", "Reflex", "PostgreSQL"],
     },
 ]
