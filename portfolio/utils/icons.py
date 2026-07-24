@@ -24,13 +24,14 @@ def create_simple_icon(icon_name: str) -> rx.Component:
     )
 
 
-# Funciones de iconos de redes sociales y UI (usando Lucide nativo)
+# Funciones de iconos de redes sociales y UI
 def email_icon() -> rx.Component:
-    return rx.icon("mail", size=16)
+    return create_simple_icon("gmail")
 
 
 def phone_icon() -> rx.Component:
-    return rx.image(src="/icons/phone.svg", style=ICON_STYLE)
+    return create_simple_icon("phone")
+
 
 
 def github_social_icon() -> rx.Component:
