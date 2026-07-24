@@ -174,3 +174,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Reflex execution logs and lock
+reflex.log
+reflex.lock/
+

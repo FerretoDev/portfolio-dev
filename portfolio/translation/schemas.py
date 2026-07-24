@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-#import reflex as rx
+import reflex as rx
+
 
 # 1. Definir estructura de datos para traducciones
 @dataclass
