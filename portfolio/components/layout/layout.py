@@ -19,4 +19,3 @@ def layout(title: str = "Portfolio", children: Optional[List[rx.Component]] = No
         ),
     )
 
-
