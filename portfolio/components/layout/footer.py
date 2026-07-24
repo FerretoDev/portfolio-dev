@@ -40,6 +40,16 @@ def footer() -> rx.Component:
             "Always learning, building and exploring the intersection between mathematics and technology.",
             style=footer_copyright_style,
         ),
+        rx.text(
+            "Inspired by ",
+            rx.link(
+                "Bartosz Jarocki",
+                href="https://cv.jarocki.me/",
+                is_external=True,
+                style={"text_decoration": "underline", "color": "inherit"},
+            ),
+            style=footer_copyright_style,
+        ),
         width="100%",
         align="center",
         padding_y="2.5rem",
