@@ -7,6 +7,7 @@ from portfolio.components.sections.common_styles import link_style
 from portfolio.components.styles.styles import footer_copyright_style
 from portfolio.utils.icons import github_social_icon, linkedin_icon, twitter_icon
 
+
 def footer() -> rx.Component:
     """Pie de página."""
     current_year = datetime.date.today().year
@@ -41,7 +42,7 @@ def footer() -> rx.Component:
             style=footer_copyright_style,
         ),
         rx.text(
-            f"{constants.VERSION} • Inspired by ",
+            f"{constants.VERSION} • Built with Reflex • Inspired by ",
             rx.link(
                 "Bartosz Jarocki",
                 href="https://cv.jarocki.me/",
@@ -55,5 +56,3 @@ def footer() -> rx.Component:
         padding_y="2.5rem",
         spacing="4",
     )
-
-

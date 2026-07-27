@@ -127,6 +127,46 @@ def postgresql_icon() -> rx.Component:
     return create_simple_icon("postgresql")
 
 
+def sql_icon() -> rx.Component:
+    return rx.icon("database", size=18)
+
+
+def fastapi_icon() -> rx.Component:
+    return create_simple_icon("fastapi")
+
+
+def reflex_icon() -> rx.Component:
+    return create_simple_icon("reflex")
+
+
+def flask_icon() -> rx.Component:
+    return create_simple_icon("flask")
+
+
+def sqlite_icon() -> rx.Component:
+    return create_simple_icon("sqlite")
+
+
+def docker_icon() -> rx.Component:
+    return create_simple_icon("docker")
+
+
+def linux_icon() -> rx.Component:
+    return create_simple_icon("linux")
+
+
+def pandas_icon() -> rx.Component:
+    return create_simple_icon("pandas")
+
+
+def numpy_icon() -> rx.Component:
+    return create_simple_icon("numpy")
+
+
+def rest_api_icon() -> rx.Component:
+    return rx.icon("network", size=18)
+
+
 # Mapeo de nombres a funciones de iconos
 SKILLS_ICONS: Dict[str, Callable[[], rx.Component]] = {
     "HTML": html_icon,
@@ -146,5 +186,15 @@ SKILLS_ICONS: Dict[str, Callable[[], rx.Component]] = {
     "Flutter": flutter_icon,
     "Python": python_icon,
     "PostgreSQL": postgresql_icon,
+    "SQL": sql_icon,
+    "FastAPI": fastapi_icon,
+    "Reflex": reflex_icon,
+    "Flask": flask_icon,
+    "SQLite": sqlite_icon,
+    "Docker": docker_icon,
+    "Linux": linux_icon,
+    "Pandas": pandas_icon,
+    "NumPy": numpy_icon,
+    "REST APIs": rest_api_icon,
 }
 
