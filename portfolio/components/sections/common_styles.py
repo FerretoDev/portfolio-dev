@@ -384,3 +384,34 @@ skills_list_style = {
         "justify_content": "center",
     },
 }
+
+skills_container_style = {
+    "display": "flex",
+    "flex_direction": "column",
+    "gap": "20px",
+    "width": "100%",
+    "@media (max-width: 640px)": {
+        "gap": "16px",
+    },
+}
+
+skill_category_style = {
+    "display": "flex",
+    "flex_direction": "column",
+    "gap": "10px",
+    "@media (max-width: 640px)": {
+        "gap": "8px",
+        "align_items": "center",
+    },
+}
+
+skill_category_title_style = {
+    "color": rx.color("slate", 11),
+    "font_size": "1rem",
+    "font_weight": "600",
+    "margin": "0",
+    "@media (max-width: 640px)": {
+        "font_size": "0.9rem",
+        "text_align": "center",
+    },
+}
